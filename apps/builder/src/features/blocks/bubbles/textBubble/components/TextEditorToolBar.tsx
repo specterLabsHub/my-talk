@@ -36,7 +36,7 @@ export const TextEditorToolBar = ({
   }
   return (
     <HStack
-      bgColor={useColorModeValue('white', 'gray.850')}
+      bgColor={useColorModeValue('#A1A1A1', '#A1A1A1')}
       borderTopRadius="md"
       p={2}
       w="full"
@@ -48,28 +48,28 @@ export const TextEditorToolBar = ({
         aria-label="Insert variable"
         size="sm"
         onMouseDown={handleVariablesButtonMouseDown}
-        icon={<UserIcon />}
+        icon={<UserIcon stroke={'#1a1a1a'}/>}
       />
       <span data-testid="bold-button">
         <MarkToolbarButton
           type={getPluginType(editor, MARK_BOLD)}
-          icon={<BoldIcon />}
+          icon={<BoldIcon stroke={'#1a1a1a'}/>}
         />
       </span>
       <span data-testid="italic-button">
         <MarkToolbarButton
           type={getPluginType(editor, MARK_ITALIC)}
-          icon={<ItalicIcon />}
+          icon={<ItalicIcon stroke={'#1a1a1a'}/>}
         />
       </span>
       <span data-testid="underline-button">
         <MarkToolbarButton
           type={getPluginType(editor, MARK_UNDERLINE)}
-          icon={<UnderlineIcon />}
+          icon={<UnderlineIcon stroke={'#1a1a1a'}/>}
         />
       </span>
       <span data-testid="link-button">
-        <LinkToolbarButton icon={<LinkIcon />} />
+        <LinkToolbarButton icon={<LinkIcon stroke={'#1a1a1a'}/>} />
       </span>
     </HStack>
   )

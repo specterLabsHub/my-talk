@@ -3,7 +3,7 @@ export default {
   'confirmModal.defaultTitle': 'Are you sure?',
   'dashboard.header.settingsButton.label': 'Settings & Members',
   'dashboard.redirectionMessage': 'You are being redirected...',
-  'dashboard.title': 'My typebots',
+  'dashboard.title': 'My talks',
   delete: 'Delete',
   errorMessage: 'An error occured',
   cancel: 'Cancel',

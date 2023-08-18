@@ -112,7 +112,6 @@ const BlockCardLayout = ({ type, onMouseDown, tooltip, children }: Props) => {
       <Flex pos="relative">
         <HStack
           borderWidth="1px"
-          borderColor={useColorModeValue('gray.200', 'gray.800')}
           rounded="lg"
           flex="1"
           cursor={'grab'}
@@ -121,7 +120,7 @@ const BlockCardLayout = ({ type, onMouseDown, tooltip, children }: Props) => {
           bgColor={useColorModeValue('gray.50', 'gray.850')}
           px="4"
           py="2"
-          _hover={useColorModeValue({ shadow: 'md' }, { bgColor: 'gray.800' })}
+          _hover={useColorModeValue({ shadow: 'md' }, { bgColor: 'blue.800' })}
           transition="box-shadow 200ms, background-color 200ms"
         >
           {!isMouseDown ? children : null}

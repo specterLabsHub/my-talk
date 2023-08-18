@@ -14,7 +14,6 @@ import { BaseEditor, BaseSelection, Transforms } from 'slate'
 import { Variable } from '@typebot.io/schemas'
 import { ReactEditor } from 'slate-react'
 import { VariableSearchInput } from '@/components/inputs/VariableSearchInput'
-import { colors } from '@/lib/theme'
 import { useOutsideClick } from '@/hooks/useOutsideClick'
 import { selectEditor, TElement } from '@udecode/plate-common'
 import { TextEditorToolBar } from './TextEditorToolBar'
@@ -104,14 +103,13 @@ const TextBubbleEditorContent = ({
           color: useColorModeValue('blue.500', 'blue.300') + ' !important',
         },
         '[class^="PlateFloatingLink___Styled"]': {
-          '--tw-bg-opacity': useColorModeValue('1', '.1') + '!important',
-          backgroundColor: useColorModeValue('white', 'gray.800'),
+          backgroundColor: useColorModeValue('#1a1a1a', '#1a1a1a'),
           borderRadius: 'md',
           transitionProperty: 'background-color',
           transitionDuration: 'normal'
         },
         '[class^="FloatingVerticalDivider___"]': {
-          '--tw-bg-opacity': useColorModeValue('1', '.4') + '!important',
+          '--tw-bg-opacity': useColorModeValue('1', '1') + '!important',
         },
         '.slate-a': {
           color: useColorModeValue('blue.500', 'blue.300'),
@@ -124,7 +122,7 @@ const TextBubbleEditorContent = ({
       <Plate
         id={id}
         editableProps={{
-          style: editorStyle(useColorModeValue('white', colors.gray[850])),
+          style: editorStyle(useColorModeValue('white', '#1a1a1a')),
           autoFocus: true,
           onFocus: () => {
             rememberedSelection.current = null

@@ -15,7 +15,7 @@ export const TextBubbleContent = ({ block }: Props) => {
       flexDir={'column'}
       opacity={isEmpty ? '0.5' : '1'}
       className="slate-html-container"
-      color={isEmpty ? 'gray.500' : 'inherit'}
+      color={isEmpty ? '#1a1a1a' : '#1a1a1a'}
     >
       {block.content.richText.map((element, idx) => (
         <PlateBlock key={idx} element={element} />

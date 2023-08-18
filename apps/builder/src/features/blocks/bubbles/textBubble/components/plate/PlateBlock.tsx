@@ -16,7 +16,7 @@ export const PlateBlock = ({ element }: { element: TElement | TText }) => {
     }
     default: {
       return (
-        <div>
+        <div style={{background: '#1a1a1a'}}>
           {(element.children as TDescendant[])?.map((child, idx) => (
             <PlateBlock key={idx} element={child} />
           ))}

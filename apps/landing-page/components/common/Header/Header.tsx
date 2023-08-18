@@ -87,7 +87,7 @@ export const Header = () => {
           </Button>
           <Button
             as={Link}
-            href="https://app.typebot.io/signin"
+            href={process.env.NEXT_AUTH_URL}
             colorScheme="blue"
             variant="outline"
             fontWeight={700}

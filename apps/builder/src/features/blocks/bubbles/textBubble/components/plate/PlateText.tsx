@@ -15,7 +15,7 @@ export const PlateText = ({
   if (underline) className += ' slate-underline'
   if (className)
     return (
-      <span className={className}>
+      <span className={className} style={{color: '#F24119'}}>
         <PlateTextContent text={text} />
       </span>
     )

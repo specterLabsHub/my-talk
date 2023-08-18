@@ -17,10 +17,11 @@ export const BlockCardOverlay = ({
       pointerEvents="none"
       px="4"
       py="2"
-      borderColor={useColorModeValue('gray.200', 'gray.800')}
-      bgColor={useColorModeValue('gray.50', 'gray.850')}
+      borderColor={useColorModeValue('blue.200', 'blue.800')}
+      bgColor={useColorModeValue('blue.50', 'blue.850')}
       shadow="xl"
       zIndex={2}
+      hover={useColorModeValue('gray.200', 'gray.800')}
       {...props}
     >
       <BlockIcon type={type} />

@@ -1,4 +1,4 @@
-import { IconProps, useColorModeValue } from '@chakra-ui/react'
+import { IconProps } from '@chakra-ui/react'
 import {
   BubbleBlockType,
   InputBlockType,
@@ -44,66 +44,62 @@ import { PixelLogo } from '@/features/blocks/integrations/pixel/components/Pixel
 type BlockIconProps = { type: BlockType } & IconProps
 
 export const BlockIcon = ({ type, ...props }: BlockIconProps): JSX.Element => {
-  const blue = useColorModeValue('blue.500', 'blue.300')
-  const orange = useColorModeValue('orange.500', 'orange.300')
-  const purple = useColorModeValue('purple.500', 'purple.300')
-  const openAIColor = useColorModeValue('black', 'white')
 
   switch (type) {
     case BubbleBlockType.TEXT:
-      return <TextBubbleIcon color={blue} {...props} />
+      return <TextBubbleIcon color={'#1a1a1a'} {...props}  />
     case BubbleBlockType.IMAGE:
-      return <ImageBubbleIcon color={blue} {...props} />
+      return <ImageBubbleIcon color={'#1a1a1a'} {...props} />
     case BubbleBlockType.VIDEO:
-      return <VideoBubbleIcon color={blue} {...props} />
+      return <VideoBubbleIcon color={'#1a1a1a'} {...props} />
     case BubbleBlockType.EMBED:
-      return <EmbedBubbleIcon color={blue} {...props} />
+      return <EmbedBubbleIcon color={'#1a1a1a'} {...props} />
     case BubbleBlockType.AUDIO:
-      return <AudioBubbleIcon color={blue} {...props} />
+      return <AudioBubbleIcon color={'#1a1a1a'} {...props} />
     case InputBlockType.TEXT:
-      return <TextInputIcon color={orange} {...props} />
+      return <TextInputIcon color={'#1a1a1a'} {...props} />
     case InputBlockType.NUMBER:
-      return <NumberInputIcon color={orange} {...props} />
+      return <NumberInputIcon color={'#1a1a1a'} {...props} />
     case InputBlockType.EMAIL:
-      return <EmailInputIcon color={orange} {...props} />
+      return <EmailInputIcon color={'#1a1a1a'} {...props} />
     case InputBlockType.URL:
-      return <UrlInputIcon color={orange} {...props} />
+      return <UrlInputIcon color={'#1a1a1a'} {...props} />
     case InputBlockType.DATE:
-      return <DateInputIcon color={orange} {...props} />
+      return <DateInputIcon color={'#1a1a1a'} {...props} />
     case InputBlockType.PHONE:
-      return <PhoneInputIcon color={orange} {...props} />
+      return <PhoneInputIcon color={'#1a1a1a'} {...props} />
     case InputBlockType.CHOICE:
-      return <ButtonsInputIcon color={orange} {...props} />
+      return <ButtonsInputIcon color={'#1a1a1a'} {...props} />
     case InputBlockType.PICTURE_CHOICE:
-      return <PictureChoiceIcon color={orange} {...props} />
+      return <PictureChoiceIcon color={'#1a1a1a'} {...props} />
     case InputBlockType.PAYMENT:
-      return <PaymentInputIcon color={orange} {...props} />
+      return <PaymentInputIcon color={'#1a1a1a'} {...props} />
     case InputBlockType.RATING:
-      return <RatingInputIcon color={orange} {...props} />
+      return <RatingInputIcon color={'#1a1a1a'} {...props} />
     case InputBlockType.FILE:
-      return <FileInputIcon color={orange} {...props} />
+      return <FileInputIcon color={'#1a1a1a'} {...props} />
     case LogicBlockType.SET_VARIABLE:
-      return <SetVariableIcon color={purple} {...props} />
+      return <SetVariableIcon color={'#1a1a1a'} {...props} />
     case LogicBlockType.CONDITION:
-      return <ConditionIcon color={purple} {...props} />
+      return <ConditionIcon color={'#1a1a1a'} {...props} />
     case LogicBlockType.REDIRECT:
-      return <RedirectIcon color={purple} {...props} />
+      return <RedirectIcon color={'#1a1a1a'} {...props} />
     case LogicBlockType.SCRIPT:
-      return <ScriptIcon {...props} />
+      return <ScriptIcon color={'#1a1a1a'} {...props} />
     case LogicBlockType.WAIT:
-      return <WaitIcon color={purple} {...props} />
+      return <WaitIcon color={'#1a1a1a'} {...props} />
     case LogicBlockType.JUMP:
-      return <JumpIcon color={purple} {...props} />
+      return <JumpIcon color={'#1a1a1a'} {...props} />
     case LogicBlockType.TYPEBOT_LINK:
-      return <TypebotLinkIcon color={purple} {...props} />
+      return <TypebotLinkIcon color={'#1a1a1a'} {...props} />
     case LogicBlockType.AB_TEST:
-      return <AbTestIcon color={purple} {...props} />
+      return <AbTestIcon color={'#1a1a1a'} {...props} />
     case IntegrationBlockType.GOOGLE_SHEETS:
       return <GoogleSheetsLogo {...props} />
     case IntegrationBlockType.GOOGLE_ANALYTICS:
       return <GoogleAnalyticsLogo {...props} />
     case IntegrationBlockType.WEBHOOK:
-      return <WebhookIcon {...props} />
+      return <WebhookIcon {...props} color={'#1a1a1a'}/>
     case IntegrationBlockType.ZAPIER:
       return <ZapierLogo {...props} />
     case IntegrationBlockType.MAKE_COM:
@@ -111,14 +107,14 @@ export const BlockIcon = ({ type, ...props }: BlockIconProps): JSX.Element => {
     case IntegrationBlockType.PABBLY_CONNECT:
       return <PabblyConnectLogo {...props} />
     case IntegrationBlockType.EMAIL:
-      return <SendEmailIcon {...props} />
+      return <SendEmailIcon {...props} color={'#1a1a1a'}/>
     case IntegrationBlockType.CHATWOOT:
       return <ChatwootLogo {...props} />
     case IntegrationBlockType.OPEN_AI:
-      return <OpenAILogo fill={openAIColor} {...props} />
+      return <OpenAILogo fill={'#1a1a1a'} {...props} />
     case IntegrationBlockType.PIXEL:
       return <PixelLogo {...props} />
     case 'start':
-      return <FlagIcon {...props} />
+      return <FlagIcon {...props} color={'#1a1a1a'}/>
   }
 }
