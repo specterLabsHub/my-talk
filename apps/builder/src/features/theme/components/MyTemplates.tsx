@@ -5,6 +5,7 @@ import { ThemeTemplate } from '@typebot.io/schemas'
 import { areThemesEqual } from '../helpers/areThemesEqual'
 import { SaveThemeModal } from './SaveThemeModal'
 import { ThemeTemplateCard } from './ThemeTemplateCard'
+import { useScopedI18n } from '@/locales'
 
 type Props = {
   selectedTemplateId: string | undefined
@@ -28,7 +29,7 @@ export const MyTemplates = ({
   const selectedTemplate = data?.themeTemplates.find(
     (themeTemplate) => themeTemplate.id === selectedTemplateId
   )
-
+  const scopedT = useScopedI18n('template')
   const closeModalAndSelectTemplate = (
     template?: Pick<ThemeTemplate, 'id' | 'theme'>
   ) => {
@@ -41,7 +42,7 @@ export const MyTemplates = ({
       {(!selectedTemplate ||
         !areThemesEqual(selectedTemplate?.theme, currentTheme)) && (
         <Button leftIcon={<SaveIcon />} onClick={onOpen} colorScheme="blue">
-          Save current theme
+          {scopedT('Save current theme')}
         </Button>
       )}
       <SaveThemeModal

@@ -10,6 +10,7 @@ import {
 import React from 'react'
 import { EmojiOrImageIcon } from './EmojiOrImageIcon'
 import { ImageUploadContent } from './ImageUploadContent'
+import { useScopedI18n } from '@/locales'
 
 type Props = {
   uploadFilePath: string
@@ -25,12 +26,13 @@ export const EditableEmojiOrImageIcon = ({
   boxSize,
 }: Props) => {
   const bg = useColorModeValue('gray.100', 'gray.700')
+  const scopedT = useScopedI18n('header')
 
   return (
     <Popover isLazy>
       {({ onClose }: { onClose: () => void }) => (
         <>
-          <Tooltip label="Change icon">
+          <Tooltip label={scopedT('ChangeIcon')}>
             <Flex
               cursor="pointer"
               p="2"

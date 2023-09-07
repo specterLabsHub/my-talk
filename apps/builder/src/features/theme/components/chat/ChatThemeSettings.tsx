@@ -17,6 +17,7 @@ import { ButtonsTheme } from './ButtonsTheme'
 import { GuestBubbles } from './GuestBubbles'
 import { HostBubbles } from './HostBubbles'
 import { InputsTheme } from './InputsTheme'
+import { useScopedI18n } from '@/locales'
 
 type Props = {
   typebotId: string
@@ -42,24 +43,25 @@ export const ChatThemeSettings = ({
     onChatThemeChange({ ...chatTheme, hostAvatar })
   const handleGuestAvatarChange = (guestAvatar: AvatarProps) =>
     onChatThemeChange({ ...chatTheme, guestAvatar })
+    const scopedT = useScopedI18n('template')
 
   return (
     <Stack spacing={6}>
       <AvatarForm
         uploadFilePath={`typebots/${typebotId}/hostAvatar`}
-        title="Bot avatar"
+        title={scopedT('Bot avatar')}
         avatarProps={chatTheme.hostAvatar}
         isDefaultCheck
         onAvatarChange={handleHostAvatarChange}
       />
       <AvatarForm
         uploadFilePath={`typebots/${typebotId}/guestAvatar`}
-        title="User avatar"
+        title={scopedT('User avatar')}
         avatarProps={chatTheme.guestAvatar}
         onAvatarChange={handleGuestAvatarChange}
       />
       <Stack borderWidth={1} rounded="md" p="4" spacing={4}>
-        <Heading fontSize="lg">Bot bubbles</Heading>
+        <Heading fontSize="lg">{scopedT('Bot bubbles')}</Heading>
         <HostBubbles
           hostBubbles={chatTheme.hostBubbles}
           onHostBubblesChange={handleHostBubblesChange}
@@ -67,28 +69,28 @@ export const ChatThemeSettings = ({
       </Stack>
 
       <Stack borderWidth={1} rounded="md" p="4" spacing={4}>
-        <Heading fontSize="lg">User bubbles</Heading>
+        <Heading fontSize="lg">{scopedT('User bubbles')}</Heading>
         <GuestBubbles
           guestBubbles={chatTheme.guestBubbles}
           onGuestBubblesChange={handleGuestBubblesChange}
         />
       </Stack>
       <Stack borderWidth={1} rounded="md" p="4" spacing={4}>
-        <Heading fontSize="lg">Buttons</Heading>
+        <Heading fontSize="lg">{scopedT('Buttons')}</Heading>
         <ButtonsTheme
           buttons={chatTheme.buttons}
           onButtonsChange={handleButtonsChange}
         />
       </Stack>
       <Stack borderWidth={1} rounded="md" p="4" spacing={4}>
-        <Heading fontSize="lg">Inputs</Heading>
+        <Heading fontSize="lg">{scopedT('Inputs')}</Heading>
         <InputsTheme
           inputs={chatTheme.inputs}
           onInputsChange={handleInputsChange}
         />
       </Stack>
       <Stack borderWidth={1} rounded="md" p="4" spacing={4}>
-        <Heading fontSize="lg">Corners roundness</Heading>
+        <Heading fontSize="lg">{scopedT('Corners roundness')}</Heading>
         <RadioButtons
           options={[
             {

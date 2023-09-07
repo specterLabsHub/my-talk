@@ -11,6 +11,7 @@ import {
   typebotImportCode,
   parseApiHostValue,
 } from '../../../snippetParsers'
+import { useScopedI18n } from '@/locales'
 
 export const parseDefaultBubbleTheme = (typebot?: Typebot) => ({
   button: {
@@ -41,6 +42,7 @@ ${parseInitBubbleCode({
   previewMessage,
 })}`
   )
+  const scopedT = useScopedI18n('share')
 
   return (
     <Stack spacing={4}>
@@ -51,7 +53,7 @@ ${parseInitBubbleCode({
         onThemeChange={setTheme}
         onPreviewMessageChange={setPreviewMessage}
       />
-      <Text>Run this script to initialize the typebot:</Text>
+      <Text>{scopedT('Run this script to initialize the MyTalk')}</Text>
       <CodeEditor isReadOnly value={scriptSnippet} lang="javascript" />
     </Stack>
   )

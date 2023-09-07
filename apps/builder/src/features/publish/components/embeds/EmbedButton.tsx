@@ -53,6 +53,9 @@ type EmbedButtonProps = Pick<ModalProps, 'publicId' | 'isPublished'> & {
   Modal: (props: ModalProps) => JSX.Element
 }
 
+
+
+
 export const EmbedButton = ({
   logo,
   label,
@@ -79,6 +82,7 @@ export const EmbedButton = ({
 }
 
 export const integrationsList = [
+  
   (props: Pick<ModalProps, 'publicId' | 'isPublished'>) => (
     <EmbedButton
       logo={<WordpressLogo height={100} width="70px" />}
@@ -192,7 +196,7 @@ export const integrationsList = [
   (props: Pick<ModalProps, 'publicId' | 'isPublished'>) => (
     <EmbedButton
       logo={<OtherLogo height={100} width="70px" />}
-      label="Other"
+      label='Outros'
       Modal={OtherModal}
       {...props}
     />

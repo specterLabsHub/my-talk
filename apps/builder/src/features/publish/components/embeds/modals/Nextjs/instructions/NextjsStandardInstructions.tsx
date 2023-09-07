@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { StandardSettings } from '../../../settings/StandardSettings'
 import { InstallNextjsPackageSnippet } from '../InstallNextjsPackageSnippet'
 import { NextjsStandardSnippet } from '../NextjsStandardSnippet'
+import { useScopedI18n } from '@/locales'
 
 export const NextjsStandardInstructions = () => {
   const [inputValues, setInputValues] = useState<{
@@ -13,11 +14,13 @@ export const NextjsStandardInstructions = () => {
     widthLabel: '100%',
   })
 
+  const scopedT = useScopedI18n('share')
+
   return (
     <OrderedList spacing={4} pl={5}>
       <ListItem>
         <Stack spacing={4}>
-          <Text>Install the packages</Text>
+          <Text>{scopedT('Install the packages')}</Text>
           <InstallNextjsPackageSnippet />
         </Stack>
       </ListItem>

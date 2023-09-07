@@ -15,6 +15,7 @@ import {
 } from '@chakra-ui/react'
 import { capitalize } from '@typebot.io/lib'
 import { EmbedTypeMenu } from './EmbedTypeMenu/EmbedTypeMenu'
+import { useScopedI18n } from '@/locales'
 
 type Props = {
   selectedEmbedType: 'standard' | 'popup' | 'bubble' | undefined
@@ -25,7 +26,6 @@ type Props = {
   onClose: () => void
   onSelectEmbedType: (type: 'standard' | 'popup' | 'bubble' | undefined) => void
 }
-
 export const EmbedModal = ({
   selectedEmbedType,
   isOpen,
@@ -34,26 +34,30 @@ export const EmbedModal = ({
   children,
   onSelectEmbedType,
   onClose,
-}: Props) => (
-  <Modal
+}: Props) => {
+  const scopedT = useScopedI18n('share')
+  
+  return (
+
+    <Modal
     isOpen={isOpen}
     onClose={onClose}
     size={!selectedEmbedType ? '2xl' : 'xl'}
-  >
+    >
     <ModalOverlay />
     <ModalContent>
       <ModalHeader>
         <HStack>
           {selectedEmbedType && (
             <IconButton
-              icon={<ChevronLeftIcon />}
-              aria-label="back"
-              variant="ghost"
-              colorScheme="gray"
-              mr={2}
-              onClick={() => onSelectEmbedType(undefined)}
+            icon={<ChevronLeftIcon />}
+            aria-label="back"
+            variant="ghost"
+            colorScheme="gray"
+            mr={2}
+            onClick={() => onSelectEmbedType(undefined)}
             />
-          )}
+            )}
           <Heading size="md">
             {titlePrefix}{' '}
             {selectedEmbedType && `- ${capitalize(selectedEmbedType)}`}
@@ -63,15 +67,17 @@ export const EmbedModal = ({
       <ModalCloseButton />
       <ModalBody as={Stack} spacing={4} pt={0}>
         {!isPublished && (
-          <AlertInfo>You need to publish your bot first.</AlertInfo>
-        )}
+          <AlertInfo>{scopedT('You need to publish your bot first.')}</AlertInfo>
+          )}
         {!selectedEmbedType ? (
           <EmbedTypeMenu onSelectEmbedType={onSelectEmbedType} />
-        ) : (
-          children
-        )}
+          ) : (
+            children
+            )}
       </ModalBody>
       <ModalFooter />
     </ModalContent>
   </Modal>
 )
+}
+

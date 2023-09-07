@@ -10,6 +10,7 @@ import {
   parseInlineScript,
   typebotImportCode,
 } from '../../../snippetParsers/shared'
+import { useScopedI18n } from '@/locales'
 
 export const ScriptStandardInstructions = () => {
   const { typebot } = useTypebot()
@@ -32,6 +33,7 @@ ${parseInitStandardCode({
   typebot: typebot?.publicId ?? '',
   apiHost: parseApiHostValue(typebot?.customDomain),
 })}`)
+const scopedT = useScopedI18n('share')
 
   return (
     <Stack spacing={4}>
@@ -39,11 +41,11 @@ ${parseInitStandardCode({
         onUpdateWindowSettings={(settings) => setInputValues({ ...settings })}
       />
       <Text>
-        Make sure you have this <Code>typebot-standard</Code> element in your{' '}
+        {scopedT('Make sure you have this')} <Code>mytalk-standard</Code> {scopedT('element in you')}{' '}
         <Code>{'<body>'}</Code>:
       </Text>
       <CodeEditor isReadOnly value={standardElementSnippet} lang="html" />
-      <Text>Then, run this script to initialize the typebot:</Text>
+      <Text>{scopedT('Then, run this script to initialize the MyTalk')}</Text>
       <CodeEditor isReadOnly value={scriptSnippet} lang="javascript" />
     </Stack>
   )

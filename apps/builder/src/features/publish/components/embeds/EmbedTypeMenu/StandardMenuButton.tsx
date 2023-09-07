@@ -1,10 +1,12 @@
 import { MotionStack } from '@/components/MotionStack'
 import { Stack, Button, StackProps, Text, ButtonProps } from '@chakra-ui/react'
 import { StandardIllustration } from './illustrations/StandardIllustration'
+import { useScopedI18n } from '@/locales'
 
 type Props = StackProps & Pick<ButtonProps, 'isDisabled'>
 
 export const StandardMenuButton = (props: Props) => {
+  const scopedT = useScopedI18n('share')
   return (
     <MotionStack
       as={Button}
@@ -24,9 +26,9 @@ export const StandardMenuButton = (props: Props) => {
       <StandardIllustration />
       <Stack>
         <Text fontSize="lg" fontWeight="semibold">
-          Standard
+        {scopedT('Standard')}
         </Text>
-        <Text textColor="gray.500">Embed in a container on your site</Text>
+        <Text textColor="gray.500"> {scopedT('Embed in a container on your site')}</Text>
       </Stack>
     </MotionStack>
   )

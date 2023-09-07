@@ -3,15 +3,17 @@ import { useState } from 'react'
 import { PopupSettings } from '../../../settings/PopupSettings'
 import { InstallReactPackageSnippet } from '../InstallReactPackageSnippet'
 import { ReactPopupSnippet } from '../ReactPopupSnippet'
+import { useScopedI18n } from '@/locales'
 
 export const ReactPopupInstructions = () => {
   const [inputValue, setInputValue] = useState<number>()
+  const scopedT = useScopedI18n('share')
 
   return (
     <OrderedList spacing={4} pl={5}>
       <ListItem>
         <Stack spacing={4}>
-          <Text>Install the packages</Text>
+          <Text>{scopedT('Install the packages')}</Text>
           <InstallReactPackageSnippet />
         </Stack>
       </ListItem>

@@ -27,9 +27,10 @@ import { isNotDefined } from '@typebot.io/lib'
 import { ChangePlanModal } from '@/features/billing/components/ChangePlanModal'
 import { isFreePlan } from '@/features/billing/helpers/isFreePlan'
 import { parseTimeSince } from '@/helpers/parseTimeSince'
-import { useI18n } from '@/locales'
+import { useI18n, useScopedI18n } from '@/locales'
 
 export const PublishButton = (props: ButtonProps) => {
+  const scopedT = useScopedI18n('header')
   const t = useI18n()
   const warningTextColor = useColorModeValue('red.300', 'red.600')
   const { workspace } = useWorkspace()
@@ -81,17 +82,16 @@ export const PublishButton = (props: ButtonProps) => {
           <Stack>
             {!publishedTypebot?.version ? (
               <Text color={warningTextColor} fontWeight="semibold">
-                This will deploy your bot with an updated engine. Make sure to
-                test it properly in preview mode before publishing.
+                {scopedT('PublishDeploy')}
               </Text>
             ) : (
-              <Text>There are non published changes.</Text>
+              <Text> {scopedT('PublishNoDeploy')}</Text>
             )}
             <Text fontStyle="italic">
-              Published version from{' '}
+             {scopedT('PublishVersion')}{' '}
               {publishedTypebot &&
                 parseTimeSince(publishedTypebot.updatedAt.toString())}{' '}
-              ago
+              atrás
             </Text>
           </Stack>
         }
@@ -107,9 +107,9 @@ export const PublishButton = (props: ButtonProps) => {
         >
           {isPublished
             ? typebot?.isClosed
-              ? 'Closed'
-              : 'Published'
-            : 'Publish'}
+              ? `${scopedT('Closed')}`
+              : `${scopedT('Published')}`
+            : `${scopedT('Publish')}`}
         </Button>
       </Tooltip>
 
@@ -127,20 +127,20 @@ export const PublishButton = (props: ButtonProps) => {
           <MenuList>
             {!isPublished && (
               <MenuItem onClick={restorePublishedTypebot}>
-                Restore published version
+               {scopedT('PublishRestore')}
               </MenuItem>
             )}
             {!typebot?.isClosed ? (
               <MenuItem onClick={closeTypebot} icon={<LockedIcon />}>
-                Close typebot to new responses
+                    {scopedT('PublishIIsClosed')}
               </MenuItem>
             ) : (
               <MenuItem onClick={openTypebot} icon={<UnlockedIcon />}>
-                Reopen typebot to new responses
+                    {scopedT('PublishReOpen')}
               </MenuItem>
             )}
             <MenuItem onClick={unpublishTypebot} icon={<CloudOffIcon />}>
-              Unpublish typebot
+            {scopedT('Unpublish')}
             </MenuItem>
           </MenuList>
         </Menu>

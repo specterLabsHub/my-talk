@@ -3,6 +3,7 @@ import { TypingEmulation } from '@typebot.io/schemas'
 import React from 'react'
 import { isDefined } from '@typebot.io/lib'
 import { NumberInput } from '@/components/inputs'
+import { useScopedI18n } from '@/locales'
 
 type Props = {
   typingEmulation: TypingEmulation
@@ -10,6 +11,7 @@ type Props = {
 }
 
 export const TypingEmulationForm = ({ typingEmulation, onUpdate }: Props) => {
+  const scopedT = useScopedI18n('settingsMetaDataAndEmulation')
   const handleSwitchChange = () =>
     onUpdate({
       ...typingEmulation,
@@ -26,7 +28,7 @@ export const TypingEmulationForm = ({ typingEmulation, onUpdate }: Props) => {
     <Stack spacing={6}>
       <Flex justifyContent="space-between" align="center">
         <FormLabel htmlFor="typing-emulation" mb="0">
-          Typing emulation
+          {scopedT('Typing emulation')}
         </FormLabel>
         <Switch
           id="typing-emulation"
@@ -37,7 +39,7 @@ export const TypingEmulationForm = ({ typingEmulation, onUpdate }: Props) => {
       {typingEmulation.enabled && (
         <Stack pl={10}>
           <NumberInput
-            label="Words per minutes:"
+            label={scopedT('Words per minutes:')}
             data-testid="speed"
             defaultValue={typingEmulation.speed}
             onValueChange={handleSpeedChange}
@@ -46,7 +48,7 @@ export const TypingEmulationForm = ({ typingEmulation, onUpdate }: Props) => {
             step={30}
           />
           <NumberInput
-            label="Max delay (in seconds):"
+            label={scopedT('Max delay (in seconds):')}
             data-testid="max-delay"
             defaultValue={typingEmulation.maxDelay}
             onValueChange={handleMaxDelayChange}

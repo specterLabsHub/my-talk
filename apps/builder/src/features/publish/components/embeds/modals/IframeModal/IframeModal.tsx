@@ -14,6 +14,7 @@ import { useState } from 'react'
 import { ModalProps } from '../../EmbedButton'
 import { StandardSettings } from '../../settings/StandardSettings'
 import { IframeSnippet } from './IframeSnippet'
+import { useScopedI18n } from '@/locales'
 
 export const IframeModal = ({ isPublished, isOpen, onClose }: ModalProps) => {
   const [inputValues, setInputValues] = useState<{
@@ -23,6 +24,7 @@ export const IframeModal = ({ isPublished, isOpen, onClose }: ModalProps) => {
     heightLabel: '100%',
     widthLabel: '100%',
   })
+  const scopedT = useScopedI18n('share')
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} size={'xl'}>
@@ -32,14 +34,14 @@ export const IframeModal = ({ isPublished, isOpen, onClose }: ModalProps) => {
         <ModalCloseButton />
         <ModalBody as={Stack} spacing={4} pt="0">
           {!isPublished && (
-            <AlertInfo>You need to publish your bot first.</AlertInfo>
+            <AlertInfo>{scopedT('You need to publish your bot first.')}</AlertInfo>
           )}
           <StandardSettings
             onUpdateWindowSettings={(settings) =>
               setInputValues({ ...settings })
             }
           />
-          <Text>Paste this anywhere in your HTML code:</Text>
+          <Text>{scopedT('Paste this anywhere in your HTML code:')}</Text>
 
           <IframeSnippet
             widthLabel={inputValues.widthLabel ?? '100%'}

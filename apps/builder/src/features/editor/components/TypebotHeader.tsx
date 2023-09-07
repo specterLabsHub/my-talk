@@ -30,6 +30,7 @@ import { RightPanel, useEditor } from '../providers/EditorProvider'
 import { useTypebot } from '../providers/TypebotProvider'
 import { SupportBubble } from '@/components/SupportBubble'
 import { isCloudProdInstance } from '@/helpers/isCloudProdInstance'
+import { useScopedI18n } from '@/locales'
 
 export const TypebotHeader = () => {
   const router = useRouter()
@@ -45,6 +46,7 @@ export const TypebotHeader = () => {
     isSavingLoading,
   } = useTypebot()
   const { setRightPanel, rightPanel, setStartPreviewAtGroup } = useEditor()
+  const scopedT = useScopedI18n('header')
   const [isUndoShortcutTooltipOpen, setUndoShortcutTooltipOpen] =
     useState(false)
   const hideUndoShortcutTooltipLater = useDebouncedCallback(() => {
@@ -101,7 +103,7 @@ export const TypebotHeader = () => {
           variant={router.pathname.includes('/edit') ? 'outline' : 'ghost'}
           size="sm"
         >
-          Flow
+          {scopedT('Flow')}
         </Button>
         <Button
           as={Link}
@@ -110,7 +112,7 @@ export const TypebotHeader = () => {
           variant={router.pathname.endsWith('theme') ? 'outline' : 'ghost'}
           size="sm"
         >
-          Theme
+           {scopedT('Theme')}
         </Button>
         <Button
           as={Link}
@@ -119,7 +121,7 @@ export const TypebotHeader = () => {
           variant={router.pathname.endsWith('settings') ? 'outline' : 'ghost'}
           size="sm"
         >
-          Settings
+           {scopedT('Settings')}
         </Button>
         <Button
           as={Link}
@@ -128,7 +130,7 @@ export const TypebotHeader = () => {
           variant={router.pathname.endsWith('share') ? 'outline' : 'ghost'}
           size="sm"
         >
-          Share
+           {scopedT('Share')}
         </Button>
         {isDefined(publishedTypebot) && (
           <Button
@@ -138,7 +140,7 @@ export const TypebotHeader = () => {
             variant={router.pathname.includes('results') ? 'outline' : 'ghost'}
             size="sm"
           >
-            Results
+              {scopedT('Results')}
           </Button>
         )}
       </HStack>
@@ -182,7 +184,7 @@ export const TypebotHeader = () => {
 
           <HStack>
             <Tooltip
-              label={isUndoShortcutTooltipOpen ? 'Changes reverted!' : 'Undo'}
+              label={isUndoShortcutTooltipOpen ?`${scopedT('ChangesReverted')}` : `${scopedT('Undo')}`}
               isOpen={isUndoShortcutTooltipOpen ? true : undefined}
               hasArrow={isUndoShortcutTooltipOpen}
             >
@@ -190,32 +192,32 @@ export const TypebotHeader = () => {
                 display={['none', 'flex']}
                 icon={<UndoIcon />}
                 size="sm"
-                aria-label="Undo"
+                aria-label={scopedT('Undo')}
                 onClick={undo}
                 isDisabled={!canUndo}
               />
             </Tooltip>
 
-            <Tooltip label="Redo">
+            <Tooltip label={scopedT('Redo')}>
               <IconButton
                 display={['none', 'flex']}
                 icon={<RedoIcon />}
                 size="sm"
-                aria-label="Redo"
+                aria-label={scopedT('Redo')}
                 onClick={redo}
                 isDisabled={!canRedo}
               />
             </Tooltip>
           </HStack>
           <Button leftIcon={<BuoyIcon />} onClick={handleHelpClick} size="sm">
-            Help
+          {scopedT('Help')}
           </Button>
         </HStack>
         {isSavingLoading && (
           <HStack>
             <Spinner speed="0.7s" size="sm" color="gray.400" />
             <Text fontSize="sm" color="gray.400">
-              Saving...
+             {scopedT('Loading')}
             </Text>
           </HStack>
         )}
@@ -230,7 +232,7 @@ export const TypebotHeader = () => {
             isLoading={isNotDefined(typebot)}
             size="sm"
           >
-            Preview
+             {scopedT('Preview')}
           </Button>
         )}
         <PublishButton size="sm" />

@@ -3,6 +3,7 @@ import { FormLabel, HStack, Input, Stack, Switch, Text } from '@chakra-ui/react'
 import { PreviewMessageParams } from '@typebot.io/nextjs'
 import { useState } from 'react'
 import { isDefined } from '@typebot.io/lib'
+import { useScopedI18n } from '@/locales'
 
 type Props = {
   defaultAvatar: string
@@ -63,11 +64,13 @@ export const PreviewMessageSettings = ({ defaultAvatar, onChange }: Props) => {
     })
   }
 
+  const scopedT = useScopedI18n('share')
+
   return (
     <Stack spacing={4}>
       <HStack justifyContent="space-between">
         <FormLabel htmlFor="preview" mb="0">
-          Preview message
+          {scopedT('Preview message')}
         </FormLabel>
         <Switch
           id="preview"
@@ -78,7 +81,7 @@ export const PreviewMessageSettings = ({ defaultAvatar, onChange }: Props) => {
       {isPreviewMessageEnabled && (
         <Stack pl="4" spacing={4}>
           <HStack justify="space-between">
-            <Text>Avatar URL</Text>
+            <Text>{scopedT('Avatar URL')}</Text>
             <Input
               onChange={(e) => updateAvatarUrl(e.target.value)}
               value={previewMessage?.avatarUrl}
@@ -86,21 +89,21 @@ export const PreviewMessageSettings = ({ defaultAvatar, onChange }: Props) => {
             />
           </HStack>
           <HStack justify="space-between">
-            <Text>Message</Text>
+            <Text>{scopedT('Message')}</Text>
             <Input
               onChange={(e) => updateMessage(e.target.value)}
               value={previewMessage?.message}
             />
           </HStack>
           <HStack>
-            <Text>Auto show</Text>
+            <Text>{scopedT('Auto show')}</Text>
             <Switch
               isChecked={isAutoShowEnabled}
               onChange={(e) => updateAutoShowDelayCheck(e.target.checked)}
             />
             {isAutoShowEnabled && (
               <>
-                <Text>After</Text>
+                <Text>{scopedT('After')}</Text>
                 <NumberInput
                   size="sm"
                   w="70px"
@@ -110,7 +113,7 @@ export const PreviewMessageSettings = ({ defaultAvatar, onChange }: Props) => {
                   }
                   withVariableButton={false}
                 />
-                <Text>seconds</Text>
+                <Text>{scopedT('seconds')}</Text>
               </>
             )}
           </HStack>

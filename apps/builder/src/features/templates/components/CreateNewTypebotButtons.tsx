@@ -17,12 +17,14 @@ import { useUser } from '@/features/account/hooks/useUser'
 import { useToast } from '@/hooks/useToast'
 import { createTypebotQuery } from '@/features/dashboard/queries/createTypebotQuery'
 import { importTypebotQuery } from '@/features/dashboard/queries/importTypebotQuery'
+import { useScopedI18n } from '@/locales'
 
 export const CreateNewTypebotButtons = () => {
   const { workspace } = useWorkspace()
   const { user } = useUser()
   const router = useRouter()
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const scopedT = useScopedI18n('account.preferences.language')
 
   const [isLoading, setIsLoading] = useState(false)
 
@@ -74,7 +76,7 @@ export const CreateNewTypebotButtons = () => {
 
   return (
     <VStack maxW="600px" w="full" flex="1" pt="20" spacing={10}>
-      <Heading>Create a new typebot</Heading>
+      <Heading>{scopedT('createNew')}</Heading>
       <Stack w="full" spacing={6}>
         <Button
           variant="outline"
@@ -91,7 +93,7 @@ export const CreateNewTypebotButtons = () => {
           onClick={() => handleCreateSubmit()}
           isLoading={isLoading}
         >
-          Start from scratch
+          {scopedT('startFromScratch')}
         </Button>
         <Button
           variant="outline"
@@ -108,7 +110,7 @@ export const CreateNewTypebotButtons = () => {
           onClick={onOpen}
           isLoading={isLoading}
         >
-          Start from a template
+             {scopedT('startFromTemplate')}
         </Button>
         <ImportTypebotFromFileButton
           variant="outline"
@@ -125,7 +127,7 @@ export const CreateNewTypebotButtons = () => {
           isLoading={isLoading}
           onNewTypebot={handleCreateSubmit}
         >
-          Import a file
+          {scopedT('importAFile')}
         </ImportTypebotFromFileButton>
       </Stack>
       <TemplatesModal

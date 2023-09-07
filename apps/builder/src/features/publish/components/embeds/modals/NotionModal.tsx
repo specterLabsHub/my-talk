@@ -20,6 +20,7 @@ import {
 } from '@chakra-ui/react'
 import { env, getViewerUrl } from '@typebot.io/lib'
 import { ModalProps } from '../EmbedButton'
+import { useScopedI18n } from '@/locales'
 
 export const NotionModal = ({
   isPublished,
@@ -27,6 +28,7 @@ export const NotionModal = ({
   isOpen,
   onClose,
 }: ModalProps): JSX.Element => {
+  const scopedT = useScopedI18n('share')
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="xl">
       <ModalOverlay />
@@ -37,15 +39,15 @@ export const NotionModal = ({
         <ModalCloseButton />
         <ModalBody>
           {!isPublished && (
-            <AlertInfo mb="4">You need to publish your bot first.</AlertInfo>
+            <AlertInfo mb="4">{scopedT('You need to publish your bot first.')}</AlertInfo>
           )}
           <OrderedList spacing={4}>
             <ListItem>
-              Type <Code>/embed</Code>
+              {scopedT('Type')} <Code>/{scopedT('Embed')}</Code>
             </ListItem>
             <ListItem>
               <Stack>
-                <Text>Paste your typebot URL</Text>
+                <Text>{scopedT('Paste your MyTalk URL')}</Text>
                 <InputGroup size="sm">
                   <Input
                     type={'text'}

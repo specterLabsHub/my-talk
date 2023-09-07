@@ -1,3 +1,4 @@
+import { useScopedI18n } from '@/locales'
 import {
   Editable,
   EditablePreview,
@@ -15,6 +16,7 @@ export const EditableTypebotName = ({
   defaultName,
   onNewName,
 }: EditableProps) => {
+  const scopedT = useScopedI18n('header')
   const emptyNameBg = useColorModeValue('gray.100', 'gray.700')
   const [currentName, setCurrentName] = useState(defaultName)
 
@@ -25,7 +27,7 @@ export const EditableTypebotName = ({
   }
 
   return (
-    <Tooltip label="Rename">
+    <Tooltip label={scopedT('Rename')}>
       <Editable
         value={currentName}
         onChange={setCurrentName}

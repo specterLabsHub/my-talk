@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { BubbleSettings } from '../../../settings/BubbleSettings/BubbleSettings'
 import { parseDefaultBubbleTheme } from '../../Javascript/instructions/JavascriptBubbleInstructions'
 import { JavascriptBubbleSnippet } from '../../Javascript/JavascriptBubbleSnippet'
+import { useScopedI18n } from '@/locales'
 
 export const GtmBubbleInstructions = () => {
   const { typebot } = useTypebot()
@@ -14,16 +15,18 @@ export const GtmBubbleInstructions = () => {
   const [previewMessage, setPreviewMessage] =
     useState<BubbleProps['previewMessage']>()
 
+    const scopedT = useScopedI18n('share')
+
   return (
     <OrderedList spacing={4} pl={5}>
       <ListItem>
-        On your GTM account dashboard, click on <Code>Add a new tag</Code>
+        {scopedT('On your GTM account dashboard, click on')} <Code>Add a new tag</Code>
       </ListItem>
       <ListItem>
-        Choose <Code>Custom HTML</Code> tag type
+        {scopedT('Choose')} <Code>Custom HTML</Code> {scopedT('tag type')}
       </ListItem>
       <ListItem>
-        Check <Code>Support document.write</Code>
+        {scopedT('Check')} <Code>Support document.write</Code>
       </ListItem>
       <ListItem>
         <Stack spacing={4}>
@@ -36,7 +39,7 @@ export const GtmBubbleInstructions = () => {
             onThemeChange={setTheme}
             onPreviewMessageChange={setPreviewMessage}
           />
-          <Text>Paste the code below:</Text>
+          <Text>{scopedT('Paste the code below:')}</Text>
           <JavascriptBubbleSnippet
             theme={theme}
             previewMessage={previewMessage}

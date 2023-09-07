@@ -13,6 +13,7 @@ import { SwitchWithLabel } from '@/components/inputs/SwitchWithLabel'
 import { SwitchWithRelatedSettings } from '@/components/SwitchWithRelatedSettings'
 import { DropdownList } from '@/components/DropdownList'
 import { MoreInfoTooltip } from '@/components/MoreInfoTooltip'
+import { useScopedI18n } from '@/locales'
 
 type Props = {
   generalSettings: GeneralSettings
@@ -54,44 +55,43 @@ export const GeneralSettingsForm = ({
         storage,
       },
     })
+    const scopedT = useScopedI18n('settings')
 
   return (
     <Stack spacing={6}>
-      <SwitchWithLabel
-        label="Prefill input"
-        initialValue={generalSettings.isInputPrefillEnabled ?? true}
-        onCheckChange={handleInputPrefillChange}
-        moreInfoContent="Inputs are automatically pre-filled whenever their associated variable has a value"
-      />
-      <SwitchWithLabel
-        label="Hide query params on bot start"
-        initialValue={generalSettings.isHideQueryParamsEnabled ?? true}
-        onCheckChange={handleHideQueryParamsChange}
-        moreInfoContent="If your URL contains query params, they will be automatically hidden when the bot starts."
-      />
-      <SwitchWithRelatedSettings
-        label={'Remember user'}
-        moreInfoContent="If enabled, user previous variables will be prefilled and his new answers will override the previous ones."
-        initialValue={
-          generalSettings.rememberUser?.isEnabled ??
-          (isDefined(generalSettings.isNewResultOnRefreshEnabled)
-            ? !generalSettings.isNewResultOnRefreshEnabled
-            : false)
-        }
-        onCheckChange={toggleRememberUser}
-      >
+     <SwitchWithLabel
+  label={scopedT('Prefill input')}
+  initialValue={generalSettings.isInputPrefillEnabled ?? true}
+  onCheckChange={handleInputPrefillChange}
+  moreInfoContent={scopedT('Inputs are automatically pre-filled whenever their associated variable has a value')}
+/>
+<SwitchWithLabel
+  label={scopedT('Hide query params on bot start')}
+  initialValue={generalSettings.isHideQueryParamsEnabled ?? true}
+  onCheckChange={handleHideQueryParamsChange}
+  moreInfoContent={scopedT('If your URL contains query params, they will be automatically hidden when the bot starts.')}
+/>
+<SwitchWithRelatedSettings
+  label={scopedT('Remember user')}
+  moreInfoContent={scopedT('If enabled, user previous variables will be prefilled and his new answers will override the previous ones.')}
+  initialValue={
+    generalSettings.rememberUser?.isEnabled ??
+    (isDefined(generalSettings.isNewResultOnRefreshEnabled)
+      ? !generalSettings.isNewResultOnRefreshEnabled
+      : false)
+  }
+  onCheckChange={toggleRememberUser}
+  >
         <FormControl as={HStack} justifyContent="space-between">
           <FormLabel mb="0">
-            Storage:&nbsp;
+            {scopedT('Storage')}:&nbsp;
             <MoreInfoTooltip>
               <Stack>
                 <Text>
-                  Choose <Tag size="sm">session</Tag> to remember the user as
-                  long as he does not closes the tab or the browser.
+                {scopedT('Choose')} <Tag size="sm">{scopedT('session')}</Tag> t{scopedT('to remember the user as long as he does not close the tab or the browser.')}
                 </Text>
                 <Text>
-                  Choose <Tag size="sm">local</Tag> to remember the user
-                  forever.
+                {scopedT('Choose')} <Tag size="sm">{scopedT('local')}</Tag> {scopedT('to remember the user forever.')}
                 </Text>
               </Stack>
             </MoreInfoTooltip>

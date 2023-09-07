@@ -2,6 +2,7 @@ import { Stack, Flex, Text } from '@chakra-ui/react'
 import { ContainerColors } from '@typebot.io/schemas'
 import React from 'react'
 import { ColorPicker } from '../../../../components/ColorPicker'
+import { useScopedI18n } from '@/locales'
 
 type Props = {
   buttons: ContainerColors
@@ -13,6 +14,7 @@ export const ButtonsTheme = ({ buttons, onButtonsChange }: Props) => {
     onButtonsChange({ ...buttons, backgroundColor })
   const handleTextChange = (color: string) =>
     onButtonsChange({ ...buttons, color })
+    const scopedT = useScopedI18n('template')
 
   return (
     <Stack data-testid="buttons-theme">
@@ -24,7 +26,7 @@ export const ButtonsTheme = ({ buttons, onButtonsChange }: Props) => {
         />
       </Flex>
       <Flex justify="space-between" align="center">
-        <Text>Text:</Text>
+        <Text>{scopedT('Text')}:</Text>
         <ColorPicker value={buttons.color} onColorChange={handleTextChange} />
       </Flex>
     </Stack>

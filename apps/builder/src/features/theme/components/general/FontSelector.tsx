@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Text, HStack } from '@chakra-ui/react'
 import { env, isEmpty } from '@typebot.io/lib'
 import { AutocompleteInput } from '@/components/inputs/AutocompleteInput'
+import { useScopedI18n } from '@/locales'
 
 type FontSelectorProps = {
   activeFont?: string
@@ -30,6 +31,7 @@ export const FontSelector = ({
       (item: { family: string }) => item.family
     )
   }
+  const scopedT = useScopedI18n('template')
 
   const handleFontSelected = (nextFont: string) => {
     if (nextFont === currentFont) return
@@ -39,7 +41,7 @@ export const FontSelector = ({
 
   return (
     <HStack justify="space-between" align="center">
-      <Text>Font</Text>
+      <Text>{scopedT('Font')}</Text>
       <AutocompleteInput
         value={activeFont}
         items={googleFonts}

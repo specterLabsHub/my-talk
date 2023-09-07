@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { BubbleSettings } from '../../../settings/BubbleSettings/BubbleSettings'
 import { parseDefaultBubbleTheme } from '../../Javascript/instructions/JavascriptBubbleInstructions'
 import { JavascriptBubbleSnippet } from '../../Javascript/JavascriptBubbleSnippet'
+import { useScopedI18n } from '@/locales'
 
 export const WebflowBubbleInstructions = () => {
   const { typebot } = useTypebot()
@@ -15,10 +16,12 @@ export const WebflowBubbleInstructions = () => {
   const [previewMessage, setPreviewMessage] =
     useState<BubbleProps['previewMessage']>()
 
+    const scopedT = useScopedI18n('share')
+
   return (
     <OrderedList spacing={4} pl={5}>
       <ListItem>
-        Press <Code>A</Code> to open the <Code>Add elements</Code> panel
+        {scopedT('Press')} <Code>A</Code> {scopedT('to open the')}<Code>Add elements</Code> {scopedT('panel')}
       </ListItem>
       <ListItem>
         <Stack spacing={4}>
@@ -32,8 +35,8 @@ export const WebflowBubbleInstructions = () => {
             onThemeChange={setTheme}
           />
           <Text>
-            Add an <Code>Embed</Code> element from the <Code>components</Code>{' '}
-            section and paste this code:
+            {scopedT('Add an')} <Code>Embed</Code> {scopedT('element from the')}<Code>components</Code>{' '}
+            {scopedT('section and paste this code:')}
           </Text>
           <JavascriptBubbleSnippet
             theme={theme}

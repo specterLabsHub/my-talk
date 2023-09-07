@@ -20,8 +20,8 @@ import { MoreInfoTooltip } from '@/components/MoreInfoTooltip'
 
 const localeHumanReadable = {
   en: 'English',
-  fr: 'Français',
-  de: 'Deutsch',
+  // fr: 'Français',
+  // de: 'Deutsch',
   pt: 'Português',
 } as const
 

@@ -11,6 +11,6 @@ type Props = {
 export const NumberNodeContent = ({ variableId, placeholder }: Props) =>
   variableId ? (
     <WithVariableContent variableId={variableId} />
-  ) : (
+    ) : (
     <Text color={'gray.500'}>{placeholder}</Text>
   )

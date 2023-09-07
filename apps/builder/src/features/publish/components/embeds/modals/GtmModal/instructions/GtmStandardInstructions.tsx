@@ -7,6 +7,7 @@ import {
   parseStandardElementCode,
   parseStandardHeadCode,
 } from '../../Javascript/JavascriptStandardSnippet'
+import { useScopedI18n } from '@/locales'
 
 export const GtmStandardInstructions = ({
   publicId,
@@ -25,17 +26,18 @@ export const GtmStandardInstructions = ({
     windowSizes.width,
     windowSizes.height
   )
+  const scopedT = useScopedI18n('share')
 
   return (
     <OrderedList spacing={4} pl={5}>
       <ListItem>
-        On your GTM account dashboard, click on <Code>Add a new tag</Code>
+      {scopedT('On your GTM account dashboard, click on')} <Code>Add a new tag</Code>
       </ListItem>
       <ListItem>
-        Choose <Code>Custom HTML tag</Code> type
+      {scopedT('Choose')} <Code>Custom HTML</Code> {scopedT('tag type')}
       </ListItem>
       <ListItem>
-        Check <Code>Support document.write</Code>
+      {scopedT('Check')} <Code>Support document.write</Code>
       </ListItem>
       <ListItem>
         <Stack spacing={4}>
@@ -53,10 +55,7 @@ export const GtmStandardInstructions = ({
               })
             }
           />
-          <Text>
-            On your web page, you need to have an element on which the typebot
-            will go:
-          </Text>
+          <Text>{scopedT('On your web page, you need to have an element on which the MyTalk will go:')}</Text>
           <CodeEditor value={elementCode} isReadOnly lang="html" />
         </Stack>
       </ListItem>

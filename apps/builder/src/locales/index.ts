@@ -9,7 +9,7 @@ export const {
   useChangeLocale,
 } = createI18n({
   en: () => import('./en'),
-  fr: () => import('./fr'),
+  // fr: () => import('./fr'),
   pt: () => import('./pt'),
-  de: () => import('./de'),
+  // de: () => import('./de'),
 })

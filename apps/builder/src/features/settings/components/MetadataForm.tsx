@@ -14,6 +14,7 @@ import { CodeEditor } from '@/components/inputs/CodeEditor'
 import { ImageUploadContent } from '@/components/ImageUploadContent'
 import { MoreInfoTooltip } from '@/components/MoreInfoTooltip'
 import { TextInput, Textarea } from '@/components/inputs'
+import { useScopedI18n } from '@/locales'
 
 type Props = {
   typebotId: string
@@ -41,11 +42,13 @@ export const MetadataForm = ({
   const handleHeadCodeChange = (customHeadCode: string) =>
     onMetadataChange({ ...metadata, customHeadCode })
 
+    const scopedT = useScopedI18n('settingsMetaDataAndEmulation')
+
   return (
     <Stack spacing="6">
       <Stack>
         <FormLabel mb="0" htmlFor="icon">
-          Icon:
+        {scopedT('Icon')}:
         </FormLabel>
         <Popover isLazy placement="top">
           <PopoverTrigger>
@@ -72,7 +75,7 @@ export const MetadataForm = ({
       </Stack>
       <Stack>
         <FormLabel mb="0" htmlFor="image">
-          Image:
+        {scopedT('Image')}:
         </FormLabel>
         <Popover isLazy placement="top">
           <PopoverTrigger>
@@ -96,28 +99,27 @@ export const MetadataForm = ({
         </Popover>
       </Stack>
       <TextInput
-        label="Title:"
+        label={scopedT('Title')}
         defaultValue={metadata.title ?? typebotName}
         onChange={handleTitleChange}
       />
       <Textarea
         defaultValue={metadata.description}
         onChange={handleDescriptionChange}
-        label="Description:"
+        label={scopedT('Description')}
       />
       <TextInput
         defaultValue={metadata.googleTagManagerId}
         placeholder="GTM-XXXXXX"
         onChange={handleGoogleTagManagerIdChange}
         label="Google Tag Manager ID:"
-        moreInfoTooltip="Do not include it if you are embedding your typebot in an existing website. GTM should be installed in the parent website instead."
+        moreInfoTooltip={scopedT('Do not include it if you are embedding your typebot in an existing website. GTM should be installed in the parent website instead.')}
       />
       <Stack>
         <HStack as={FormLabel} mb="0" htmlFor="head">
-          <Text>Custom head code:</Text>
+          <Text>{scopedT('Custom head code')}</Text>
           <MoreInfoTooltip>
-            Will be pasted at the bottom of the header section, just above the
-            closing head tag. Only `meta` and `script` tags are allowed.
+          {scopedT('Will be pasted at the bottom of the header section, just above the closing head tag. Only `meta` and `script` tags are allowed.')}
           </MoreInfoTooltip>
         </HStack>
         <CodeEditor

@@ -6,6 +6,7 @@ import { BubbleSettings } from '../../../settings/BubbleSettings/BubbleSettings'
 import { InstallNextjsPackageSnippet } from '../InstallNextjsPackageSnippet'
 import { NextjsBubbleSnippet } from '../NextjsBubbleSnippet'
 import { parseDefaultBubbleTheme } from '../../Javascript/instructions/JavascriptBubbleInstructions'
+import { useScopedI18n } from '@/locales'
 
 export const NextjsBubbleInstructions = () => {
   const { typebot } = useTypebot()
@@ -15,11 +16,13 @@ export const NextjsBubbleInstructions = () => {
   const [previewMessage, setPreviewMessage] =
     useState<BubbleProps['previewMessage']>()
 
+    const scopedT = useScopedI18n('share')
+
   return (
     <OrderedList spacing={4} pl={5}>
       <ListItem>
         <Stack spacing={4}>
-          <Text>Install the packages</Text>
+          <Text>{scopedT('Install the packages')}</Text>
           <InstallNextjsPackageSnippet />
         </Stack>
       </ListItem>

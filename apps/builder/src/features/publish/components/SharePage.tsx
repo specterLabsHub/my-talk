@@ -24,14 +24,14 @@ import { isProPlan } from '@/features/billing/helpers/isProPlan'
 import { CustomDomainsDropdown } from '@/features/customDomains/components/CustomDomainsDropdown'
 import { TypebotHeader } from '@/features/editor/components/TypebotHeader'
 import { parseDefaultPublicId } from '../helpers/parseDefaultPublicId'
-import { useI18n } from '@/locales'
+import { useI18n, useScopedI18n } from '@/locales'
 
 export const SharePage = () => {
   const t = useI18n()
   const { workspace } = useWorkspace()
   const { typebot, updateTypebot, publishedTypebot } = useTypebot()
   const { showToast } = useToast()
-
+  const scopedT = useScopedI18n('share')
   const handlePublicIdChange = async (publicId: string) => {
     updateTypebot({ publicId })
   }
@@ -58,8 +58,7 @@ export const SharePage = () => {
 
     if (!isCorrectlyFormatted) {
       showToast({
-        description:
-          'Should contain only contain letters, numbers. Words can be separated by dashes.',
+        description: `${scopedT('Should contain only contain letters, numbers. Words can be separated by dashes.')}`,
       })
       return false
     }
@@ -70,7 +69,7 @@ export const SharePage = () => {
     const isLongerThanAllowed = publicId.length >= 4
     if (!isLongerThanAllowed && isCloudProdInstance) {
       showToast({
-        description: 'Should be longer than 4 characters',
+        description:`${scopedT('Should be longer than 4 characters')}`,
       })
       return false
     }
@@ -79,7 +78,7 @@ export const SharePage = () => {
 
     const { data } = await isPublicDomainAvailableQuery(publicId)
     if (!data?.isAvailable) {
-      showToast({ description: 'ID is already taken' })
+      showToast({ description: `${scopedT('ID is already taken')}` })
       return false
     }
 
@@ -94,7 +93,7 @@ export const SharePage = () => {
         <Stack maxW="1000px" w="full" pt="10" spacing={10}>
           <Stack spacing={4} align="flex-start">
             <Heading fontSize="2xl" as="h1">
-              Your typebot link
+              {scopedT("Your typebot link")}
             </Heading>
             {typebot && (
               <EditableUrl
@@ -132,7 +131,7 @@ export const SharePage = () => {
                     colorScheme="gray"
                     limitReachedType={t('billing.limitMessage.customDomain')}
                   >
-                    <Text mr="2">Add my domain</Text>{' '}
+                    <Text mr="2">{scopedT('Add my domain')}</Text>{' '}
                     <LockTag plan={Plan.PRO} />
                   </UpgradeButton>
                 )}
@@ -142,7 +141,7 @@ export const SharePage = () => {
 
           <Stack spacing={4}>
             <Heading fontSize="2xl" as="h1">
-              Embed your typebot
+            {scopedT("Embed your typebot")}
             </Heading>
             <Wrap spacing={7}>
               {integrationsList.map((IntegrationButton, idx) => (

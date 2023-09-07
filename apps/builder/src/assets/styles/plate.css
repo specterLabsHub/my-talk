@@ -31,4 +31,5 @@
 
 .slate-html-container > div {
   min-height: 24px;
+  background-color: transparent !important;
 }

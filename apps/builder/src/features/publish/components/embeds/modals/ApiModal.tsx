@@ -19,6 +19,7 @@ import {
 import { ModalProps } from '../EmbedButton'
 import { parseApiHost } from '../snippetParsers/shared'
 import { useTypebot } from '@/features/editor/providers/TypebotProvider'
+import { useScopedI18n } from '@/locales'
 
 export const ApiModal = ({
   isPublished,
@@ -37,6 +38,7 @@ export const ApiModal = ({
   "message": "This is my reply",
   "sessionId": "<ID_FROM_FIRST_RESPONSE>"
 }`
+const scopedT = useScopedI18n('share')
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="xl">
@@ -48,13 +50,13 @@ export const ApiModal = ({
         <ModalCloseButton />
         <ModalBody as={Stack} spacing="6">
           {!isPublished && (
-            <AlertInfo>You need to publish your bot first.</AlertInfo>
+            <AlertInfo>{scopedT('You need to publish your bot first.')}</AlertInfo>
           )}
           <OrderedList spacing={4} pl="4">
             <ListItem>
               <Stack>
                 <Text>
-                  To start the chat, send a <Code>POST</Code> request to
+                 {scopedT('To start the chat, send a')} <Code>POST</Code>  {scopedT('request to')}
                 </Text>
                 <CodeEditor
                   isReadOnly
@@ -63,18 +65,17 @@ export const ApiModal = ({
                     typebot?.customDomain
                   )}/api/v1/sendMessage`}
                 />
-                <Text>with the following JSON body:</Text>
+                <Text>{scopedT('with the following JSON body:')}</Text>
                 <CodeEditor isReadOnly lang={'json'} value={startParamsBody} />
               </Stack>
             </ListItem>
             <ListItem>
-              The first response will contain a <Code>sessionId</Code> that you
-              will need for subsequent requests.
+            {scopedT('The first response will contain a')}<Code>sessionId</Code> {scopedT('that you will need for subsequent requests.')}
             </ListItem>
             <ListItem>
               <Stack>
                 <Text>
-                  To send replies, send <Code>POST</Code> requests to
+                  {scopedT('To send replies, send')} <Code>POST</Code> {scopedT('request to')}
                 </Text>
                 <CodeEditor
                   isReadOnly
@@ -83,24 +84,24 @@ export const ApiModal = ({
                     typebot?.customDomain
                   )}/api/v1/sendMessage`}
                 />
-                <Text>With the following JSON body:</Text>
+                <Text>{scopedT('With the following JSON body:')}</Text>
                 <CodeEditor isReadOnly lang={'json'} value={replyBody} />
                 <Text>
-                  Replace <Code>{'<ID_FROM_FIRST_RESPONSE>'}</Code> with{' '}
+                {scopedT('Replace')} <Code>{'<ID_FROM_FIRST_RESPONSE>'}</Code>  {scopedT('with')}
                   <Code>sessionId</Code>.
                 </Text>
               </Stack>
             </ListItem>
           </OrderedList>
           <Text fontSize="sm" colorScheme="gray">
-            Check out the{' '}
+          {scopedT('Check out the')}
             <TextLink
               href="https://docs.typebot.io/api/send-a-message"
               isExternal
             >
               API reference
             </TextLink>{' '}
-            for more information
+            {scopedT('for more information')}
           </Text>
         </ModalBody>
         <ModalFooter />

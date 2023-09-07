@@ -14,6 +14,7 @@ import { useState } from 'react'
 import { BubbleSettings } from '../../../settings/BubbleSettings/BubbleSettings'
 import { parseApiHostValue, parseInitBubbleCode } from '../../../snippetParsers'
 import { parseDefaultBubbleTheme } from '../../Javascript/instructions/JavascriptBubbleInstructions'
+import { useScopedI18n } from '@/locales'
 
 type Props = {
   publicId: string
@@ -38,11 +39,12 @@ export const WordpressBubbleInstructions = ({ publicId }: Props) => {
     },
     previewMessage,
   })
+  const scopedT = useScopedI18n('share')
 
   return (
     <OrderedList spacing={4} pl={5}>
       <ListItem>
-        Install{' '}
+      {scopedT('Install')}{' '}
         <Link
           href="https://wordpress.org/plugins/typebot/"
           isExternal
@@ -63,10 +65,7 @@ export const WordpressBubbleInstructions = ({ publicId }: Props) => {
             onPreviewMessageChange={setPreviewMessage}
             onThemeChange={setTheme}
           />
-          <Text>
-            You can now place the following code snippet in the Typebot panel in
-            your WordPress admin:
-          </Text>
+          <Text>{scopedT('You can now place the following code snippet in the Typebot panel in your WordPress admin:')}</Text>
           <CodeEditor value={initCode} lang="javascript" isReadOnly />
         </Stack>
       </ListItem>

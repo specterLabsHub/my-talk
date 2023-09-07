@@ -2,6 +2,7 @@ import { Stack, Code, Text } from '@chakra-ui/react'
 import { useState } from 'react'
 import { StandardSettings } from '../../../settings/StandardSettings'
 import { JavascriptStandardSnippet } from '../JavascriptStandardSnippet'
+import { useScopedI18n } from '@/locales'
 
 export const JavascriptStandardInstructions = () => {
   const [inputValues, setInputValues] = useState<{
@@ -11,14 +12,14 @@ export const JavascriptStandardInstructions = () => {
     heightLabel: '100%',
     widthLabel: '100%',
   })
-
+  const scopedT = useScopedI18n('share')
   return (
     <Stack spacing={4}>
       <StandardSettings
         onUpdateWindowSettings={(settings) => setInputValues({ ...settings })}
       />
       <Text>
-        Paste this anywhere in the <Code>{'<body>'}</Code>:
+      {scopedT('Paste this anywhere in the')} <Code>{'<body>'}</Code>:
       </Text>
       <JavascriptStandardSnippet {...inputValues} />
     </Stack>

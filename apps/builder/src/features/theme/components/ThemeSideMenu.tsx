@@ -18,10 +18,11 @@ import { headerHeight } from '@/features/editor/constants'
 import { ChatThemeSettings } from './chat/ChatThemeSettings'
 import { GeneralSettings } from './general/GeneralSettings'
 import { ThemeTemplates } from './ThemeTemplates'
+import { useScopedI18n } from '@/locales'
 
 export const ThemeSideMenu = () => {
   const { typebot, updateTypebot } = useTypebot()
-
+  const scopedT = useScopedI18n('template')
   const updateChatTheme = (chat: ChatTheme) =>
     typebot && updateTypebot({ theme: { ...typebot.theme, chat } })
 
@@ -61,7 +62,7 @@ export const ThemeSideMenu = () => {
       position="relative"
     >
       <Heading fontSize="xl" textAlign="center">
-        Customize the theme
+        {scopedT('Customize the theme')}
       </Heading>
       <Accordion allowMultiple>
         <AccordionItem>
@@ -70,7 +71,7 @@ export const ThemeSideMenu = () => {
               <TableIcon />
               <Heading fontSize="lg">
                 <HStack>
-                  <span>Templates</span> <Tag colorScheme="orange">New!</Tag>
+                  <span> {scopedT('Templates')}</span> <Tag colorScheme="orange"> {scopedT('New!')}</Tag>
                 </HStack>
               </Heading>
             </HStack>
@@ -130,7 +131,7 @@ export const ThemeSideMenu = () => {
           <AccordionButton py={6}>
             <HStack flex="1" pl={2}>
               <CodeIcon />
-              <Heading fontSize="lg">Custom CSS</Heading>
+              <Heading fontSize="lg"> {scopedT('Custom CSS')}</Heading>
             </HStack>
             <AccordionIcon />
           </AccordionButton>

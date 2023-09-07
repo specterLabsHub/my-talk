@@ -5,6 +5,7 @@ import { Typebot } from '@typebot.io/schemas'
 import { useState } from 'react'
 import { BubbleSettings } from '../../../settings/BubbleSettings/BubbleSettings'
 import { JavascriptBubbleSnippet } from '../JavascriptBubbleSnippet'
+import { useScopedI18n } from '@/locales'
 
 export const parseDefaultBubbleTheme = (typebot?: Typebot) => ({
   button: {
@@ -19,6 +20,7 @@ export const JavascriptBubbleInstructions = () => {
   )
   const [previewMessage, setPreviewMessage] =
     useState<BubbleProps['previewMessage']>()
+    const scopedT = useScopedI18n('share')
 
   return (
     <Stack spacing={4}>
@@ -30,7 +32,7 @@ export const JavascriptBubbleInstructions = () => {
         onPreviewMessageChange={setPreviewMessage}
       />
       <Text>
-        Paste this anywhere in the <Code>{'<body>'}</Code>:
+      {scopedT('Paste this anywhere in the')} <Code>{'<body>'}</Code>:
       </Text>
       <JavascriptBubbleSnippet theme={theme} previewMessage={previewMessage} />
     </Stack>

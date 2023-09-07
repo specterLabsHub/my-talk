@@ -10,6 +10,7 @@ import {
 import { DropdownList } from '@/components/DropdownList'
 import { useState, useEffect } from 'react'
 import { SwitchWithLabel } from '@/components/inputs/SwitchWithLabel'
+import { useScopedI18n } from '@/locales'
 
 type Props = {
   onUpdateWindowSettings: (windowSettings: {
@@ -47,20 +48,22 @@ export const StandardSettings = ({
   const handleHeightTypeSelect = (heightType: string) =>
     setInputValues({ ...inputValues, heightType })
 
+    const scopedT = useScopedI18n('share')
+
   return (
     <Stack {...props} spacing={4}>
-      <Heading size="sm">Window settings</Heading>
+      <Heading size="sm">{scopedT('Window settings')}</Heading>
 
       <Stack pl="4" spacing={4}>
         <SwitchWithLabel
-          label="Set to fullscreen?"
+          label={scopedT('Set to fullscreen?')}
           initialValue={isFullscreenChecked}
           onCheckChange={() => setIsFullscreenChecked(!isFullscreenChecked)}
         />
         {!isFullscreenChecked && (
           <>
             <Flex justify="space-between" align="center">
-              <Text>Width</Text>
+              <Text>{scopedT('Width')}</Text>
               <HStack>
                 <Input
                   onChange={(e) =>
@@ -80,7 +83,7 @@ export const StandardSettings = ({
               </HStack>
             </Flex>
             <Flex justify="space-between" align="center">
-              <Text>Height</Text>
+              <Text>{scopedT('Height')}</Text>
               <HStack>
                 <Input
                   onChange={(e) =>

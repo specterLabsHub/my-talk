@@ -3,6 +3,7 @@ import { ThemeTemplate } from '@typebot.io/schemas'
 import { useState } from 'react'
 import { MyTemplates } from './MyTemplates'
 import { TemplatesGallery } from './TemplatesGallery'
+import { useScopedI18n } from '@/locales'
 
 type Tab = 'my-templates' | 'gallery'
 
@@ -22,6 +23,7 @@ export const ThemeTemplates = ({
   onTemplateSelect,
 }: Props) => {
   const [selectedTab, setSelectedTab] = useState<Tab>('my-templates')
+  const scopedT = useScopedI18n('template')
 
   return (
     <Stack spacing={4}>
@@ -29,18 +31,20 @@ export const ThemeTemplates = ({
         <Button
           flex="1"
           variant="outline"
+          _hover={{color: 'white'}}
           colorScheme={selectedTab === 'my-templates' ? 'blue' : 'gray'}
           onClick={() => setSelectedTab('my-templates')}
         >
-          My templates
+          {scopedT('My templates')}
         </Button>
         <Button
           flex="1"
           variant="outline"
+          _hover={{color: 'white'}}
           colorScheme={selectedTab === 'gallery' ? 'blue' : 'gray'}
           onClick={() => setSelectedTab('gallery')}
         >
-          Gallery
+           {scopedT('Gallery')}
         </Button>
       </HStack>
       <ThemeTemplatesBody

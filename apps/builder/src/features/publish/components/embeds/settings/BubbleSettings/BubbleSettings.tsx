@@ -12,6 +12,7 @@ import { isDefined, isSvgSrc } from '@typebot.io/lib'
 import { PreviewMessageSettings } from './PreviewMessageSettings'
 import { ThemeSettings } from './ThemeSettings'
 import { isLight } from '@typebot.io/lib/hexToRgb'
+import { useScopedI18n } from '@/locales'
 
 type Props = {
   defaultPreviewMessageAvatar: string
@@ -45,10 +46,11 @@ export const BubbleSettings = ({
   const updateTheme = (theme: BubbleProps['theme']) => {
     onThemeChange(theme)
   }
+  const scopedT = useScopedI18n('share')
 
   return (
     <Stack spacing="4">
-      <Heading size="sm">Chat bubble settings</Heading>
+      <Heading size="sm">{scopedT('Chat bubble settings')}</Heading>
       <Stack pl="4" spacing={4}>
         <PreviewMessageSettings
           defaultAvatar={defaultPreviewMessageAvatar}
@@ -59,7 +61,7 @@ export const BubbleSettings = ({
           onChange={updateTheme}
           isPreviewMessageEnabled={isDefined(previewMessage)}
         />
-        <Heading size="sm">Preview:</Heading>
+        <Heading size="sm">{scopedT('Preview')}:</Heading>
         <Stack alignItems="flex-end">
           {isDefined(previewMessage) && (
             <HStack

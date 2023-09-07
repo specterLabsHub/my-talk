@@ -1,19 +1,23 @@
 import { OrderedList, ListItem, Code, Stack, Text } from '@chakra-ui/react'
 import { JavascriptStandardSnippet } from '../../Javascript/JavascriptStandardSnippet'
+import { useScopedI18n } from '@/locales'
 
-export const WebflowStandardInstructions = () => (
+export const WebflowStandardInstructions = () =>{ 
+  const scopedT = useScopedI18n('share')
+  return (
+  
   <OrderedList spacing={4} pl={5}>
     <ListItem>
-      Press <Code>A</Code> to open the <Code>Add elements</Code> panel
+    {scopedT('Press')} <Code>A</Code> {scopedT('to open the')}<Code>Add elements</Code> {scopedT('panel')}
     </ListItem>
     <ListItem>
       <Stack spacing={4}>
         <Text>
-          Add an <Code>Embed</Code> element from the <Code>components</Code>{' '}
-          section and paste this code:
+        {scopedT('Add an')} <Code>Embed</Code> {scopedT('element from the')}<Code>components</Code>{' '}
+            {scopedT('section and paste this code:')}
         </Text>
         <JavascriptStandardSnippet />
       </Stack>
     </ListItem>
   </OrderedList>
-)
+)}

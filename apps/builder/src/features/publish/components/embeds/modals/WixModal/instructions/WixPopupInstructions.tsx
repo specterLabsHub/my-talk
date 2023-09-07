@@ -2,20 +2,22 @@ import { OrderedList, ListItem, Code, Stack, Text } from '@chakra-ui/react'
 import { useState } from 'react'
 import { PopupSettings } from '../../../settings/PopupSettings'
 import { JavascriptPopupSnippet } from '../../Javascript/JavascriptPopupSnippet'
+import { useScopedI18n } from '@/locales'
 
 export const WixPopupInstructions = () => {
   const [inputValue, setInputValue] = useState<number>()
+  const scopedT = useScopedI18n('share')
 
   return (
     <OrderedList spacing={4} pl={5}>
       <ListItem>
-        Go to <Code>Settings</Code> in your dashboard on Wix
+      {scopedT('Go to')} <Code>Settings</Code> {scopedT('in your dashboard on Wix')}
       </ListItem>
       <ListItem>
-        Click on <Code>Custom Code</Code> in the <Code>Advanced</Code> section
+      {scopedT('Click on')} <Code>Custom Code</Code> {scopedT('under')} <Code>Advanced</Code> {scopedT('section')}
       </ListItem>
       <ListItem>
-        Click <Code>+ Add Custom Code</Code> at the top right.
+      {scopedT('Click')} <Code>+ Add Custom Code</Code> {scopedT('at the top right.')}
       </ListItem>
       <ListItem>
         <Stack spacing={4}>
@@ -24,14 +26,14 @@ export const WixPopupInstructions = () => {
               setInputValue(settings.autoShowDelay)
             }
           />
-          <Text>Paste this snippet in the code box:</Text>
+          <Text>{scopedT('Paste this snippet in the code box')}:</Text>
           <JavascriptPopupSnippet autoShowDelay={inputValue} />
         </Stack>
       </ListItem>
       <ListItem>
-        Select &quot;Body - start&quot; under <Code>Place Code in</Code>
+      {scopedT('Select')} &quot;Body - start&quot; {scopedT('under')} <Code>Place Code in</Code>
       </ListItem>
-      <ListItem>Click Apply</ListItem>
+      <ListItem>{scopedT('Click Apply')}</ListItem>
     </OrderedList>
   )
 }

@@ -20,6 +20,7 @@ import {
 } from '@chakra-ui/react'
 import { env, getViewerUrl } from '@typebot.io/lib'
 import { ModalProps } from '../EmbedButton'
+import { useScopedI18n } from '@/locales'
 
 export const FlutterFlowModal = ({
   isPublished,
@@ -27,6 +28,7 @@ export const FlutterFlowModal = ({
   isOpen,
   onClose,
 }: ModalProps): JSX.Element => {
+  const scopedT = useScopedI18n('share')
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="xl">
       <ModalOverlay />
@@ -37,16 +39,16 @@ export const FlutterFlowModal = ({
         <ModalCloseButton />
         <ModalBody>
           {!isPublished && (
-            <AlertInfo mb="4">You need to publish your bot first.</AlertInfo>
+            <AlertInfo mb="4">{scopedT('You need to publish your bot first.')}</AlertInfo>
           )}
           <OrderedList spacing={4}>
             <ListItem>
-              Insert a <Code>WebView</Code> element
+              {scopedT('Insert a')} <Code>WebView</Code>  {scopedT('element')}
             </ListItem>
             <ListItem>
               <Stack>
                 <Text>
-                  As the <Code>Webview URL</Code>, paste your typebot URL
+                 <Code>Webview URL</Code> {scopedT(', paste your MyTalk URL')}
                 </Text>
                 <InputGroup size="sm">
                   <Input

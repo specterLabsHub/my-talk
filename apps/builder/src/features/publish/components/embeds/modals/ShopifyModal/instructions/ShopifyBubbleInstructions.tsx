@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { BubbleSettings } from '../../../settings/BubbleSettings/BubbleSettings'
 import { parseDefaultBubbleTheme } from '../../Javascript/instructions/JavascriptBubbleInstructions'
 import { JavascriptBubbleSnippet } from '../../Javascript/JavascriptBubbleSnippet'
+import { useScopedI18n } from '@/locales'
 
 export const ShopifyBubbleInstructions = () => {
   const { typebot } = useTypebot()
@@ -15,10 +16,12 @@ export const ShopifyBubbleInstructions = () => {
   const [previewMessage, setPreviewMessage] =
     useState<BubbleProps['previewMessage']>()
 
+    const scopedT = useScopedI18n('share')
+
   return (
     <OrderedList spacing={4} pl={5}>
       <ListItem>
-        On your shop dashboard in the <Code>Themes</Code> page, click on{' '}
+        {scopedT('On your shop dashboard in the')} <Code>Themes</Code> {scopedT('page, click on')}{' '}
         <Code>Actions {'>'} Edit code</Code>
       </ListItem>
       <ListItem>
@@ -33,8 +36,7 @@ export const ShopifyBubbleInstructions = () => {
             onThemeChange={setTheme}
           />
           <Text>
-            In <Code>Layout {'>'} theme.liquid</Code> file, paste this code just
-            before the closing <Code>{'<head>'}</Code> tag:
+            {scopedT('In')} <Code>Layout {'>'} theme.liquid</Code> {scopedT('file, paste this code just before the closing')} <Code>{'<head>'}</Code>{scopedT('tag:')}
           </Text>
           <JavascriptBubbleSnippet
             theme={theme}

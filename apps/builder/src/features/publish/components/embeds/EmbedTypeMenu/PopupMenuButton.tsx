@@ -1,10 +1,12 @@
 import { MotionStack } from '@/components/MotionStack'
 import { Stack, Button, StackProps, Text, ButtonProps } from '@chakra-ui/react'
 import { PopupIllustration } from './illustrations/PopupIllustration'
+import { useScopedI18n } from '@/locales'
 
 type Props = StackProps & Pick<ButtonProps, 'isDisabled'>
 
 export const PopupMenuButton = (props: Props) => {
+  const scopedT = useScopedI18n('share')
   return (
     <MotionStack
       as={Button}
@@ -24,10 +26,10 @@ export const PopupMenuButton = (props: Props) => {
       <PopupIllustration />
       <Stack>
         <Text fontSize="lg" fontWeight="semibold">
-          Popup
+        {scopedT('Popup')}
         </Text>
         <Text textColor="gray.500">
-          Embed in a popup on top of your website
+        {scopedT('Embed in a popup on top of your website')}
         </Text>
       </Stack>
     </MotionStack>

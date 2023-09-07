@@ -1,10 +1,12 @@
 import { MotionStack } from '@/components/MotionStack'
 import { Stack, Button, StackProps, Text, ButtonProps } from '@chakra-ui/react'
 import { BubbleIllustration } from './illustrations/BubbleIllustration'
+import { useScopedI18n } from '@/locales'
 
 type Props = StackProps & Pick<ButtonProps, 'isDisabled'>
 
 export const BubbleMenuButton = (props: Props) => {
+  const scopedT = useScopedI18n('share')
   return (
     <MotionStack
       as={Button}
@@ -24,9 +26,9 @@ export const BubbleMenuButton = (props: Props) => {
       <BubbleIllustration />
       <Stack>
         <Text fontSize="lg" fontWeight="semibold">
-          Bubble
+        {scopedT('Bubble')}
         </Text>
-        <Text textColor="gray.500">Embed in a chat bubble</Text>
+        <Text textColor="gray.500"> {scopedT('Embed in a chat bubble')}</Text>
       </Stack>
     </MotionStack>
   )

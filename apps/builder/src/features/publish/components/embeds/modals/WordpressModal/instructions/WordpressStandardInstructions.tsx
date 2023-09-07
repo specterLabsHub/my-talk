@@ -13,6 +13,7 @@ import { useState } from 'react'
 import { StandardSettings } from '../../../settings/StandardSettings'
 import { isCloudProdInstance } from '@/helpers/isCloudProdInstance'
 import { env, getViewerUrl } from '@typebot.io/lib'
+import { useScopedI18n } from '@/locales'
 
 type Props = {
   publicId: string
@@ -28,11 +29,12 @@ export const WordpressStandardInstructions = ({ publicId }: Props) => {
   })
 
   const elementCode = parseWordpressShortcode({ ...windowSizes, publicId })
+  const scopedT = useScopedI18n('share')
 
   return (
     <OrderedList spacing={4} pl={5}>
       <ListItem>
-        Install{' '}
+        {scopedT('Install')}{' '}
         <Link
           href="https://wordpress.org/plugins/typebot/"
           isExternal
@@ -53,12 +55,12 @@ export const WordpressStandardInstructions = ({ publicId }: Props) => {
             }
           />
           <Text>
-            You can now place the following shortcode anywhere on your site:
+            {scopedT('You can now place the following shortcode anywhere on your site:')}
           </Text>
           <CodeEditor value={elementCode} lang="shell" isReadOnly />
           <Text>
-            Note: Your page templating system probably has a{' '}
-            <Code>Shortcode</Code> element (if not, use a text element).
+            {scopedT('Note: Your page templating system probably has a')}{' '}
+            <Code>Shortcode</Code> {scopedT('element (if not, use a text element).')}
           </Text>
         </Stack>
       </ListItem>

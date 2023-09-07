@@ -6,6 +6,7 @@ import {
   parseStandardElementCode,
   parseStandardHeadCode,
 } from '../../Javascript/JavascriptStandardSnippet'
+import { useScopedI18n } from '@/locales'
 
 type Props = {
   publicId: string
@@ -26,18 +27,17 @@ export const ShopifyStandardInstructions = ({ publicId }: Props) => {
     windowSizes.width,
     windowSizes.height
   )
-
+  const scopedT = useScopedI18n('share')
   return (
     <OrderedList spacing={4} pl={5}>
       <ListItem>
-        On your shop dashboard in the <Code>Themes</Code> page, click on{' '}
+      {scopedT('On your shop dashboard in the')} <Code>Themes</Code> {scopedT('page, click on')}{' '}
         <Code>Actions {'>'} Edit code</Code>
       </ListItem>
       <ListItem>
         <Stack spacing={4}>
           <Text>
-            In <Code>Layout {'>'} theme.liquid</Code> file, paste this code just
-            before the closing <Code>{'<head>'}</Code> tag:
+          {scopedT('In')} <Code>Layout {'>'} theme.liquid</Code> {scopedT('file, paste this code just before the closing')} <Code>{'<head>'}</Code>{scopedT('tag:')}
           </Text>
 
           <CodeEditor value={headCode} lang="html" isReadOnly />
@@ -54,7 +54,7 @@ export const ShopifyStandardInstructions = ({ publicId }: Props) => {
             }
           />
           <Text>
-            Place an element on which the typebot will go in any file in the{' '}
+            {scopedT('Place an element on which the typebot will go in any file in the')}{' '}
             <Code>{'<body>'}</Code>:
           </Text>
           <CodeEditor value={elementCode} lang="html" isReadOnly />

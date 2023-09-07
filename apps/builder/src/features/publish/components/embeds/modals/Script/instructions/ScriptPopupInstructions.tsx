@@ -9,6 +9,7 @@ import {
   parseInlineScript,
   typebotImportCode,
 } from '../../../snippetParsers/shared'
+import { useScopedI18n } from '@/locales'
 
 export const ScriptPopupInstructions = () => {
   const { typebot } = useTypebot()
@@ -24,12 +25,14 @@ ${parseInitPopupCode({
 })}`
   )
 
+  const scopedT = useScopedI18n('share')
+
   return (
     <Stack spacing={4}>
       <PopupSettings
         onUpdateSettings={(settings) => setInputValue(settings.autoShowDelay)}
       />
-      <Text>Run this script to initialize the typebot:</Text>
+      <Text>{scopedT('Run this script to initialize the MyTalk')}</Text>
       <CodeEditor isReadOnly value={scriptSnippet} lang="javascript" />
     </Stack>
   )

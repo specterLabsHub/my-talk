@@ -10,6 +10,7 @@ import {
 import { PopupProps } from '@typebot.io/nextjs'
 import { useState, useEffect } from 'react'
 import { isDefined } from '@typebot.io/lib'
+import { useScopedI18n } from '@/locales'
 
 type Props = {
   onUpdateSettings: (windowSettings: Pick<PopupProps, 'autoShowDelay'>) => void
@@ -24,20 +25,21 @@ export const PopupSettings = ({ onUpdateSettings, ...props }: Props) => {
       autoShowDelay: isEnabled ? inputValue * 1000 : undefined,
     })
   }, [inputValue, isEnabled, onUpdateSettings])
+  const scopedT = useScopedI18n('share')
 
   return (
     <Stack {...props} spacing={4}>
-      <Heading size="sm">Popup settings</Heading>
+      <Heading size="sm">{scopedT('Popup settings')}</Heading>
 
       <HStack pl={4}>
-        <Text flexShrink={0}>Auto show</Text>
+        <Text flexShrink={0}>{scopedT('Auto show')}</Text>
         <Switch
           isChecked={isEnabled}
           onChange={(e) => setIsEnabled(e.target.checked)}
         />
         {isEnabled && (
           <>
-            <Text>after</Text>
+            <Text>{scopedT('after')}</Text>
             <NumberInput
               size="sm"
               w="70px"
@@ -45,7 +47,7 @@ export const PopupSettings = ({ onUpdateSettings, ...props }: Props) => {
               onValueChange={(val) => isDefined(val) && setInputValue(val)}
               withVariableButton={false}
             />
-            <Text>seconds</Text>
+            <Text>{scopedT('seconds')}</Text>
           </>
         )}
       </HStack>

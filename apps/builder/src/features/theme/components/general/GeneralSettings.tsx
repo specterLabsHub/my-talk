@@ -8,7 +8,7 @@ import { Plan } from '@typebot.io/prisma'
 import { isFreePlan } from '@/features/billing/helpers/isFreePlan'
 import { useWorkspace } from '@/features/workspace/WorkspaceProvider'
 import { ChangePlanModal } from '@/features/billing/components/ChangePlanModal'
-import { useI18n } from '@/locales'
+import { useI18n, useScopedI18n } from '@/locales'
 
 type Props = {
   isBrandingEnabled: boolean
@@ -38,6 +38,7 @@ export const GeneralSettings = ({
     if (isBrandingEnabled && isWorkspaceFreePlan) return
     onBrandingChange(!isBrandingEnabled)
   }
+  const scopedT = useScopedI18n('template')
 
   return (
     <Stack spacing={6}>
@@ -52,7 +53,7 @@ export const GeneralSettings = ({
         onClick={isWorkspaceFreePlan ? onOpen : undefined}
       >
         <FormLabel htmlFor="branding" mb="0" cursor="pointer">
-          Show Typebot brand{' '}
+        {scopedT('Show MyTalk brand')}
           {isWorkspaceFreePlan && <LockTag plan={Plan.STARTER} />}
         </FormLabel>
         <Switch
