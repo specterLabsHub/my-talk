@@ -8,6 +8,7 @@ import {
   defaultPictureChoiceOptions,
 } from '@typebot.io/schemas/features/blocks/inputs/pictureChoice'
 import { SwitchWithRelatedSettings } from '@/components/SwitchWithRelatedSettings'
+import { useScopedI18n } from '@/locales'
 
 type Props = {
   options?: PictureChoiceBlock['options']
@@ -66,15 +67,17 @@ export const PictureChoiceSettings = ({ options, onOptionsChange }: Props) => {
       },
     })
 
+    const scopedT = useScopedI18n('build')
+
   return (
     <Stack spacing={4}>
       <SwitchWithRelatedSettings
-        label="Is searchable?"
+        label={scopedT("Is searchable?")}
         initialValue={options?.isSearchable ?? false}
         onCheckChange={updateIsSearchable}
       >
         <TextInput
-          label="Input placeholder:"
+          label={scopedT("Input placeholder:")}
           defaultValue={
             options?.searchInputPlaceholder ??
             defaultPictureChoiceOptions.searchInputPlaceholder
@@ -83,25 +86,25 @@ export const PictureChoiceSettings = ({ options, onOptionsChange }: Props) => {
         />
       </SwitchWithRelatedSettings>
       <SwitchWithRelatedSettings
-        label="Multiple choice?"
+        label={scopedT("Multiple choice?")}
         initialValue={options?.isMultipleChoice ?? false}
         onCheckChange={updateIsMultiple}
       >
         <TextInput
-          label="Submit button label:"
-          defaultValue={options?.buttonLabel ?? 'Send'}
+          label={scopedT("Submit button label:")}
+          defaultValue={options?.buttonLabel ?? 'Enviar'}
           onChange={updateButtonLabel}
         />
       </SwitchWithRelatedSettings>
 
       <SwitchWithRelatedSettings
-        label="Dynamic items?"
+        label={scopedT("Dynamic items?")}
         initialValue={options?.dynamicItems?.isEnabled ?? false}
         onCheckChange={updateIsDynamicItemsEnabled}
       >
         <Stack>
           <FormLabel mb="0" htmlFor="variable">
-            Images:
+            {scopedT("Images:")}
           </FormLabel>
           <VariableSearchInput
             initialVariableId={options?.dynamicItems?.pictureSrcsVariableId}
@@ -110,7 +113,7 @@ export const PictureChoiceSettings = ({ options, onOptionsChange }: Props) => {
         </Stack>
         <Stack>
           <FormLabel mb="0" htmlFor="variable">
-            Titles:
+            {scopedT("Titles:")}
           </FormLabel>
           <VariableSearchInput
             initialVariableId={options?.dynamicItems?.titlesVariableId}
@@ -119,7 +122,7 @@ export const PictureChoiceSettings = ({ options, onOptionsChange }: Props) => {
         </Stack>
         <Stack>
           <FormLabel mb="0" htmlFor="variable">
-            Descriptions:
+            {scopedT("Descriptions:")}
           </FormLabel>
           <VariableSearchInput
             initialVariableId={options?.dynamicItems?.descriptionsVariableId}
@@ -130,7 +133,7 @@ export const PictureChoiceSettings = ({ options, onOptionsChange }: Props) => {
 
       <Stack>
         <FormLabel mb="0" htmlFor="variable">
-          Save answer in a variable:
+          {scopedT("Save answer in a variable:")}
         </FormLabel>
         <VariableSearchInput
           initialVariableId={options?.variableId}

@@ -9,6 +9,7 @@ import {
 } from '@typebot.io/schemas'
 import React from 'react'
 import { SwitchWithRelatedSettings } from '@/components/SwitchWithRelatedSettings'
+import { useScopedI18n } from '@/locales'
 
 type Props = {
   options?: ChoiceInputOptions
@@ -29,26 +30,28 @@ export const ButtonsBlockSettings = ({ options, onOptionsChange }: Props) => {
   const updateDynamicDataVariable = (variable?: Variable) =>
     options && onOptionsChange({ ...options, dynamicVariableId: variable?.id })
 
+    const scopedT = useScopedI18n('build')
+
   return (
     <Stack spacing={4}>
       <SwitchWithRelatedSettings
-        label="Multiple choice?"
+        label={scopedT("Multiple choice?")}
         initialValue={options?.isMultipleChoice ?? false}
         onCheckChange={updateIsMultiple}
       >
         <TextInput
-          label="Submit button label:"
-          defaultValue={options?.buttonLabel ?? 'Send'}
+          label={scopedT("Submit button label:")}
+          defaultValue={options?.buttonLabel ?? 'Enviar'}
           onChange={updateButtonLabel}
         />
       </SwitchWithRelatedSettings>
       <SwitchWithRelatedSettings
-        label="Is searchable?"
+        label={scopedT("Is searchable?")}
         initialValue={options?.isSearchable ?? false}
         onCheckChange={updateIsSearchable}
       >
         <TextInput
-          label="Input placeholder:"
+          label={scopedT("Input placeholder:")}
           defaultValue={
             options?.searchInputPlaceholder ??
             defaultChoiceInputOptions.searchInputPlaceholder
@@ -58,10 +61,9 @@ export const ButtonsBlockSettings = ({ options, onOptionsChange }: Props) => {
       </SwitchWithRelatedSettings>
       <FormControl>
         <FormLabel>
-          Dynamic data:{' '}
+          {scopedT("Dynamic data:")}{' '}
           <MoreInfoTooltip>
-            If defined, buttons will be dynamically displayed based on what the
-            variable contains.
+            {scopedT("If defined, buttons will be dynamically displayed based on what the variable contains.")}
           </MoreInfoTooltip>
         </FormLabel>
         <VariableSearchInput
@@ -71,7 +73,7 @@ export const ButtonsBlockSettings = ({ options, onOptionsChange }: Props) => {
       </FormControl>
       <Stack>
         <FormLabel mb="0" htmlFor="variable">
-          Save answer in a variable:
+           {scopedT("Save answer in a variable:")}
         </FormLabel>
         <VariableSearchInput
           initialVariableId={options?.variableId}

@@ -1,11 +1,13 @@
+import { useScopedI18n } from '@/locales'
 import { Box, Text, Image } from '@chakra-ui/react'
 import { ImageBubbleBlock } from '@typebot.io/schemas'
 
 export const ImageBubbleContent = ({ block }: { block: ImageBubbleBlock }) => {
   const containsVariables =
     block.content?.url?.includes('{{') && block.content.url.includes('}}')
+    const scopedT = useScopedI18n('build')
   return !block.content?.url ? (
-    <Text color={'gray.500'}>Click to edit...</Text>
+    <Text color={'gray.500'}>{scopedT('Click to edit...')}</Text>
   ) : (
     <Box w="full">
       <Image

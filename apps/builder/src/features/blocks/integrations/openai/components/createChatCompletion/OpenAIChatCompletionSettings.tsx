@@ -18,6 +18,7 @@ import { TextLink } from '@/components/TextLink'
 import { ChatCompletionResponseItem } from './ChatCompletionResponseItem'
 import { NumberInput } from '@/components/inputs'
 import { Select } from '@/components/inputs/Select'
+import { useScopedI18n } from '@/locales'
 
 const apiReferenceUrl =
   'https://platform.openai.com/docs/api-reference/chat/create'
@@ -70,14 +71,16 @@ export const OpenAIChatCompletionSettings = ({
     })
   }
 
+  const scopedT = useScopedI18n('build')
+
   return (
     <Stack spacing={4} pt="2">
       <Text fontSize="sm" color="gray.500">
-        Read the{' '}
+        {scopedT('Read the')}{' '}
         <TextLink href={apiReferenceUrl} isExternal>
           API reference
         </TextLink>{' '}
-        to better understand the available options.
+        {scopedT('to better understand the available options.')}
       </Text>
       <Select
         selectedItem={options.model}
@@ -90,7 +93,7 @@ export const OpenAIChatCompletionSettings = ({
         <AccordionItem>
           <AccordionButton>
             <Text w="full" textAlign="left">
-              Messages
+              {scopedT('Messages')}
             </Text>
             <AccordionIcon />
           </AccordionButton>
@@ -108,13 +111,13 @@ export const OpenAIChatCompletionSettings = ({
         <AccordionItem>
           <AccordionButton>
             <Text w="full" textAlign="left">
-              Advanced settings
+              {scopedT('Advanced settings')}
             </Text>
             <AccordionIcon />
           </AccordionButton>
           <AccordionPanel>
             <NumberInput
-              label="Temperature"
+              label={scopedT("Temperature")}
               placeholder="1"
               max={2}
               min={0}
@@ -127,7 +130,7 @@ export const OpenAIChatCompletionSettings = ({
         <AccordionItem>
           <AccordionButton>
             <Text w="full" textAlign="left">
-              Save answer
+              {scopedT("Save answer")}
             </Text>
             <AccordionIcon />
           </AccordionButton>

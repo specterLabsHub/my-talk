@@ -4,6 +4,7 @@ import { FormLabel, Stack } from '@chakra-ui/react'
 import { PhoneNumberInputOptions, Variable } from '@typebot.io/schemas'
 import React from 'react'
 import { CountryCodeSelect } from './CountryCodeSelect'
+import { useScopedI18n } from '@/locales'
 
 type Props = {
   options: PhoneNumberInputOptions
@@ -22,21 +23,23 @@ export const PhoneInputSettings = ({ options, onOptionsChange }: Props) => {
   const handleDefaultCountryChange = (defaultCountryCode: string) =>
     onOptionsChange({ ...options, defaultCountryCode })
 
+    const scopedT = useScopedI18n('build')
+
   return (
     <Stack spacing={4}>
       <TextInput
-        label="Placeholder:"
+        label={scopedT("Placeholder")}
         defaultValue={options.labels.placeholder}
         onChange={handlePlaceholderChange}
       />
       <TextInput
-        label="Button label:"
+        label={scopedT("Button label")}
         defaultValue={options.labels.button}
         onChange={handleButtonLabelChange}
       />
       <Stack>
         <FormLabel mb="0" htmlFor="button">
-          Default country:
+          {scopedT("Default country")}
         </FormLabel>
         <CountryCodeSelect
           onSelect={handleDefaultCountryChange}
@@ -44,13 +47,13 @@ export const PhoneInputSettings = ({ options, onOptionsChange }: Props) => {
         />
       </Stack>
       <TextInput
-        label="Retry message:"
+        label={scopedT("Retry message")}
         defaultValue={options.retryMessageContent}
         onChange={handleRetryMessageChange}
       />
       <Stack>
         <FormLabel mb="0" htmlFor="variable">
-          Save answer in a variable:
+          {scopedT("Save answer in a variable:")}
         </FormLabel>
         <VariableSearchInput
           initialVariableId={options.variableId}

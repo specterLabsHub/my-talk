@@ -2,6 +2,7 @@ import { TypingBubble } from '@/components'
 import { isMobile } from '@/utils/isMobileSignal'
 import type { AudioBubbleContent } from '@typebot.io/schemas'
 import { createSignal, onCleanup, onMount } from 'solid-js'
+import WaveSurfer from 'wavesurfer.js'
 
 type Props = {
   url: AudioBubbleContent['url']
@@ -19,6 +20,8 @@ export const AudioBubble = (props: Props) => {
   let audioElement: HTMLAudioElement | undefined
   const [isTyping, setIsTyping] = createSignal(true)
 
+  let wavesurfer: WaveSurfer | undefined
+
   onMount(() => {
     typingTimeout = setTimeout(() => {
       if (isPlayed) return
@@ -31,8 +34,44 @@ export const AudioBubble = (props: Props) => {
     }, typingDuration)
   })
 
+  onMount(() => {
+    if (audioElement) {
+      audioElement.style.display = 'none'
+
+      wavesurfer = WaveSurfer.create({
+        container: "waveForm", 
+        waveColor: 'rgba(0, 0, 0, 0.3)',
+        progressColor: 'rgba(255, 0, 0, 0.4)',
+        cursorWidth: 1,
+        height: 100,
+        normalize: true,
+      })
+
+      wavesurfer.load(props.url || '')
+
+      wavesurfer.on('ready', () => {
+        if (!isPlayed) {
+          typingTimeout = setTimeout(() => {
+            if (isPlayed) return
+            isPlayed = true
+            setIsTyping(false)
+            setTimeout(() => props.onTransitionEnd(ref?.offsetTop), showAnimationDuration)
+          }, typingDuration)
+        }
+      })
+    
+        wavesurfer.play()
+    }
+  })
+
   onCleanup(() => {
     if (typingTimeout) clearTimeout(typingTimeout)
+  })
+
+  onCleanup(() => {
+    if (wavesurfer) {
+      wavesurfer.destroy()
+    }
   })
 
   return (
@@ -48,6 +87,7 @@ export const AudioBubble = (props: Props) => {
           >
             {isTyping() && <TypingBubble />}
           </div>
+          {/* A tag de áudio não será renderizada */}
           <audio
             ref={audioElement}
             src={props.url}
@@ -57,10 +97,11 @@ export const AudioBubble = (props: Props) => {
               (isTyping() ? 'opacity-0' : 'opacity-100 m-2')
             }
             style={{
-              height: isTyping() ? (isMobile() ? '32px' : '36px') : 'revert',
+              height: isTyping() ? (isMobile() ? '32px' : '36px') : 'revert'
             }}
             controls
           />
+          <div id="waveForm" style="height: 100px;"></div>
         </div>
       </div>
     </div>

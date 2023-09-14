@@ -1,4 +1,5 @@
 import { NumberInput, TextInput } from '@/components/inputs'
+import { useScopedI18n } from '@/locales'
 import {
   Accordion,
   AccordionButton,
@@ -43,19 +44,21 @@ export const GoogleAnalyticsSettings = ({
       sendTo,
     })
 
+    const scopedT = useScopedI18n('build')
+
   return (
     <Stack spacing={4}>
       <TextInput
-        label="Measurement ID:"
-        moreInfoTooltip="Can be found by clicking on your data stream in Google Analytics dashboard"
+        label={scopedT("Measurement ID")}
+        moreInfoTooltip={scopedT("Can be found by clicking on your data stream in Google Analytics dashboard")}
         defaultValue={options?.trackingId ?? ''}
         placeholder="G-123456..."
         onChange={updateTrackingId}
       />
       <TextInput
-        label="Event action:"
+        label={scopedT("Event action")}
         defaultValue={options?.action ?? ''}
-        placeholder="Example: conversion"
+        placeholder={scopedT("Example: conversion")}
         onChange={updateAction}
       />
       <Accordion allowToggle>
@@ -63,36 +66,36 @@ export const GoogleAnalyticsSettings = ({
           <h2>
             <AccordionButton>
               <Box flex="1" textAlign="left">
-                Advanced
+                {scopedT("Advanced")}
               </Box>
               <AccordionIcon />
             </AccordionButton>
           </h2>
           <AccordionPanel pb={4} as={Stack} spacing="6">
             <TextInput
-              label="Event category:"
+              label={scopedT("Event category")}
               defaultValue={options?.category ?? ''}
-              placeholder="Example: Typebot"
+              placeholder={scopedT("Example: MyTalk")}
               onChange={updateCategory}
             />
             <TextInput
-              label="Event label:"
+              label={scopedT("Event label")}
               defaultValue={options?.label ?? ''}
-              placeholder="Example: Campaign Z"
+              placeholder={scopedT("Example: Campaign Z")}
               onChange={updateLabel}
             />
             <NumberInput
               direction="column"
-              label="Event value:"
+              label={scopedT("Event value")}
               defaultValue={options?.value}
-              placeholder="Example: 0"
+              placeholder={scopedT("Example: 0")}
               onValueChange={updateValue}
             />
             <TextInput
-              label="Send to:"
-              moreInfoTooltip="Useful to send a conversion event to Google Ads"
+              label={scopedT("Send to")}
+              moreInfoTooltip={scopedT("Useful to send a conversion event to Google Ads")}
               defaultValue={options?.sendTo?.toString() ?? ''}
-              placeholder="Example: AW-123456789"
+              placeholder={scopedT("Example: AW-123456789")}
               onChange={updateSendTo}
             />
           </AccordionPanel>

@@ -10,6 +10,7 @@ import React, { useState } from 'react'
 import { byId } from '@typebot.io/lib'
 import { WebhookAdvancedConfigForm } from '../../webhook/components/WebhookAdvancedConfigForm'
 import { TextInput } from '@/components/inputs'
+import { useScopedI18n } from '@/locales'
 
 type Props = {
   block: PabblyConnectBlock
@@ -38,15 +39,17 @@ export const PabblyConnectSettings = ({
       url,
     })
 
+    const scopedT = useScopedI18n('build')
+
   return (
     <Stack spacing={4}>
       <Alert status={localWebhook?.url ? 'success' : 'info'} rounded="md">
         <AlertIcon />
         {localWebhook?.url ? (
-          <>Your scenario is correctly configured 🚀</>
+          <>{scopedT('Your scenario is correctly configured')} 🚀</>
         ) : (
           <Stack>
-            <Text>Head up to Pabbly Connect to get the webhook URL:</Text>
+            <Text>{scopedT('Head up to Pabbly Connect to get the webhook URL:')}</Text>
             <Button
               as={Link}
               href="https://www.pabbly.com/connect/integrations/typebot/"
@@ -59,7 +62,7 @@ export const PabblyConnectSettings = ({
         )}
       </Alert>
       <TextInput
-        placeholder="Paste webhook URL..."
+        placeholder={scopedT("Paste webhook URL...")}
         defaultValue={localWebhook?.url ?? ''}
         onChange={handleUrlChange}
         withVariableButton={false}

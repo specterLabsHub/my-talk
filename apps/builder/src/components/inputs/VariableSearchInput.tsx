@@ -184,7 +184,7 @@ export const VariableSearchInput = ({
             onChange={onInputChange}
             onFocus={openDropdown}
             onKeyDown={handleKeyUp}
-            placeholder={inputProps.placeholder ?? 'Select a variable'}
+            placeholder={inputProps.placeholder ?? 'Selecione uma variável'}
             autoComplete="off"
             {...inputProps}
           />

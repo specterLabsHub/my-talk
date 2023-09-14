@@ -144,7 +144,7 @@ export const MultipleChoicesForm = (props: Props) => {
       </div>
       {selectedItemIds().length > 0 && (
         <SendButton disableIcon>
-          {props.options?.buttonLabel ?? 'Send'}
+          {props.options?.buttonLabel ?? 'Enviar'}
         </SendButton>
       )}
     </form>

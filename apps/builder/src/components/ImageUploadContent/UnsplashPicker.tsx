@@ -21,6 +21,7 @@ import { Basic as UnsplashImage } from 'unsplash-js/dist/methods/photos/types'
 import { TextInput } from '../inputs'
 import { UnsplashLogo } from '../logos/UnsplashLogo'
 import { TextLink } from '../TextLink'
+import { useScopedI18n } from '@/locales'
 
 const api = createApi({
   accessKey: env('UNSPLASH_ACCESS_KEY') ?? '',
@@ -120,13 +121,15 @@ export const UnsplashPicker = ({ imageSize, onImageSelect }: Props) => {
     if (isDefined(url)) onImageSelect(url)
   }
 
+  const scopedT = useScopedI18n('build')
+
   useEffect(() => {
     searchRandomImages()
   }, [])
 
   if (isEmpty(env('UNSPLASH_ACCESS_KEY')))
     return (
-      <Text>NEXT_PUBLIC_UNSPLASH_ACCESS_KEY is missing in environment</Text>
+      <Text>NEXT_PUBLIC_UNSPLASH_ACCESS_KEY {scopedT('is missing in environment')}</Text>
     )
 
   return (
@@ -134,7 +137,7 @@ export const UnsplashPicker = ({ imageSize, onImageSelect }: Props) => {
       <HStack align="center">
         <TextInput
           autoFocus
-          placeholder="Search..."
+          placeholder={scopedT("Search")}
           onChange={(query) => {
             setSearchQuery(query)
             fetchNewImages(query, 0)

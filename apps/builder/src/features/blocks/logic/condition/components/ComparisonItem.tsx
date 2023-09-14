@@ -4,6 +4,7 @@ import { Comparison, Variable, ComparisonOperators } from '@typebot.io/schemas'
 import { TableListItemProps } from '@/components/TableList'
 import { VariableSearchInput } from '@/components/inputs/VariableSearchInput'
 import { TextInput } from '@/components/inputs'
+import { useScopedI18n } from '@/locales'
 
 export const ComparisonItem = ({
   item,
@@ -25,18 +26,20 @@ export const ComparisonItem = ({
     onItemChange({ ...item, value })
   }
 
+  const scopedT = useScopedI18n('build')
+
   return (
     <Stack p="4" rounded="md" flex="1" borderWidth="1px">
       <VariableSearchInput
         initialVariableId={item.variableId}
         onSelectVariable={handleSelectVariable}
-        placeholder="Search for a variable"
+        placeholder={scopedT("Search for a variable")}
       />
       <DropdownList
         currentItem={item.comparisonOperator}
         onItemSelect={handleSelectComparisonOperator}
         items={Object.values(ComparisonOperators)}
-        placeholder="Select an operator"
+        placeholder={scopedT("Select an operator")}
       />
       {item.comparisonOperator !== ComparisonOperators.IS_SET &&
         item.comparisonOperator !== ComparisonOperators.IS_EMPTY && (
@@ -53,6 +56,7 @@ export const ComparisonItem = ({
 const parseValuePlaceholder = (
   operator: ComparisonOperators | undefined
 ): string => {
+
   switch (operator) {
     case ComparisonOperators.NOT_EQUAL:
     case ComparisonOperators.EQUAL:
@@ -61,10 +65,10 @@ const parseValuePlaceholder = (
     case ComparisonOperators.ENDS_WITH:
     case ComparisonOperators.NOT_CONTAINS:
     case undefined:
-      return 'Type a value...'
+      return 'Digite um valor...'
     case ComparisonOperators.LESS:
     case ComparisonOperators.GREATER:
-      return 'Type a number...'
+      return "Digite um número..."
     case ComparisonOperators.IS_SET:
     case ComparisonOperators.IS_EMPTY:
       return ''

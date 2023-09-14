@@ -132,12 +132,13 @@ export const ResultsTable = ({
         id: header.id,
         accessorKey: parseAccessor(header.label),
         size: 200,
-        header: () => (
+        header: () =>  (
           <HStack overflow="hidden" data-testid={`${header.label} header`}>
             <HeaderIcon header={header} />
             <Text>{header.label}</Text>
           </HStack>
         ),
+          
         cell: (info) => {
           const value = info?.getValue() as CellValueType | undefined
           if (!value) return
@@ -148,17 +149,19 @@ export const ResultsTable = ({
         id: 'logs',
         enableResizing: false,
         maxSize: 110,
-        header: () => (
+        header: () => { 
+          return(
           <HStack>
             <AlignLeftTextIcon />
             <Text>Logs</Text>
           </HStack>
-        ),
-        cell: ({ row }) => (
+  )},
+        cell: ({ row }) => {
+          return(
           <Button size="sm" onClick={onLogOpenIndex(row.index)}>
-            See logs
+            Ver logs
           </Button>
-        ),
+        )},
       },
     ],
     [onLogOpenIndex, resultHeader]

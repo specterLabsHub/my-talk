@@ -157,7 +157,7 @@ export const PhoneInput = (props: PhoneInputProps) => {
         class="my-2 ml-2"
         on:click={submit}
       >
-        {props.labels?.button ?? 'Send'}
+        {props.labels?.button ?? 'Enviar'}
       </SendButton>
     </div>
   )

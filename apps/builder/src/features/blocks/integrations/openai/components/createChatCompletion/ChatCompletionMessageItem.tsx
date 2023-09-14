@@ -2,6 +2,7 @@ import { DropdownList } from '@/components/DropdownList'
 import { Textarea, TextInput } from '@/components/inputs'
 import { VariableSearchInput } from '@/components/inputs/VariableSearchInput'
 import { TableListItemProps } from '@/components/TableList'
+import { useScopedI18n } from '@/locales'
 import { Stack } from '@chakra-ui/react'
 import { Variable } from '@typebot.io/schemas'
 import {
@@ -60,25 +61,27 @@ export const ChatCompletionMessageItem = ({ item, onItemChange }: Props) => {
     onItemChange({ ...item, name })
   }
 
+  const scopedT = useScopedI18n('build')
+
   return (
     <Stack p="4" rounded="md" flex="1" borderWidth="1px">
       <DropdownList
         currentItem={item.role}
         items={roles}
         onItemSelect={changeRole}
-        placeholder="Select type"
+        placeholder={scopedT("Select type")}
       />
       {item.role === 'Messages sequence ✨' ? (
         <>
           <VariableSearchInput
             initialVariableId={item.content?.userMessagesVariableId}
             onSelectVariable={changeUserVariableId}
-            placeholder="User messages variable"
+            placeholder={scopedT("User messages variable")}
           />
           <VariableSearchInput
             initialVariableId={item.content?.assistantMessagesVariableId}
             onSelectVariable={changeAssistantVariableId}
-            placeholder="Assistant messages variable"
+            placeholder={scopedT("Assistant messages variable")}
           />
         </>
       ) : (
@@ -86,13 +89,13 @@ export const ChatCompletionMessageItem = ({ item, onItemChange }: Props) => {
           <Textarea
             defaultValue={item.content}
             onChange={changeSingleMessageContent}
-            placeholder="Content"
+            placeholder={scopedT("Content")}
             minH="150px"
           />
           <TextInput
             defaultValue={item.name}
             onChange={updateName}
-            placeholder="Name (Optional)"
+            placeholder={scopedT("Name (Optional)")}
           />
         </>
       )}

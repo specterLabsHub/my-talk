@@ -1,3 +1,4 @@
+import { useScopedI18n } from '@/locales'
 import {
   Popover,
   PopoverTrigger,
@@ -49,6 +50,7 @@ export const ColorPicker = ({ value, defaultValue, onColorChange }: Props) => {
     setColor(color)
     onColorChange(color)
   }
+  const scopedT = useScopedI18n('build')
 
   return (
     <Popover variant="picker" placement="right" isLazy>
@@ -108,7 +110,7 @@ export const ColorPicker = ({ value, defaultValue, onColorChange }: Props) => {
             color={displayedValue}
             onColorChange={handleColorChange}
           >
-            Advanced picker
+            {scopedT('Advanced picker')}
           </NativeColorPicker>
         </PopoverBody>
       </PopoverContent>

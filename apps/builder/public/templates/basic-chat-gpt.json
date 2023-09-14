@@ -52,7 +52,7 @@
           "type": "OpenAI",
           "groupId": "a6ymhjwtkqwp8t127plz8qmk",
           "options": {
-            "task": "Create chat completion",
+            "task": "Criar conclusão de bate-papo",
             "model": "gpt-3.5-turbo",
             "messages": [
               {

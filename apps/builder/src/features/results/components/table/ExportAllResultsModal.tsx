@@ -23,6 +23,7 @@ import { useResults } from '../../ResultsProvider'
 import { parseColumnOrder } from '../../helpers/parseColumnsOrder'
 import { convertResultsToTableData } from '../../helpers/convertResultsToTableData'
 import { parseAccessor } from '../../helpers/parseAccessor'
+import { useScopedI18n } from '@/locales'
 
 type Props = {
   isOpen: boolean
@@ -120,6 +121,8 @@ export const ExportAllResultsModal = ({ isOpen, onClose }: Props) => {
     setIsExportLoading(false)
   }
 
+  const scopedT = useScopedI18n('results')
+
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="md">
       <ModalOverlay />
@@ -127,16 +130,16 @@ export const ExportAllResultsModal = ({ isOpen, onClose }: Props) => {
         <ModalHeader />
         <ModalBody as={Stack} spacing="4">
           <SwitchWithLabel
-            label="Include deleted blocks"
-            moreInfoContent="Blocks from previous bot version that have been deleted"
+            label={scopedT("Include deleted blocks")}
+            moreInfoContent={scopedT("Blocks from previous bot version that have been deleted")}
             initialValue={false}
             onCheckChange={setAreDeletedBlocksIncluded}
           />
-          <AlertInfo>The export may take up to 1 minute.</AlertInfo>
+          <AlertInfo>{scopedT('The export may take up to 1 minute.')}</AlertInfo>
         </ModalBody>
         <ModalFooter as={HStack}>
           <Button onClick={onClose} variant="ghost" size="sm">
-            Cancel
+            {scopedT('Cancel')}
           </Button>
           <Button
             colorScheme="blue"
@@ -145,7 +148,7 @@ export const ExportAllResultsModal = ({ isOpen, onClose }: Props) => {
             size="sm"
             isLoading={isExportLoading}
           >
-            Export
+            {scopedT('Export')}
           </Button>
         </ModalFooter>
       </ModalContent>

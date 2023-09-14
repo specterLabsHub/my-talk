@@ -53,7 +53,7 @@ export const AudioBubble = ({ url, onTransitionEnd }: Props) => {
               'z-10 content-opacity m-2 ' +
               (isTyping ? 'opacity-0' : 'opacity-100')
             }
-            style={{ height: isTyping ? '2rem' : 'revert' }}
+            style={{ height: isTyping ? '2rem' : 'revert', background: 'red'}}
             autoPlay
             controls
           />

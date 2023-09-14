@@ -1,5 +1,6 @@
 import { DropdownList } from '@/components/DropdownList'
 import { TextInput } from '@/components/inputs'
+import { useScopedI18n } from '@/locales'
 import {
   Accordion,
   AccordionButton,
@@ -21,19 +22,21 @@ export const ChatwootSettings = ({ options, onOptionsChange }: Props) => {
     onOptionsChange({ ...options, task })
   }
 
+  const scopedT = useScopedI18n('build')
+
   return (
     <Stack spacing={4}>
       <DropdownList
-        currentItem={options.task ?? 'Show widget'}
+        currentItem={options.task ?? 'Mostrar widget'}
         onItemSelect={updateTask}
         items={chatwootTasks}
       />
       {!options.task ||
-        (options.task === 'Show widget' && (
+        (options.task === 'Mostrar widget' && (
           <>
             <TextInput
               isRequired
-              label="Base URL"
+              label={scopedT("Base URL")}
               defaultValue={options.baseUrl}
               onChange={(baseUrl: string) => {
                 onOptionsChange({ ...options, baseUrl })
@@ -42,17 +45,17 @@ export const ChatwootSettings = ({ options, onOptionsChange }: Props) => {
             />
             <TextInput
               isRequired
-              label="Website token"
+              label={scopedT("Website token")}
               defaultValue={options.websiteToken}
               onChange={(websiteToken) =>
                 onOptionsChange({ ...options, websiteToken })
               }
-              moreInfoTooltip="Can be found in Chatwoot under Settings > Inboxes > Settings > Configuration, in the code snippet."
+              moreInfoTooltip={scopedT("Can be found in Chatwoot under Settings > Inboxes > Settings > Configuration, in the code snippet.")}
             />
             <Accordion allowMultiple>
               <AccordionItem>
                 <AccordionButton justifyContent="space-between">
-                  Set user details
+                  {scopedT("Set user details")}
                   <AccordionIcon />
                 </AccordionButton>
                 <AccordionPanel pb={4} as={Stack} spacing="4">
@@ -67,7 +70,7 @@ export const ChatwootSettings = ({ options, onOptionsChange }: Props) => {
                     }}
                   />
                   <TextInput
-                    label="Name"
+                    label={scopedT("Name")}
                     defaultValue={options.user?.name}
                     onChange={(name: string) => {
                       onOptionsChange({
@@ -87,7 +90,7 @@ export const ChatwootSettings = ({ options, onOptionsChange }: Props) => {
                     }}
                   />
                   <TextInput
-                    label="Avatar URL"
+                    label={scopedT("Avatar URL")}
                     defaultValue={options.user?.avatarUrl}
                     onChange={(avatarUrl: string) => {
                       onOptionsChange({
@@ -97,7 +100,7 @@ export const ChatwootSettings = ({ options, onOptionsChange }: Props) => {
                     }}
                   />
                   <TextInput
-                    label="Phone number"
+                    label={scopedT("Phone number")}
                     defaultValue={options.user?.phoneNumber}
                     onChange={(phoneNumber: string) => {
                       onOptionsChange({

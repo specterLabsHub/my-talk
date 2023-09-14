@@ -69,7 +69,7 @@ export const leadGenerationTypebot: StartTypebot = {
             },
           ],
           groupId: 'clckrl4q5000h3b6sjipn4qga',
-          options: { buttonLabel: 'Send', isMultipleChoice: false },
+          options: { buttonLabel: 'Enviar', isMultipleChoice: false },
           outgoingEdgeId: 'clckrm7td001b3b6s2769fh7k',
         },
       ],
@@ -116,7 +116,7 @@ export const leadGenerationTypebot: StartTypebot = {
           type: InputBlockType.EMAIL,
           groupId: 'clckrl4q5000i3b6stgxyvscq',
           options: {
-            labels: { button: 'Send', placeholder: 'Type your email...' },
+            labels: { button: 'Enviar', placeholder: 'Digite seu email...' },
             variableId: 'v3VFChNVSCXQ2rXv4DrJ8Ah',
             retryMessageContent:
               "This email doesn't seem to be valid. Can you type it again?",
@@ -149,7 +149,7 @@ export const leadGenerationTypebot: StartTypebot = {
           options: {
             isLong: false,
             labels: {
-              button: 'Send',
+              button: 'Enviar',
               placeholder: 'Type your answer...',
             },
             variableId: 'giiLFGw5xXBCHzvp1qAbdX',
@@ -208,7 +208,7 @@ export const leadGenerationTypebot: StartTypebot = {
             },
           ],
           groupId: 'clckrl4q5000k3b6s0anufmgy',
-          options: { buttonLabel: 'Send', isMultipleChoice: true },
+          options: { buttonLabel: 'Enviar', isMultipleChoice: true },
           outgoingEdgeId: 'clckrl4q5000r3b6s9yxsuxu7',
         },
       ],
@@ -241,7 +241,7 @@ export const leadGenerationTypebot: StartTypebot = {
           groupId: 'clckrl4q5000l3b6scn1r1nns',
           options: {
             isLong: true,
-            labels: { button: 'Send', placeholder: 'Type your answer...' },
+            labels: { button: 'Enviar', placeholder: 'Type your answer...' },
           },
           outgoingEdgeId: 'clckrl4q5000s3b6stx5nnqbz',
         },

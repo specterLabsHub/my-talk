@@ -3,6 +3,7 @@ import { TextLink } from '@/components/TextLink'
 import { useWorkspace } from '@/features/workspace/WorkspaceProvider'
 import { useToast } from '@/hooks/useToast'
 import { trpc } from '@/lib/trpc'
+import { useScopedI18n } from '@/locales'
 import {
   Modal,
   ModalOverlay,
@@ -72,31 +73,33 @@ export const OpenAICredentialsModal = ({
     })
   }
 
+  const scopedT = useScopedI18n('build')
+
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="lg">
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>Add OpenAI account</ModalHeader>
+        <ModalHeader>{scopedT('Add OpenAI account')}</ModalHeader>
         <ModalCloseButton />
         <form onSubmit={createOpenAICredentials}>
           <ModalBody as={Stack} spacing="6">
             <TextInput
               isRequired
-              label="Name"
+              label={scopedT("Name")}
               onChange={setName}
-              placeholder="My account"
+              placeholder={scopedT("My account")}
               withVariableButton={false}
               debounceTimeout={0}
             />
             <TextInput
               isRequired
               type="password"
-              label="API key"
+              label={scopedT("API key")}
               helperText={
                 <>
-                  You can generate an API key{' '}
+                  {scopedT('You can generate an API key')}{' '}
                   <TextLink href={openAITokensPage} isExternal>
-                    here
+                    {scopedT("here")}
                   </TextLink>
                   .
                 </>
@@ -115,7 +118,7 @@ export const OpenAICredentialsModal = ({
               isDisabled={apiKey === '' || name === ''}
               colorScheme="blue"
             >
-              Create
+              {scopedT("Create")}
             </Button>
           </ModalFooter>
         </form>

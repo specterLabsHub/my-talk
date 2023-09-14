@@ -1,5 +1,6 @@
 import { TextInput } from '@/components/inputs'
 import { VariableSearchInput } from '@/components/inputs/VariableSearchInput'
+import { useScopedI18n } from '@/locales'
 import { FormLabel, Stack } from '@chakra-ui/react'
 import { EmailInputOptions, Variable } from '@typebot.io/schemas'
 import React from 'react'
@@ -18,27 +19,28 @@ export const EmailInputSettings = ({ options, onOptionsChange }: Props) => {
     onOptionsChange({ ...options, variableId: variable?.id })
   const handleRetryMessageChange = (retryMessageContent: string) =>
     onOptionsChange({ ...options, retryMessageContent })
+    const scopedT = useScopedI18n('build')
 
   return (
     <Stack spacing={4}>
       <TextInput
-        label="Placeholder:"
+        label={scopedT("Placeholder")}
         defaultValue={options.labels.placeholder}
         onChange={handlePlaceholderChange}
       />
       <TextInput
-        label="Button label:"
+        label={scopedT("Button label")}
         defaultValue={options.labels.button}
         onChange={handleButtonLabelChange}
       />
       <TextInput
-        label="Retry message:"
+        label={scopedT("Retry message")}
         defaultValue={options.retryMessageContent}
         onChange={handleRetryMessageChange}
       />
       <Stack>
         <FormLabel mb="0" htmlFor="variable">
-          Save answer in a variable:
+          {scopedT("Save answer in a variable")}:
         </FormLabel>
         <VariableSearchInput
           initialVariableId={options.variableId}

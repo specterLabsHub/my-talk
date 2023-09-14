@@ -23,6 +23,7 @@ import { BlockCard } from './BlockCard'
 import { LockedIcon, UnlockedIcon } from '@/components/icons'
 import { BlockCardOverlay } from './BlockCardOverlay'
 import { headerHeight } from '../constants'
+import { useScopedI18n } from '@/locales'
 
 export const BlocksSideBar = () => {
   const { setDraggedBlockType, draggedBlockType } = useBlockDnd()
@@ -74,6 +75,8 @@ export const BlocksSideBar = () => {
     setIsExtended(false)
   }
 
+  const scopedT = useScopedI18n('build')
+
   return (
     <Flex
       w="360px"
@@ -102,7 +105,7 @@ export const BlocksSideBar = () => {
         className="hide-scrollbar"
       >
         <Flex justifyContent="flex-end">
-          <Tooltip label={isLocked ? 'Unlock sidebar' : 'Lock sidebar'}>
+          <Tooltip label={isLocked ? `${scopedT('Unlock sidebar')}` : `${scopedT('Lock sidebar')}`}>
             <IconButton
               icon={isLocked ? <LockedIcon /> : <UnlockedIcon />}
               aria-label={isLocked ? 'Unlock' : 'Lock'}

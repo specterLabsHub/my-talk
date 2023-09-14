@@ -29,7 +29,7 @@ test('options should work', async ({ page }) => {
     .locator(`input[type="file"]`)
     .setInputFiles([getTestAsset('avatar.jpg')])
   await expect(page.locator(`text=File uploaded`)).toBeVisible()
-  await page.click('text="Collect file"')
+  await page.click('text="Coletar arquivo"')
   await page.click('text="Required?"')
   await page.click('text="Allow multiple files?"')
   await page.fill('div[contenteditable=true]', '<strong>Upload now!!</strong>')
@@ -66,7 +66,7 @@ test.describe('Free workspace', () => {
       },
     ])
     await page.goto(`/typebots/${typebotId}/edit`)
-    await page.click('text="Collect file"')
+    await page.click('text="Coletar arquivo"')
     await page.click('text="Allow multiple files?"')
     await page.click('text="Publish"')
     await expect(

@@ -5,6 +5,7 @@ import { GiphyLogo } from '../logos/GiphyLogo'
 import React, { useState } from 'react'
 import { env, isEmpty } from '@typebot.io/lib'
 import { TextInput } from '../inputs'
+import { useScopedI18n } from '@/locales'
 
 type GiphySearchFormProps = {
   onSubmit: (url: string) => void
@@ -21,14 +22,16 @@ export const GiphyPicker = ({ onSubmit }: GiphySearchFormProps) => {
   const fetchGifsTrending = (offset: number) =>
     giphyFetch.trending({ offset, limit: 10 })
 
+    const scopedT = useScopedI18n('build')
+
   return isEmpty(env('GIPHY_API_KEY')) ? (
-    <Text>NEXT_PUBLIC_GIPHY_API_KEY is missing in environment</Text>
+    <Text>NEXT_PUBLIC_GIPHY_API_KEY {scopedT('is missing in environment')}</Text>
   ) : (
     <Stack spacing={4} pt="2">
       <Flex align="center">
         <TextInput
           autoFocus
-          placeholder="Search..."
+          placeholder={scopedT("Search")}
           onChange={setInputValue}
           withVariableButton={false}
         />

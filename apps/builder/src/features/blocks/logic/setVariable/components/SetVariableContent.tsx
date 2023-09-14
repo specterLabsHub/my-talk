@@ -2,15 +2,17 @@ import { Text } from '@chakra-ui/react'
 import { useTypebot } from '@/features/editor/providers/TypebotProvider'
 import { SetVariableBlock, Variable } from '@typebot.io/schemas'
 import { byId, isEmpty } from '@typebot.io/lib'
+import { useScopedI18n } from '@/locales'
 
 export const SetVariableContent = ({ block }: { block: SetVariableBlock }) => {
   const { typebot } = useTypebot()
   const variableName =
     typebot?.variables.find(byId(block.options.variableId))?.name ?? ''
+    const scopedT = useScopedI18n('build')
   return (
     <Text color={'gray.500'} noOfLines={4}>
       {variableName === '' && isEmpty(block.options.expressionToEvaluate)
-        ? 'Click to edit...'
+        ? `${scopedT('Click to edit...')}`
         : getExpression(typebot?.variables ?? [])(block.options)}
     </Text>
   )

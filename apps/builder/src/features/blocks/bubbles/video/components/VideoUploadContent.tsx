@@ -1,6 +1,7 @@
 import { Stack, Text } from '@chakra-ui/react'
 import { VideoBubbleContent, VideoBubbleContentType } from '@typebot.io/schemas'
 import { TextInput } from '@/components/inputs'
+import { useScopedI18n } from '@/locales'
 
 const vimeoRegex = /vimeo\.com\/(\d+)/
 const youtubeRegex = /youtube\.com\/(watch\?v=|shorts\/)(\w+)|youtu\.be\/(\w+)/
@@ -19,15 +20,16 @@ export const VideoUploadContent = ({ content, onSubmit }: Props) => {
       id: info.id,
     })
   }
+  const scopedT = useScopedI18n('build')
   return (
     <Stack p="2">
       <TextInput
-        placeholder="Paste the video link..."
+        placeholder={scopedT('Paste the video link...')}
         defaultValue={content?.url ?? ''}
         onChange={handleUrlChange}
       />
       <Text fontSize="sm" color="gray.400" textAlign="center">
-        Works with Youtube, Vimeo and others
+        {scopedT('Works with Youtube, Vimeo and others')}
       </Text>
     </Stack>
   )

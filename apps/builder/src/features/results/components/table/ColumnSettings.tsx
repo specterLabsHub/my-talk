@@ -23,6 +23,7 @@ import { ResultHeaderCell } from '@typebot.io/schemas'
 import { useState } from 'react'
 import { CSS } from '@dnd-kit/utilities'
 import { HeaderIcon } from '../HeaderIcon'
+import { useScopedI18n } from '@/locales'
 
 type Props = {
   resultHeader: ResultHeaderCell[]
@@ -75,11 +76,12 @@ export const ColumnSettings = ({
       onColumnOrderChange(newColumnOrder)
     }
   }
+  const scopedT = useScopedI18n('results')
 
   return (
     <Stack>
       <Text fontWeight="semibold" fontSize="sm">
-        Shown in table:
+        {scopedT('Shown in table')}
       </Text>
       <DndContext
         sensors={sensors}

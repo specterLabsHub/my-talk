@@ -28,6 +28,7 @@ import { deleteInvitationQuery } from '../queries/deleteInvitationQuery'
 import { updateCollaboratorQuery } from '../queries/updateCollaboratorQuery'
 import { deleteCollaboratorQuery } from '../queries/deleteCollaboratorQuery'
 import { sendInvitationQuery } from '../queries/sendInvitationQuery'
+import { useScopedI18n } from '@/locales'
 
 export const CollaborationList = () => {
   const { currentRole, workspace } = useWorkspace()
@@ -136,6 +137,8 @@ export const CollaborationList = () => {
     setInvitationEmail('')
   }
 
+  const scopedT = useScopedI18n('build')
+
   return (
     <Stack spacing={1} pt="4" pb="2">
       <HStack as="form" onSubmit={handleInvitationSubmit} px="4" pb="2">
@@ -163,7 +166,7 @@ export const CollaborationList = () => {
           type="submit"
           isDisabled={!hasFullAccess}
         >
-          Invite
+           {scopedT('Invite')}
         </Button>
       </HStack>
       {workspace && (
@@ -171,7 +174,7 @@ export const CollaborationList = () => {
           <HStack minW={0} spacing={3}>
             <EmojiOrImageIcon icon={workspace.icon} boxSize="32px" />
             <Text fontSize="15px" noOfLines={1}>
-              Everyone at {workspace.name}
+              {scopedT('Everyone at')} {workspace.name}
             </Text>
           </HStack>
           <Tag flexShrink={0}>
@@ -256,10 +259,10 @@ export const convertCollaborationTypeEnumToReadable = (
 ) => {
   switch (type) {
     case CollaborationType.READ:
-      return 'Can view'
+      return 'Consegue visualizar'
     case CollaborationType.WRITE:
-      return 'Can edit'
+      return 'Consegue editar'
     case CollaborationType.FULL_ACCESS:
-      return 'Full access'
+      return 'Acesso completo'
   }
 }

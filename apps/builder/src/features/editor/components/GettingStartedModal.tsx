@@ -1,3 +1,4 @@
+import { useScopedI18n } from '@/locales'
 import {
   useDisclosure,
   Modal,
@@ -31,6 +32,8 @@ export const GettingStartedModal = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  const scopedT = useScopedI18n('build')
+
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="xl">
       <ModalOverlay />
@@ -38,7 +41,7 @@ export const GettingStartedModal = () => {
         <ModalCloseButton />
         <ModalBody as={Stack} spacing="8" py="10">
           <Stack spacing={4}>
-            <Heading fontSize="xl">Editor basics</Heading>
+            <Heading fontSize="xl">{scopedT('Editor basics')}</Heading>
             <List spacing={4}>
               <HStack as={ListItem}>
                 <Flex
@@ -55,8 +58,7 @@ export const GettingStartedModal = () => {
                   1
                 </Flex>
                 <Text>
-                  The left side bar contains blocks that you can drag and drop
-                  to the board.
+                  {scopedT('The left side bar contains blocks that you can drag and drop to the board.')}
                 </Text>
               </HStack>
               <HStack as={ListItem}>
@@ -74,8 +76,7 @@ export const GettingStartedModal = () => {
                   2
                 </Flex>
                 <Text>
-                  You can group blocks together by dropping them below or above
-                  each other
+                  {scopedT('You can group blocks together by dropping them below or above each other')}
                 </Text>
               </HStack>
               <HStack as={ListItem}>
@@ -92,7 +93,7 @@ export const GettingStartedModal = () => {
                 >
                   3
                 </Flex>
-                <Text>Connect the groups together</Text>
+                <Text>{scopedT('Connect the groups together')}</Text>
               </HStack>
               <HStack as={ListItem}>
                 <Flex
@@ -109,16 +110,14 @@ export const GettingStartedModal = () => {
                   4
                 </Flex>
                 <Text>
-                  Preview your bot by clicking the preview button on the top
-                  right
+                  {scopedT('Preview your bot by clicking the preview button on the top right')}
                 </Text>
               </HStack>
             </List>
           </Stack>
 
           <Text>
-            Feel free to use the bottom-right bubble to reach out if you have
-            any question. I usually answer within the next 24 hours. 😃
+            {scopedT('Feel free to use the bottom-right bubble to reach out if you have any question. I usually answer within the next 24 hours.')} 😃
           </Text>
           <Stack spacing={4}>
             <Heading fontSize="xl">See it in action ({`<`} 5 minutes)</Heading>
@@ -135,7 +134,7 @@ export const GettingStartedModal = () => {
               <AccordionItem>
                 <AccordionButton>
                   <Box flex="1" textAlign="left">
-                    Other videos
+                     {scopedT('Other videos')}
                   </Box>
                   <AccordionIcon />
                 </AccordionButton>

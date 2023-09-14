@@ -19,6 +19,7 @@ import { useStats } from '../hooks/useStats'
 import { ResultsProvider } from '../ResultsProvider'
 import { ResultsTableContainer } from './ResultsTableContainer'
 import { UsageAlertBanners } from './UsageAlertBanners'
+import { useScopedI18n } from '@/locales'
 
 export const ResultsPage = () => {
   const router = useRouter()
@@ -41,6 +42,7 @@ export const ResultsPage = () => {
       stats: { ...stats, totalStarts: stats.totalStarts - total },
     })
   }
+  const scopedT = useScopedI18n('results')
 
   return (
     <Flex overflow="hidden" h="100vh" flexDir="column">
@@ -81,7 +83,7 @@ export const ResultsPage = () => {
               size="sm"
               href={`/typebots/${typebot?.id}/results`}
             >
-              <Text>Submissions</Text>
+              <Text>{scopedT('Submissions')}</Text>
               {(stats?.totalStarts ?? 0) > 0 && (
                 <Tag size="sm" colorScheme="blue" ml="1">
                   {stats?.totalStarts}
@@ -95,7 +97,7 @@ export const ResultsPage = () => {
               href={`/typebots/${typebot?.id}/results/analytics`}
               size="sm"
             >
-              Analytics
+              {scopedT('Analytics')}
             </Button>
           </HStack>
         </Flex>

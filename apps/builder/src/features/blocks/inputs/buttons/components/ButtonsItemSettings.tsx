@@ -3,6 +3,7 @@ import { Stack } from '@chakra-ui/react'
 import { SwitchWithRelatedSettings } from '@/components/SwitchWithRelatedSettings'
 import { ConditionForm } from '@/features/blocks/logic/condition/components/ConditionForm'
 import { ButtonItem, Condition, LogicalOperator } from '@typebot.io/schemas'
+import { useScopedI18n } from '@/locales'
 
 type Props = {
   item: ButtonItem
@@ -28,11 +29,13 @@ export const ButtonsItemSettings = ({ item, onSettingsChange }: Props) => {
       },
     })
 
+    const scopedT = useScopedI18n('build')
+
   return (
     <Stack spacing={4}>
       <SwitchWithRelatedSettings
-        label="Display condition"
-        moreInfoContent="Only display this item if a condition is met."
+        label={scopedT("Display condition")}
+        moreInfoContent={scopedT("Only display this item if a condition is met.")}
         initialValue={item.displayCondition?.isEnabled ?? false}
         onCheckChange={updateIsDisplayConditionEnabled}
       >

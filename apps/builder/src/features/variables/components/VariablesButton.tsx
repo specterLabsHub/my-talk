@@ -15,6 +15,7 @@ import React, { useRef } from 'react'
 import { VariableSearchInput } from '@/components/inputs/VariableSearchInput'
 import { useOutsideClick } from '@/hooks/useOutsideClick'
 import { useParentModal } from '@/features/graph/providers/ParentModalProvider'
+import { useScopedI18n } from '@/locales'
 
 type Props = {
   onSelectVariable: (variable: Pick<Variable, 'name' | 'id'>) => void
@@ -30,14 +31,14 @@ export const VariablesButton = ({ onSelectVariable, ...props }: Props) => {
     handler: onClose,
     isEnabled: isOpen,
   })
-
+  const scopedT = useScopedI18n('build')
   return (
     <Popover isLazy isOpen={isOpen}>
       <PopoverAnchor>
         <Flex>
-          <Tooltip label="Insert a variable">
+          <Tooltip label={scopedT("Insert a variable")}>
             <IconButton
-              aria-label={'Insert a variable'}
+              aria-label={"Insert a variable"}
               icon={<UserIcon />}
               pos="relative"
               onClick={onOpen}
@@ -54,7 +55,7 @@ export const VariablesButton = ({ onSelectVariable, ...props }: Props) => {
               onClose()
               if (variable) onSelectVariable(variable)
             }}
-            placeholder="Search for a variable"
+            placeholder={scopedT("Search for a variable")}
             shadow="lg"
             autoFocus
           />

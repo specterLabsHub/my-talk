@@ -4,6 +4,7 @@ import { Comparison, Condition, LogicalOperator } from '@typebot.io/schemas'
 import React from 'react'
 import { ComparisonItem } from './ComparisonItem'
 import { TableList } from '@/components/TableList'
+import { useScopedI18n } from '@/locales'
 
 type Props = {
   condition: Condition
@@ -15,6 +16,8 @@ export const ConditionForm = ({ condition, onConditionChange }: Props) => {
     onConditionChange({ ...condition, comparisons })
   const handleLogicalOperatorChange = (logicalOperator: LogicalOperator) =>
     onConditionChange({ ...condition, logicalOperator })
+
+    const scopedT = useScopedI18n('build')
 
   return (
     <TableList<Comparison>
@@ -30,7 +33,7 @@ export const ConditionForm = ({ condition, onConditionChange }: Props) => {
           />
         </Flex>
       )}
-      addLabel="Add a comparison"
+      addLabel={scopedT("Add a comparison")}
     />
   )
 }

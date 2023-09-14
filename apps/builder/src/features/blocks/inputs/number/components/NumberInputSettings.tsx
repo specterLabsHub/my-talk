@@ -1,5 +1,6 @@
 import { TextInput, NumberInput } from '@/components/inputs'
 import { VariableSearchInput } from '@/components/inputs/VariableSearchInput'
+import { useScopedI18n } from '@/locales'
 import { FormLabel, Stack } from '@chakra-ui/react'
 import { NumberInputOptions, Variable } from '@typebot.io/schemas'
 import React from 'react'
@@ -24,16 +25,18 @@ export const NumberInputSettings = ({ options, onOptionsChange }: Props) => {
     onOptionsChange({ ...options, variableId: variable?.id })
   }
 
+  const scopedT = useScopedI18n('build')
+
   return (
     <Stack spacing={4}>
       <TextInput
-        label="Placeholder:"
+        label={scopedT("Placeholder")}
         defaultValue={options.labels.placeholder}
         onChange={handlePlaceholderChange}
       />
       <TextInput
-        label="Button label:"
-        defaultValue={options?.labels?.button ?? 'Send'}
+        label={scopedT("Button label:")}
+        defaultValue={options?.labels?.button ?? 'Enviar'}
         onChange={handleButtonLabelChange}
       />
       <NumberInput
@@ -47,13 +50,13 @@ export const NumberInputSettings = ({ options, onOptionsChange }: Props) => {
         onValueChange={handleMaxChange}
       />
       <NumberInput
-        label="Step:"
+        label={scopedT("Step:")}
         defaultValue={options.step}
         onValueChange={handleStepChange}
       />
       <Stack>
         <FormLabel mb="0" htmlFor="variable">
-          Save answer in a variable:
+          {scopedT("Save answer in a variable:")}
         </FormLabel>
         <VariableSearchInput
           initialVariableId={options.variableId}

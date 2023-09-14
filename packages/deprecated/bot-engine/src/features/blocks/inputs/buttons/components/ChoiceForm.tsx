@@ -84,7 +84,7 @@ export const ChoiceForm = ({ block, onSubmit }: ChoiceFormProps) => {
       <div className="flex">
         {selectedIndices.length > 0 && (
           <SendButton
-            label={block.options?.buttonLabel ?? 'Send'}
+            label={block.options?.buttonLabel ?? 'Enviar'}
             disableIcon
           />
         )}

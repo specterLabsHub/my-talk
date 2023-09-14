@@ -48,14 +48,14 @@ export const EmailInput = ({
       <ShortTextInput
         ref={inputRef as MutableRefObject<HTMLInputElement>}
         value={inputValue}
-        placeholder={block.options?.labels?.placeholder ?? 'Type your email...'}
+        placeholder={block.options?.labels?.placeholder ?? 'Digite seu email...'}
         onChange={handleChange}
         type="email"
         autoComplete="email"
       />
       <SendButton
         type="button"
-        label={block.options?.labels?.button ?? 'Send'}
+        label={block.options?.labels?.button ?? 'Enviar'}
         isDisabled={inputValue === ''}
         className="my-2 ml-2"
         onClick={submit}

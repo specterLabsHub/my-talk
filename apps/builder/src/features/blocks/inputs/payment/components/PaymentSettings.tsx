@@ -23,6 +23,7 @@ import { CredentialsDropdown } from '@/features/credentials/components/Credentia
 import { TextInput } from '@/components/inputs'
 import { useWorkspace } from '@/features/workspace/WorkspaceProvider'
 import { PaymentAddressSettings } from './PaymentAddressSettings'
+import { useScopedI18n } from '@/locales'
 
 type Props = {
   options: PaymentInputOptions
@@ -101,10 +102,12 @@ export const PaymentSettings = ({ options, onOptionsChange }: Props) => {
       additionalInformation: { ...options.additionalInformation, address },
     })
 
+    const scopedT = useScopedI18n('build')
+
   return (
     <Stack spacing={4}>
       <Stack>
-        <Text>Provider:</Text>
+        <Text>{scopedT('Provider')}</Text>
         <DropdownList
           onItemSelect={updateProvider}
           items={Object.values(PaymentProvider)}
@@ -112,7 +115,7 @@ export const PaymentSettings = ({ options, onOptionsChange }: Props) => {
         />
       </Stack>
       <Stack>
-        <Text>Account:</Text>
+        <Text>{scopedT('Account')}</Text>
         {workspace && (
           <CredentialsDropdown
             type="stripe"
@@ -125,15 +128,15 @@ export const PaymentSettings = ({ options, onOptionsChange }: Props) => {
       </Stack>
       <HStack>
         <TextInput
-          label="Price amount:"
+          label={scopedT("Price amount")}
           onChange={updateAmount}
           defaultValue={options.amount ?? ''}
           placeholder="30.00"
         />
         <Stack>
-          <Text>Currency:</Text>
+          <Text>{scopedT("Currency")}</Text>
           <Select
-            placeholder="Select option"
+            placeholder={scopedT("Select option")}
             value={options.currency}
             onChange={updateCurrency}
           >
@@ -146,32 +149,32 @@ export const PaymentSettings = ({ options, onOptionsChange }: Props) => {
         </Stack>
       </HStack>
       <TextInput
-        label="Button label:"
+        label={scopedT("Button label:")}
         onChange={updateButtonLabel}
         defaultValue={options.labels.button}
-        placeholder="Pay"
+        placeholder={scopedT("Pay")}
       />
       <TextInput
-        label="Success message:"
+        label={scopedT("Success message")}
         onChange={updateSuccessLabel}
-        defaultValue={options.labels.success ?? 'Success'}
-        placeholder="Success"
+        defaultValue={options.labels.success ?? `${scopedT("Success")}`}
+        placeholder={scopedT("Success")}
       />
       <Accordion allowToggle>
         <AccordionItem>
           <AccordionButton justifyContent="space-between">
-            Additional information
+            {scopedT("Additional information")}
             <AccordionIcon />
           </AccordionButton>
           <AccordionPanel py={4} as={Stack} spacing="6">
             <TextInput
-              label="Description:"
+              label={scopedT("Description")}
               defaultValue={options.additionalInformation?.description ?? ''}
               onChange={updateDescription}
-              placeholder="A digital product"
+              placeholder={scopedT("A digital product")}
             />
             <TextInput
-              label="Name:"
+              label={scopedT("Name")}
               defaultValue={options.additionalInformation?.name ?? ''}
               onChange={updateName}
               placeholder="John Smith"
@@ -183,7 +186,7 @@ export const PaymentSettings = ({ options, onOptionsChange }: Props) => {
               placeholder="john@gmail.com"
             />
             <TextInput
-              label="Phone number:"
+              label={scopedT("Phone number")}
               defaultValue={options.additionalInformation?.phoneNumber ?? ''}
               onChange={updatePhoneNumber}
               placeholder="+33XXXXXXXXX"

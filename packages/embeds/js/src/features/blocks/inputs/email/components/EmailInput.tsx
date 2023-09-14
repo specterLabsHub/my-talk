@@ -57,7 +57,7 @@ export const EmailInput = (props: Props) => {
         ref={inputRef}
         value={inputValue()}
         placeholder={
-          props.block.options?.labels?.placeholder ?? 'Type your email...'
+          props.block.options?.labels?.placeholder ?? 'Digite seu email...'
         }
         onInput={handleInput}
         type="email"
@@ -69,7 +69,7 @@ export const EmailInput = (props: Props) => {
         class="my-2 ml-2"
         on:click={submit}
       >
-        {props.block.options?.labels?.button ?? 'Send'}
+        {props.block.options?.labels?.button ?? 'Enviar'}
       </SendButton>
     </div>
   )

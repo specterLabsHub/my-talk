@@ -75,7 +75,7 @@
           "type": "OpenAI",
           "groupId": "dmg57mgick51p8l5pnyqtyf9",
           "options": {
-            "task": "Create chat completion",
+            "task": "Criar conclusão de bate-papo",
             "model": "gpt-3.5-turbo",
             "messages": [
               {
@@ -148,7 +148,7 @@
           "type": "OpenAI",
           "groupId": "fj5z2nx488htv0843kq6qeyk",
           "options": {
-            "task": "Create chat completion",
+            "task": "Criar conclusão de bate-papo",
             "model": "gpt-3.5-turbo",
             "messages": [
               {
@@ -221,7 +221,7 @@
           "type": "OpenAI",
           "groupId": "csbysu8dr08zxr4i6hzvzjdf",
           "options": {
-            "task": "Create chat completion",
+            "task": "Criar conclusão de bate-papo",
             "model": "gpt-3.5-turbo",
             "messages": [
               {

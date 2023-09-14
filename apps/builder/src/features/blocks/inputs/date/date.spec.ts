@@ -24,9 +24,9 @@ test.describe('Date input block', () => {
       'type',
       'date'
     )
-    await expect(page.getByRole('button', { name: 'Send' })).toBeDisabled()
+    await expect(page.getByRole('button', { name: 'Enviar' })).toBeDisabled()
     await page.locator('[data-testid="from-date"]').fill('2021-01-01')
-    await page.getByRole('button', { name: 'Send' }).click()
+    await page.getByRole('button', { name: 'Enviar' }).click()
     await expect(page.locator('text="01/01/2021"')).toBeVisible()
 
     await page.click(`text=Pick a date...`)

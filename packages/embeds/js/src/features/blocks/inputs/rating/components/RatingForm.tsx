@@ -66,7 +66,7 @@ export const RatingForm = (props: Props) => {
       <div class="flex justify-end">
         {isDefined(rating()) && (
           <SendButton disableIcon>
-            {props.block.options?.labels?.button ?? 'Send'}
+            {props.block.options?.labels?.button ?? 'Enviar'}
           </SendButton>
         )}
       </div>

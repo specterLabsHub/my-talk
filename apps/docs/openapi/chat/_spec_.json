@@ -481,18 +481,18 @@
                                                                   "comparisonOperator": {
                                                                     "type": "string",
                                                                     "enum": [
-                                                                      "Equal to",
-                                                                      "Not equal",
-                                                                      "Contains",
-                                                                      "Does not contain",
-                                                                      "Greater than",
-                                                                      "Less than",
-                                                                      "Is set",
-                                                                      "Is empty",
-                                                                      "Starts with",
-                                                                      "Ends with",
-                                                                      "Matches regex",
-                                                                      "Does not match regex"
+                                                                      "Igual a",
+                                                                  "Não igual",
+                                                                  "Contém",
+                                                                  "Não contém",
+                                                                  "Maior que",
+                                                                  "Menor que",
+                                                                  "Está definido",
+                                                                  "Está vazia",
+                                                                  "Começa com",
+                                                                  "Termina com",
+                                                                  "Corresponde ao regex",
+                                                                  "Não corresponde a regex"
                                                                     ]
                                                                   },
                                                                   "value": {
@@ -1249,18 +1249,18 @@
                                                                   "comparisonOperator": {
                                                                     "type": "string",
                                                                     "enum": [
-                                                                      "Equal to",
-                                                                      "Not equal",
-                                                                      "Contains",
-                                                                      "Does not contain",
-                                                                      "Greater than",
-                                                                      "Less than",
-                                                                      "Is set",
-                                                                      "Is empty",
-                                                                      "Starts with",
-                                                                      "Ends with",
-                                                                      "Matches regex",
-                                                                      "Does not match regex"
+                                                                      "Igual a",
+                                                                  "Não igual",
+                                                                  "Contém",
+                                                                  "Não contém",
+                                                                  "Maior que",
+                                                                  "Menor que",
+                                                                  "Está definido",
+                                                                  "Está vazia",
+                                                                  "Começa com",
+                                                                  "Termina com",
+                                                                  "Corresponde ao regex",
+                                                                  "Não corresponde a regex"
                                                                     ]
                                                                   },
                                                                   "value": {
@@ -1452,18 +1452,18 @@
                                                               "comparisonOperator": {
                                                                 "type": "string",
                                                                 "enum": [
-                                                                  "Equal to",
-                                                                  "Not equal",
-                                                                  "Contains",
-                                                                  "Does not contain",
-                                                                  "Greater than",
-                                                                  "Less than",
-                                                                  "Is set",
-                                                                  "Is empty",
-                                                                  "Starts with",
-                                                                  "Ends with",
-                                                                  "Matches regex",
-                                                                  "Does not match regex"
+                                                                  "Igual a",
+                                                                  "Não igual",
+                                                                  "Contém",
+                                                                  "Não contém",
+                                                                  "Maior que",
+                                                                  "Menor que",
+                                                                  "Está definido",
+                                                                  "Está vazia",
+                                                                  "Começa com",
+                                                                  "Termina com",
+                                                                  "Corresponde ao regex",
+                                                                  "Não corresponde a regex"
                                                                 ]
                                                               },
                                                               "value": {
@@ -2048,18 +2048,18 @@
                                                                 "comparisonOperator": {
                                                                   "type": "string",
                                                                   "enum": [
-                                                                    "Equal to",
-                                                                    "Not equal",
-                                                                    "Contains",
-                                                                    "Does not contain",
-                                                                    "Greater than",
-                                                                    "Less than",
-                                                                    "Is set",
-                                                                    "Is empty",
-                                                                    "Starts with",
-                                                                    "Ends with",
-                                                                    "Matches regex",
-                                                                    "Does not match regex"
+                                                                     "Igual a",
+                                                                  "Não igual",
+                                                                  "Contém",
+                                                                  "Não contém",
+                                                                  "Maior que",
+                                                                  "Menor que",
+                                                                  "Está definido",
+                                                                  "Está vazia",
+                                                                  "Começa com",
+                                                                  "Termina com",
+                                                                  "Corresponde ao regex",
+                                                                  "Não corresponde a regex"
                                                                   ]
                                                                 },
                                                                 "value": {
@@ -2246,18 +2246,18 @@
                                                                 "comparisonOperator": {
                                                                   "type": "string",
                                                                   "enum": [
-                                                                    "Equal to",
-                                                                    "Not equal",
-                                                                    "Contains",
-                                                                    "Does not contain",
-                                                                    "Greater than",
-                                                                    "Less than",
-                                                                    "Is set",
-                                                                    "Is empty",
-                                                                    "Starts with",
-                                                                    "Ends with",
-                                                                    "Matches regex",
-                                                                    "Does not match regex"
+                                                                     "Igual a",
+                                                                  "Não igual",
+                                                                  "Contém",
+                                                                  "Não contém",
+                                                                  "Maior que",
+                                                                  "Menor que",
+                                                                  "Está definido",
+                                                                  "Está vazia",
+                                                                  "Começa com",
+                                                                  "Termina com",
+                                                                  "Corresponde ao regex",
+                                                                  "Não corresponde a regex"
                                                                   ]
                                                                 },
                                                                 "value": {
@@ -3905,18 +3905,18 @@
                                                     "comparisonOperator": {
                                                       "type": "string",
                                                       "enum": [
-                                                        "Equal to",
-                                                        "Not equal",
-                                                        "Contains",
-                                                        "Does not contain",
-                                                        "Greater than",
-                                                        "Less than",
-                                                        "Is set",
-                                                        "Is empty",
-                                                        "Starts with",
-                                                        "Ends with",
-                                                        "Matches regex",
-                                                        "Does not match regex"
+                                                        "Igual a",
+                                                                  "Não igual",
+                                                                  "Contém",
+                                                                  "Não contém",
+                                                                  "Maior que",
+                                                                  "Menor que",
+                                                                  "Está definido",
+                                                                  "Está vazia",
+                                                                  "Começa com",
+                                                                  "Termina com",
+                                                                  "Corresponde ao regex",
+                                                                  "Não corresponde a regex"
                                                       ]
                                                     },
                                                     "value": {
@@ -4673,18 +4673,18 @@
                                                     "comparisonOperator": {
                                                       "type": "string",
                                                       "enum": [
-                                                        "Equal to",
-                                                        "Not equal",
-                                                        "Contains",
-                                                        "Does not contain",
-                                                        "Greater than",
-                                                        "Less than",
-                                                        "Is set",
-                                                        "Is empty",
-                                                        "Starts with",
-                                                        "Ends with",
-                                                        "Matches regex",
-                                                        "Does not match regex"
+                                                        "Igual a",
+                                                                  "Não igual",
+                                                                  "Contém",
+                                                                  "Não contém",
+                                                                  "Maior que",
+                                                                  "Menor que",
+                                                                  "Está definido",
+                                                                  "Está vazia",
+                                                                  "Começa com",
+                                                                  "Termina com",
+                                                                  "Corresponde ao regex",
+                                                                  "Não corresponde a regex"
                                                       ]
                                                     },
                                                     "value": {

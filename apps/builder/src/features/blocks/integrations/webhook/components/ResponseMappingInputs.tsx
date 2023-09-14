@@ -3,6 +3,7 @@ import { TableListItemProps } from '@/components/TableList'
 import { VariableSearchInput } from '@/components/inputs/VariableSearchInput'
 import { Stack, FormControl, FormLabel } from '@chakra-ui/react'
 import { Variable, ResponseVariableMapping } from '@typebot.io/schemas'
+import { useScopedI18n } from '@/locales'
 
 export const DataVariableInputs = ({
   item,
@@ -14,6 +15,8 @@ export const DataVariableInputs = ({
   const handleVariableChange = (variable?: Variable) =>
     onItemChange({ ...item, variableId: variable?.id })
 
+    const scopedT = useScopedI18n('build')
+
   return (
     <Stack p="4" rounded="md" flex="1" borderWidth="1px">
       <FormControl>
@@ -22,15 +25,15 @@ export const DataVariableInputs = ({
           items={dataItems}
           defaultValue={item.bodyPath}
           onChange={handleBodyPathChange}
-          placeholder="Select the data"
+          placeholder={scopedT("Select the data")}
           withVariableButton
         />
       </FormControl>
       <FormControl>
-        <FormLabel htmlFor="value">Set variable:</FormLabel>
+        <FormLabel htmlFor="value">{scopedT("Set variable:")}</FormLabel>
         <VariableSearchInput
           onSelectVariable={handleVariableChange}
-          placeholder="Search for a variable"
+          placeholder={scopedT("Search for a variable")}
           initialVariableId={item.variableId}
         />
       </FormControl>

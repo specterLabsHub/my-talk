@@ -21,6 +21,7 @@ import { ResultHeaderCell } from '@typebot.io/schemas'
 import React, { useState } from 'react'
 import { ColumnSettings } from './ColumnSettings'
 import { ExportAllResultsModal } from './ExportAllResultsModal'
+import { useScopedI18n } from '@/locales'
 
 type Props = {
   resultHeader: ResultHeaderCell[]
@@ -64,6 +65,7 @@ const TableSettingsMenu = ({
   const [selectedMenu, setSelectedMenu] = useState<
     'export' | 'columnSettings' | null
   >(null)
+  const scopedT = useScopedI18n('results')
 
   switch (selectedMenu) {
     case 'columnSettings':
@@ -95,7 +97,7 @@ const TableSettingsMenu = ({
           >
             <HStack>
               <ListIcon />
-              <Text>Column settings</Text>
+              <Text>{scopedT('Column settings')}</Text>
             </HStack>
 
             <ChevronRightIcon color="gray.400" />
@@ -109,7 +111,7 @@ const TableSettingsMenu = ({
           >
             <HStack>
               <DownloadIcon />
-              <Text>Export all</Text>
+              <Text>{scopedT('Export all')}</Text>
             </HStack>
           </Button>
         </PopoverBody>

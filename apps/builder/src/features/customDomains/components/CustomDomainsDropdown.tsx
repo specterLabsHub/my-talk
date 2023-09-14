@@ -17,6 +17,7 @@ import { useWorkspace } from '@/features/workspace/WorkspaceProvider'
 import { useToast } from '@/hooks/useToast'
 import { useCustomDomains } from '../hooks/useCustomDomains'
 import { deleteCustomDomainQuery } from '../queries/deleteCustomDomainQuery'
+import { useScopedI18n } from '@/locales'
 
 type Props = Omit<MenuButtonProps, 'type'> & {
   currentCustomDomain?: string
@@ -67,6 +68,8 @@ export const CustomDomainsDropdown = ({
     })
     handleMenuItemClick(domain)()
   }
+
+  const scopedT = useScopedI18n('build')
 
   return (
     <Menu isLazy placement="bottom-start" matchWidth>
@@ -123,7 +126,7 @@ export const CustomDomainsDropdown = ({
             icon={<PlusIcon />}
             onClick={onOpen}
           >
-            Connect new
+            {scopedT('Connect new')}
           </MenuItem>
         </Stack>
       </MenuList>

@@ -3,6 +3,7 @@ import { AudioBubbleContent } from '@typebot.io/schemas'
 import { TextInput } from '@/components/inputs'
 import { useState } from 'react'
 import { UploadButton } from '@/components/ImageUploadContent/UploadButton'
+import { useScopedI18n } from '@/locales'
 
 type Props = {
   fileUploadPath: string
@@ -18,6 +19,7 @@ export const AudioBubbleForm = ({
   const [currentTab, setCurrentTab] = useState<'link' | 'upload'>('link')
 
   const submit = (url: string) => onSubmit({ url })
+  const scopedT = useScopedI18n('build')
 
   return (
     <Stack>
@@ -27,14 +29,14 @@ export const AudioBubbleForm = ({
           onClick={() => setCurrentTab('upload')}
           size="sm"
         >
-          Upload
+          {scopedT('Upload')}
         </Button>
         <Button
           variant={currentTab === 'link' ? 'solid' : 'ghost'}
           onClick={() => setCurrentTab('link')}
           size="sm"
         >
-          Embed link
+          {scopedT('Embed link')}
         </Button>
       </HStack>
       <Stack p="2">
@@ -46,19 +48,19 @@ export const AudioBubbleForm = ({
               onFileUploaded={submit}
               colorScheme="blue"
             >
-              Choose a file
+              {scopedT('Choose a file')}
             </UploadButton>
           </Flex>
         )}
         {currentTab === 'link' && (
           <>
             <TextInput
-              placeholder="Paste the audio file link..."
+              placeholder={scopedT('Paste the audio file link...')}
               defaultValue={content.url ?? ''}
               onChange={submit}
             />
             <Text fontSize="sm" color="gray.400" textAlign="center">
-              Works with .MP3s and .WAVs
+              {scopedT('Works with .MP3s and .WAVs')}
             </Text>
           </>
         )}

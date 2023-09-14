@@ -18,7 +18,7 @@ test('should be able to connect custom domain', async ({ page }) => {
   ])
   await page.goto(`/typebots/${typebotId}/share`)
   await page.click('text=Add my domain')
-  await page.click('text=Connect new')
+  await page.click('text=Connectar nova')
   await page.fill('input[placeholder="bot.my-domain.com"]', 'test')
   await expect(page.locator('text=Save')).toBeDisabled()
   await page.fill('input[placeholder="bot.my-domain.com"]', 'yolozeeer.com')

@@ -25,7 +25,7 @@ test.describe.parallel('Text input block', () => {
         `input[placeholder="${defaultTextInputOptions.labels.placeholder}"]`
       )
     ).toHaveAttribute('type', 'text')
-    await expect(page.getByRole('button', { name: 'Send' })).toBeDisabled()
+    await expect(page.getByRole('button', { name: 'Enviar' })).toBeDisabled()
 
     await page.click(`text=${defaultTextInputOptions.labels.placeholder}`)
     await page.getByLabel('Placeholder:').fill('Your name...')

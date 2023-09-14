@@ -5,6 +5,7 @@ import { Webhook, WebhookOptions, ZapierBlock } from '@typebot.io/schemas'
 import React, { useCallback, useEffect, useState } from 'react'
 import { byId } from '@typebot.io/lib'
 import { WebhookAdvancedConfigForm } from '../../webhook/components/WebhookAdvancedConfigForm'
+import { useScopedI18n } from '@/locales'
 
 type Props = {
   block: ZapierBlock
@@ -42,15 +43,17 @@ export const ZapierSettings = ({
     })
   }, [webhook, localWebhook, setLocalWebhook])
 
+  const scopedT = useScopedI18n('build')
+
   return (
     <Stack spacing={4}>
       <Alert status={localWebhook?.url ? 'success' : 'info'} rounded="md">
         <AlertIcon />
         {localWebhook?.url ? (
-          <>Your zap is correctly configured 🚀</>
+          <>{scopedT('Your zap is correctly configured')} 🚀</>
         ) : (
           <Stack>
-            <Text>Head up to Zapier to configure this block:</Text>
+            <Text>{scopedT('Head up to Zapier to configure this block')}</Text>
             <Button
               as={Link}
               href="https://zapier.com/apps/typebot/integrations"

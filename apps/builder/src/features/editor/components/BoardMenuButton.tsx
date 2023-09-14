@@ -22,6 +22,7 @@ import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import { EditorSettingsModal } from './EditorSettingsModal'
 import { parseDefaultPublicId } from '@/features/publish/helpers/parseDefaultPublicId'
+import { useScopedI18n } from '@/locales'
 
 export const BoardMenuButton = (props: FlexProps) => {
   const { query } = useRouter()
@@ -54,6 +55,8 @@ export const BoardMenuButton = (props: FlexProps) => {
   const redirectToDocumentation = () =>
     window.open('https://docs.typebot.io/get-started/overview', '_blank')
 
+    const scopedT = useScopedI18n('build')
+
   return (
     <Flex
       bgColor={useColorModeValue('white', 'gray.900')}
@@ -71,13 +74,13 @@ export const BoardMenuButton = (props: FlexProps) => {
         />
         <MenuList>
           <MenuItem icon={<BookIcon />} onClick={redirectToDocumentation}>
-            Documentation
+            {scopedT('Documentation')}
           </MenuItem>
           <MenuItem icon={<SettingsIcon />} onClick={onOpen}>
-            Editor settings
+            {scopedT('Editor settings')}
           </MenuItem>
           <MenuItem icon={<DownloadIcon />} onClick={downloadFlow}>
-            Export flow
+            {scopedT('Export flow')}
           </MenuItem>
         </MenuList>
         <EditorSettingsModal isOpen={isOpen} onClose={onClose} />

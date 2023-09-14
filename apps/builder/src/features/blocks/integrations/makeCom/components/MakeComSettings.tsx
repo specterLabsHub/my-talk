@@ -5,6 +5,7 @@ import { MakeComBlock, Webhook, WebhookOptions } from '@typebot.io/schemas'
 import React, { useCallback, useEffect, useState } from 'react'
 import { byId } from '@typebot.io/lib'
 import { WebhookAdvancedConfigForm } from '../../webhook/components/WebhookAdvancedConfigForm'
+import { useScopedI18n } from '@/locales'
 
 type Props = {
   block: MakeComBlock
@@ -41,16 +42,17 @@ export const MakeComSettings = ({
       url: webhook?.url,
     })
   }, [webhook, localWebhook, setLocalWebhook])
+  const scopedT = useScopedI18n('build')
 
   return (
     <Stack spacing={4}>
       <Alert status={localWebhook?.url ? 'success' : 'info'} rounded="md">
         <AlertIcon />
         {localWebhook?.url ? (
-          <>Your scenario is correctly configured 🚀</>
+          <>{scopedT('Your scenario is correctly configured')} 🚀</>
         ) : (
           <Stack>
-            <Text>Head up to Make.com to configure this block:</Text>
+            <Text>{scopedT('Head up to Make.com to configure this block')}</Text>
             <Button
               as={Link}
               href="https://www.make.com/en/integrations/typebot"

@@ -22,10 +22,10 @@ export const emailInputSchema = blockBaseSchema.merge(
 export const defaultEmailInputOptions: EmailInputOptions = {
   labels: {
     button: defaultButtonLabel,
-    placeholder: 'Type your email...',
+    placeholder: 'Digite seu email...',
   },
   retryMessageContent:
-    "This email doesn't seem to be valid. Can you type it again?",
+    "Este e-mail não parece ser válido. Você pode digitá-lo novamente?",
 }
 
 export type EmailInputBlock = z.infer<typeof emailInputSchema>

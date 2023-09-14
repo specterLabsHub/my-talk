@@ -6,7 +6,7 @@ type Props = {
 }
 
 export const ChatwootNodeBody = ({ block }: Props) =>
-  block.options.task === 'Close widget' ? (
+  block.options.task === 'Fechar widget' ? (
     <Text>Close Chatwoot</Text>
   ) : block.options.websiteToken.length === 0 ? (
     <Text color="gray.500">Configure...</Text>

@@ -70,7 +70,7 @@ export const TextInput = ({
       )}
       <SendButton
         type="button"
-        label={block.options?.labels?.button ?? 'Send'}
+        label={block.options?.labels?.button ?? 'Enviar'}
         isDisabled={inputValue === ''}
         className="my-2 ml-2"
         onClick={submit}

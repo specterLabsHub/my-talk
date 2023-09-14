@@ -6,6 +6,7 @@ import { TextInput } from '@/components/inputs'
 import { CodeEditor } from '@/components/inputs/CodeEditor'
 import { Select } from '@/components/inputs/Select'
 import { SwitchWithLabel } from '@/components/inputs/SwitchWithLabel'
+import { useScopedI18n } from '@/locales'
 import { Stack, Text } from '@chakra-ui/react'
 import { isDefined, isEmpty } from '@typebot.io/lib'
 import {
@@ -76,6 +77,8 @@ export const PixelSettings = ({ options, onOptionsChange }: Props) => {
     [options?.eventType]
   )
 
+  const scopedT = useScopedI18n('build')
+
   return (
     <Stack spacing={4}>
       <TextInput
@@ -85,34 +88,34 @@ export const PixelSettings = ({ options, onOptionsChange }: Props) => {
         placeholder='Pixel ID (e.g. "123456789")'
       />
       <SwitchWithLabel
-        label={'Skip initialization'}
-        moreInfoContent="Check this if the bot is embedded in your website and the pixel is already initialized."
+        label={scopedT('Skip initialization')}
+        moreInfoContent={scopedT("Check this if the bot is embedded in your website and the pixel is already initialized.")}
         initialValue={options?.isInitSkip ?? false}
         onCheckChange={updateIsInitSkipped}
       />
       <SwitchWithRelatedSettings
-        label={'Track event'}
+        label={scopedT('Track event')}
         initialValue={isDefined(options?.params)}
         onCheckChange={updateIsTrackingEventEnabled}
       >
         <Text fontSize="sm" color="gray.500">
-          Read the{' '}
+          {scopedT('Read the')}{' '}
           <TextLink href={pixelReferenceUrl} isExternal>
             reference
           </TextLink>{' '}
-          to better understand the available options.
+          {scopedT('to better understand the available options.')}
         </Text>
         <Select
           items={['Custom', ...pixelEventTypes] as const}
           selectedItem={options?.eventType}
-          placeholder="Select event type"
+          placeholder={scopedT("Select event type")}
           onSelect={updateEventType}
         />
         {options?.eventType === 'Custom' && (
           <TextInput
             defaultValue={options.name ?? ''}
             onChange={updateEventName}
-            placeholder="Event name"
+            placeholder={scopedT("Event name")}
           />
         )}
         {options?.eventType &&
@@ -177,7 +180,7 @@ const ParamItem = ({ item, eventType, onItemChange }: ParamItemProps) => {
           currentItem={item.key}
           items={possibleObjectProps.map((prop) => prop.key)}
           onItemSelect={updateKey}
-          placeholder="Select key"
+          placeholder="Selecionar key"
         />
       )}
       {currentObject?.type === 'code' ? (
@@ -190,7 +193,7 @@ const ParamItem = ({ item, eventType, onItemChange }: ParamItemProps) => {
         <TextInput
           defaultValue={item.value}
           onChange={updateValue}
-          placeholder="Value"
+          placeholder="Valor"
         />
       )}
     </Stack>

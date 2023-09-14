@@ -18,7 +18,7 @@ test('should work as expected', async ({ page }) => {
   await page.getByRole('menuitem', { name: 'Block #2' }).click()
   await page.getByRole('button', { name: 'Preview' }).click()
   await page.getByPlaceholder('Type your answer...').fill('Hi there!')
-  await page.getByRole('button', { name: 'Send' }).click()
+  await page.getByRole('button', { name: 'Enviar' }).click()
   await expect(
     page.locator('typebot-standard').getByText('How are you?').nth(1)
   ).toBeVisible()

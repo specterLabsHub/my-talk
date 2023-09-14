@@ -25,7 +25,7 @@ test.describe('Phone input block', () => {
         `input[placeholder="${defaultPhoneInputOptions.labels.placeholder}"]`
       )
     ).toHaveAttribute('type', 'tel')
-    await expect(page.getByRole('button', { name: 'Send' })).toBeDisabled()
+    await expect(page.getByRole('button', { name: 'Enviar' })).toBeDisabled()
 
     await page.click(`text=${defaultPhoneInputOptions.labels.placeholder}`)
     await page.getByLabel('Placeholder:').fill('+33 XX XX XX XX')

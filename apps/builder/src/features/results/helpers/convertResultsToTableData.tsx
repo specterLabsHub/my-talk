@@ -18,7 +18,7 @@ export const convertResultsToTableData = (
 ): TableData[] =>
   (results ?? []).map((result) => ({
     id: { plainText: result.id },
-    'Submitted at': {
+    'Enviado em': {
       plainText: convertDateToReadable(result.createdAt),
     },
     ...[...result.answers, ...result.variables].reduce<{

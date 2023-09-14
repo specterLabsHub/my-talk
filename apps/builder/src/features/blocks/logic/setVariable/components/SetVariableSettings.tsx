@@ -5,6 +5,7 @@ import React from 'react'
 import { VariableSearchInput } from '@/components/inputs/VariableSearchInput'
 import { SwitchWithLabel } from '@/components/inputs/SwitchWithLabel'
 import { Select } from '@/components/inputs/Select'
+import { useScopedI18n } from '@/locales'
 
 type Props = {
   options: SetVariableOptions
@@ -21,11 +22,13 @@ export const SetVariableSettings = ({ options, onOptionsChange }: Props) => {
       type: type as SetVariableOptions['type'],
     })
 
+    const scopedT = useScopedI18n('build')
+
   return (
     <Stack spacing={4}>
       <Stack>
         <FormLabel mb="0" htmlFor="variable-search">
-          Search or create variable:
+          {scopedT('Search or create variable')}
         </FormLabel>
         <VariableSearchInput
           onSelectVariable={updateVariableId}
@@ -36,10 +39,10 @@ export const SetVariableSettings = ({ options, onOptionsChange }: Props) => {
 
       <Stack>
         <Text mb="0" fontWeight="medium">
-          Value:
+          {scopedT('Value')}
         </Text>
         <Select
-          selectedItem={options.type ?? 'Custom'}
+          selectedItem={options.type ?? `${scopedT('Custom')}`}
           items={valueTypes}
           onSelect={updateValueType}
         />
@@ -92,6 +95,8 @@ const SetVariableValue = ({
       },
     })
 
+    const scopedT = useScopedI18n('build')
+
   switch (options.type) {
     case 'Custom':
     case undefined:
@@ -103,8 +108,8 @@ const SetVariableValue = ({
             lang="javascript"
           />
           <SwitchWithLabel
-            label="Execute on client?"
-            moreInfoContent="Check this if you need access to client-only variables like `window` or `document`."
+            label={scopedT("Execute on client?")}
+            moreInfoContent={scopedT("Check this if you need access to client-only variables like 'window' or 'document'.")}
             initialValue={options.isExecutedOnClient ?? false}
             onCheckChange={updateClientExecution}
           />
@@ -116,17 +121,17 @@ const SetVariableValue = ({
           <VariableSearchInput
             initialVariableId={options.mapListItemParams?.baseItemVariableId}
             onSelectVariable={updateItemVariableId}
-            placeholder="Base item"
+            placeholder={scopedT("Base item")}
           />
           <VariableSearchInput
             initialVariableId={options.mapListItemParams?.baseListVariableId}
             onSelectVariable={updateBaseListVariableId}
-            placeholder="Base list"
+            placeholder={scopedT("Base list")}
           />
           <VariableSearchInput
             initialVariableId={options.mapListItemParams?.targetListVariableId}
             onSelectVariable={updateTargetListVariableId}
-            placeholder="Target list"
+            placeholder={scopedT("Target list")}
           />
         </Stack>
       )
@@ -136,9 +141,9 @@ const SetVariableValue = ({
         <Alert fontSize="sm">
           <AlertIcon />
           <Text>
-            Will return either <Tag size="sm">morning</Tag>,{' '}
-            <Tag size="sm">afternoon</Tag>,<Tag size="sm">evening</Tag> or{' '}
-            <Tag size="sm">night</Tag> based on the current user time.
+            {scopedT("Will return either")} <Tag size="sm">{scopedT("morning")}</Tag>,{' '}
+            <Tag size="sm">{scopedT("afternoon")}</Tag>,<Tag size="sm">{scopedT("evening")}</Tag> {scopedT("or")}{' '}
+            <Tag size="sm">{scopedT("night")}</Tag> {scopedT("based on the current user time.")}
           </Text>
         </Alert>
       )

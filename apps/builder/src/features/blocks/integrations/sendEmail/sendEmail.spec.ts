@@ -25,7 +25,7 @@ test.describe('Send email block', () => {
     await page.goto(`/typebots/${typebotId}/edit`)
     await page.click('text=Configure...')
     await page.click(`text=notifications@typebot.io`)
-    await page.click('text=Connect new')
+    await page.click('text=Conectar nova')
     const createButton = page.locator('button >> text=Create')
     await expect(createButton).toBeDisabled()
     await page.fill(

@@ -23,6 +23,7 @@ import { StripeCredentials } from '@typebot.io/schemas'
 import { trpc } from '@/lib/trpc'
 import { isNotEmpty } from '@typebot.io/lib'
 import { useUser } from '@/features/account/hooks/useUser'
+import { useScopedI18n } from '@/locales'
 
 type Props = {
   isOpen: boolean
@@ -118,27 +119,28 @@ export const StripeConfigModal = ({
       },
     })
   }
+  const scopedT = useScopedI18n('build')
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>Connect Stripe account</ModalHeader>
+        <ModalHeader>{scopedT('Connect Stripe account')}</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
           <Stack as="form" spacing={4}>
             <TextInput
               isRequired
-              label="Account name:"
+              label={scopedT("Account name:")}
               onChange={handleNameChange}
-              placeholder="Typebot"
+              placeholder="MyTalk"
               withVariableButton={false}
               debounceTimeout={0}
             />
             <Stack>
               <FormLabel>
-                Test keys:{' '}
+              {scopedT("Test keys:")}{' '}
                 <MoreInfoTooltip>
-                  Will be used when previewing the bot.
+                  {scopedT("Will be used when previewing the bot.")}
                 </MoreInfoTooltip>
               </FormLabel>
               <HStack>
@@ -157,7 +159,7 @@ export const StripeConfigModal = ({
               </HStack>
             </Stack>
             <Stack>
-              <FormLabel>Live keys:</FormLabel>
+              <FormLabel>{scopedT("Live keys:")}</FormLabel>
               <HStack>
                 <FormControl>
                   <TextInput
@@ -179,9 +181,9 @@ export const StripeConfigModal = ({
             </Stack>
 
             <Text>
-              (You can find your keys{' '}
+              ({scopedT("You can find your keys")}{' '}
               <TextLink href="https://dashboard.stripe.com/apikeys" isExternal>
-                here
+                {scopedT("here")}
               </TextLink>
               )
             </Text>
@@ -199,7 +201,7 @@ export const StripeConfigModal = ({
             }
             isLoading={isCreating}
           >
-            Connect
+            {scopedT("Connect")}
           </Button>
         </ModalFooter>
       </ModalContent>

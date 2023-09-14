@@ -14,6 +14,7 @@ import { ImageUploadContent } from '@/components/ImageUploadContent'
 import { SwitchWithRelatedSettings } from '@/components/SwitchWithRelatedSettings'
 import { ConditionForm } from '@/features/blocks/logic/condition/components/ConditionForm'
 import { Condition, LogicalOperator } from '@typebot.io/schemas'
+import { useScopedI18n } from '@/locales'
 
 type Props = {
   typebotId: string
@@ -53,16 +54,18 @@ export const PictureChoiceItemSettings = ({
       },
     })
 
+    const scopedT = useScopedI18n('build')
+
   return (
     <Stack spacing={4}>
       <HStack>
-        <Text fontWeight="medium">Image:</Text>
+        <Text fontWeight="medium">{scopedT('Image')}</Text>
         <Popover isLazy>
           {({ onClose }) => (
             <>
               <PopoverTrigger>
                 <Button size="sm">
-                  {item.pictureSrc ? 'Change image' : 'Pick an image'}
+                  {item.pictureSrc ? `${scopedT('Change image')}` : `${scopedT('Pick an image')}`}
                 </Button>
               </PopoverTrigger>
               <PopoverContent p="4" w="500px">
@@ -81,17 +84,17 @@ export const PictureChoiceItemSettings = ({
         </Popover>
       </HStack>
       <TextInput
-        label="Title:"
+        label={scopedT("Title")}
         defaultValue={item.title}
         onChange={updateTitle}
       />
       <Textarea
-        label="Description:"
+        label={scopedT("Description")}
         defaultValue={item.description}
         onChange={updateDescription}
       />
       <SwitchWithRelatedSettings
-        label="Display condition"
+        label={scopedT("Display condition")}
         initialValue={item.displayCondition?.isEnabled ?? false}
         onCheckChange={updateIsDisplayConditionEnabled}
       >

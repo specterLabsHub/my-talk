@@ -15,6 +15,7 @@ import { useRouter } from 'next/router'
 import { useToast } from '../../../hooks/useToast'
 import { Credentials } from '@typebot.io/schemas'
 import { trpc } from '@/lib/trpc'
+import { useScopedI18n } from '@/locales'
 
 type Props = Omit<MenuButtonProps, 'type'> & {
   type: Credentials['type']
@@ -59,7 +60,10 @@ export const CredentialsDropdown = ({
     },
   })
 
-  const defaultCredentialsLabel = defaultCredentialLabel ?? `Select an account`
+  const scopedT = useScopedI18n('build')
+
+
+  const defaultCredentialsLabel = defaultCredentialLabel ?? `${scopedT('Select an account')}`
 
   const currentCredential = data?.credentials.find(
     (c) => c.id === currentCredentialsId
@@ -96,6 +100,7 @@ export const CredentialsDropdown = ({
       e.stopPropagation()
       mutate({ workspaceId, credentialsId })
     }
+
 
   return (
     <Menu isLazy>

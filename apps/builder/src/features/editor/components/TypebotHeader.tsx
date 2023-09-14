@@ -102,6 +102,7 @@ export const TypebotHeader = () => {
           colorScheme={router.pathname.includes('/edit') ? 'blue' : 'gray'}
           variant={router.pathname.includes('/edit') ? 'outline' : 'ghost'}
           size="sm"
+          _hover={{color: 'white !important', background: 'blue.600 !important'}}
         >
           {scopedT('Flow')}
         </Button>
@@ -111,6 +112,7 @@ export const TypebotHeader = () => {
           colorScheme={router.pathname.endsWith('theme') ? 'blue' : 'gray'}
           variant={router.pathname.endsWith('theme') ? 'outline' : 'ghost'}
           size="sm"
+          _hover={{color: 'white !important', background: 'blue.600 !important'}}
         >
            {scopedT('Theme')}
         </Button>
@@ -120,6 +122,7 @@ export const TypebotHeader = () => {
           colorScheme={router.pathname.endsWith('settings') ? 'blue' : 'gray'}
           variant={router.pathname.endsWith('settings') ? 'outline' : 'ghost'}
           size="sm"
+          _hover={{color: 'white !important', background: 'blue.600 !important'}}
         >
            {scopedT('Settings')}
         </Button>
@@ -129,6 +132,7 @@ export const TypebotHeader = () => {
           colorScheme={router.pathname.endsWith('share') ? 'blue' : 'gray'}
           variant={router.pathname.endsWith('share') ? 'outline' : 'ghost'}
           size="sm"
+          _hover={{color: 'white !important', background: 'blue.600 !important'}}
         >
            {scopedT('Share')}
         </Button>
@@ -139,6 +143,7 @@ export const TypebotHeader = () => {
             colorScheme={router.pathname.includes('results') ? 'blue' : 'gray'}
             variant={router.pathname.includes('results') ? 'outline' : 'ghost'}
             size="sm"
+            _hover={{color: 'white !important', background: 'blue.600 !important'}}
           >
               {scopedT('Results')}
           </Button>

@@ -25,7 +25,7 @@ test.describe('Email input block', () => {
         `input[placeholder="${defaultEmailInputOptions.labels.placeholder}"]`
       )
     ).toHaveAttribute('type', 'email')
-    await expect(page.getByRole('button', { name: 'Send' })).toBeDisabled()
+    await expect(page.getByRole('button', { name: 'Enviar' })).toBeDisabled()
 
     await page.click(`text=${defaultEmailInputOptions.labels.placeholder}`)
     await page.fill(

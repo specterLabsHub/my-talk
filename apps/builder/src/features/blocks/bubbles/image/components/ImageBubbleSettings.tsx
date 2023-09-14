@@ -1,6 +1,7 @@
 import { ImageUploadContent } from '@/components/ImageUploadContent'
 import { TextInput } from '@/components/inputs'
 import { SwitchWithLabel } from '@/components/inputs/SwitchWithLabel'
+import { useScopedI18n } from '@/locales'
 import { Stack } from '@chakra-ui/react'
 import { isDefined, isNotEmpty } from '@typebot.io/lib'
 import { ImageBubbleBlock } from '@typebot.io/schemas'
@@ -46,6 +47,8 @@ export const ImageBubbleSettings = ({
     setShowClickLinkInput(!showClickLinkInput)
   }
 
+  const scopedT = useScopedI18n('build')
+
   return (
     <Stack p="2" spacing={4}>
       <ImageUploadContent
@@ -55,7 +58,7 @@ export const ImageBubbleSettings = ({
       />
       <Stack>
         <SwitchWithLabel
-          label={'On click link'}
+          label={scopedT('On click link')}
           initialValue={showClickLinkInput}
           onCheckChange={toggleClickLink}
         />
@@ -68,7 +71,7 @@ export const ImageBubbleSettings = ({
               defaultValue={block.content.clickLink?.url}
             />
             <TextInput
-              placeholder="Link alt text (description)"
+              placeholder={scopedT("Link alt text (description)")}
               onChange={updateClickLinkAltText}
               defaultValue={block.content.clickLink?.alt}
             />

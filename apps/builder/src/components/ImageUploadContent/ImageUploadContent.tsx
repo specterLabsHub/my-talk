@@ -188,7 +188,7 @@ const UploadFileContent = ({
       includeFileName={includeFileName}
       colorScheme="blue"
     >
-      Choose an image
+      Escolha uma imagem
     </UploadButton>
   </Flex>
 )
@@ -199,7 +199,7 @@ const EmbedLinkContent = ({
 }: ContentProps & { defaultUrl?: string }) => (
   <Stack py="2">
     <TextInput
-      placeholder={'Paste the image link...'}
+      placeholder={'Cole o link da imagem...'}
       onChange={onNewUrl}
       defaultValue={defaultUrl ?? ''}
     />

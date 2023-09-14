@@ -31,6 +31,7 @@ import { QueryParamsInputs, HeadersInputs } from './KeyValueInputs'
 import { DataVariableInputs } from './ResponseMappingInputs'
 import { VariableForTestInputs } from './VariableForTestInputs'
 import { SwitchWithRelatedSettings } from '@/components/SwitchWithRelatedSettings'
+import { useScopedI18n } from '@/locales'
 
 type Props = {
   blockId: string
@@ -107,21 +108,23 @@ export const WebhookAdvancedConfigForm = ({
     [responseKeys]
   )
 
+  const scopedT = useScopedI18n('build')
+
   return (
     <>
       <SwitchWithRelatedSettings
-        label="Advanced configuration"
+        label={scopedT("Advanced configuration")}
         initialValue={options.isAdvancedConfig ?? true}
         onCheckChange={updateAdvancedConfig}
       >
         <SwitchWithLabel
-          label="Execute on client"
-          moreInfoContent="If enabled, the webhook will be executed on the client. It means it will be executed in the browser of your visitor. Make sure to enable CORS and do not expose sensitive data."
+          label={scopedT("Execute on client")}
+          moreInfoContent={scopedT("If enabled, the webhook will be executed on the client. It means it will be executed in the browser of your visitor. Make sure to enable CORS and do not expose sensitive data.")}
           initialValue={options.isExecutedOnClient ?? false}
           onCheckChange={updateIsExecutedOnClient}
         />
         <HStack justify="space-between">
-          <Text>Method:</Text>
+          <Text>{scopedT("Method:")}</Text>
           <DropdownList
             currentItem={webhook.method as HttpMethod}
             onItemSelect={updateMethod}
@@ -131,7 +134,7 @@ export const WebhookAdvancedConfigForm = ({
         <Accordion allowMultiple>
           <AccordionItem>
             <AccordionButton justifyContent="space-between">
-              Query params
+              {scopedT("Query params")}
               <AccordionIcon />
             </AccordionButton>
             <AccordionPanel pt="4">
@@ -139,13 +142,13 @@ export const WebhookAdvancedConfigForm = ({
                 initialItems={webhook.queryParams}
                 onItemsChange={updateQueryParams}
                 Item={QueryParamsInputs}
-                addLabel="Add a param"
+                addLabel={scopedT("Add a param")}
               />
             </AccordionPanel>
           </AccordionItem>
           <AccordionItem>
             <AccordionButton justifyContent="space-between">
-              Headers
+              {scopedT("Headers")}
               <AccordionIcon />
             </AccordionButton>
             <AccordionPanel pt="4">
@@ -153,18 +156,18 @@ export const WebhookAdvancedConfigForm = ({
                 initialItems={webhook.headers}
                 onItemsChange={updateHeaders}
                 Item={HeadersInputs}
-                addLabel="Add a value"
+                addLabel={scopedT("Add a value")}
               />
             </AccordionPanel>
           </AccordionItem>
           <AccordionItem>
             <AccordionButton justifyContent="space-between">
-              Body
+               {scopedT("Body")}
               <AccordionIcon />
             </AccordionButton>
             <AccordionPanel py={4} as={Stack} spacing="6">
               <SwitchWithLabel
-                label="Custom body"
+                label={scopedT("Custom body")}
                 initialValue={options.isCustomBody ?? true}
                 onCheckChange={updateIsCustomBody}
               />
@@ -180,7 +183,7 @@ export const WebhookAdvancedConfigForm = ({
           </AccordionItem>
           <AccordionItem>
             <AccordionButton justifyContent="space-between">
-              Variable values for test
+              {scopedT("Variable values for test")}
               <AccordionIcon />
             </AccordionButton>
             <AccordionPanel pt="4">
@@ -190,7 +193,7 @@ export const WebhookAdvancedConfigForm = ({
                 }
                 onItemsChange={updateVariablesForTest}
                 Item={VariableForTestInputs}
-                addLabel="Add an entry"
+                addLabel={scopedT("Add an entry")}
               />
             </AccordionPanel>
           </AccordionItem>
@@ -202,7 +205,7 @@ export const WebhookAdvancedConfigForm = ({
           colorScheme="blue"
           isLoading={isTestResponseLoading}
         >
-          Test the request
+          {scopedT("Test the request")}
         </Button>
       )}
       {testResponse && (
@@ -212,7 +215,7 @@ export const WebhookAdvancedConfigForm = ({
         <Accordion allowMultiple>
           <AccordionItem>
             <AccordionButton justifyContent="space-between">
-              Save in variables
+              {scopedT("Save in variables")}
               <AccordionIcon />
             </AccordionButton>
             <AccordionPanel pt="4">
@@ -220,7 +223,7 @@ export const WebhookAdvancedConfigForm = ({
                 initialItems={options.responseVariableMapping}
                 onItemsChange={updateResponseVariableMapping}
                 Item={ResponseMappingInputs}
-                addLabel="Add an entry"
+                addLabel={scopedT("Add an entry")}
               />
             </AccordionPanel>
           </AccordionItem>

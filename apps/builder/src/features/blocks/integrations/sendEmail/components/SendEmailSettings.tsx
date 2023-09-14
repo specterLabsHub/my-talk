@@ -18,6 +18,7 @@ import { CredentialsDropdown } from '@/features/credentials/components/Credentia
 import { TextInput, Textarea } from '@/components/inputs'
 import { useWorkspace } from '@/features/workspace/WorkspaceProvider'
 import { MoreInfoTooltip } from '@/components/MoreInfoTooltip'
+import { useScopedI18n } from '@/locales'
 
 type Props = {
   options: SendEmailOptions
@@ -106,6 +107,8 @@ export const SendEmailSettings = ({ options, onOptionsChange }: Props) => {
       attachmentsVariableId: variable?.id,
     })
 
+    const scopedT = useScopedI18n('build')
+
   return (
     <Stack spacing={4}>
       <Stack>
@@ -124,13 +127,13 @@ export const SendEmailSettings = ({ options, onOptionsChange }: Props) => {
         )}
       </Stack>
       <TextInput
-        label="Reply to:"
+        label={scopedT("Reply to:")}
         onChange={handleReplyToChange}
         defaultValue={options.replyTo}
         placeholder={'email@gmail.com'}
       />
       <TextInput
-        label="To:"
+        label={scopedT("To:")}
         onChange={handleToChange}
         defaultValue={options.recipients.join(', ')}
         placeholder="email1@gmail.com, email2@gmail.com"
@@ -148,28 +151,28 @@ export const SendEmailSettings = ({ options, onOptionsChange }: Props) => {
         placeholder="email1@gmail.com, email2@gmail.com"
       />
       <TextInput
-        label="Subject:"
+        label={scopedT("Subject:")}
         onChange={handleSubjectChange}
         defaultValue={options.subject ?? ''}
       />
       <SwitchWithLabel
-        label={'Custom content?'}
-        moreInfoContent="By default, the email body will be a recap of what has been collected so far. You can override it with this option."
+        label={scopedT('Custom content?')}
+        moreInfoContent={scopedT("By default, the email body will be a recap of what has been collected so far. You can override it with this option.")}
         initialValue={options.isCustomBody ?? false}
         onCheckChange={handleIsCustomBodyChange}
       />
       {options.isCustomBody && (
         <Stack>
           <Flex justifyContent="space-between">
-            <Text>Content: </Text>
+            <Text>{scopedT('Content:')}</Text>
             <HStack>
-              <Text fontSize="sm">Text</Text>
+              <Text fontSize="sm">{scopedT('Text')}</Text>
               <Switch
                 size="sm"
                 isChecked={options.isBodyCode ?? false}
                 onChange={handleIsBodyCodeChange}
               />
-              <Text fontSize="sm">Code</Text>
+              <Text fontSize="sm">{scopedT('Code')}</Text>
             </HStack>
           </Flex>
           {options.isBodyCode ? (
@@ -191,11 +194,10 @@ export const SendEmailSettings = ({ options, onOptionsChange }: Props) => {
       <Stack>
         <HStack>
           <FormLabel m="0" htmlFor="variable">
-            Attach files:
+            {scopedT('Attach files:')}
           </FormLabel>
           <MoreInfoTooltip>
-            The selected variable should have previously collected files from
-            the File upload input block.
+            {scopedT('The selected variable should have previously collected files from the File upload input block.')}
           </MoreInfoTooltip>
         </HStack>
 

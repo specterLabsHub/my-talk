@@ -5,6 +5,7 @@ import React from 'react'
 import { TextInput, NumberInput } from '@/components/inputs'
 import { SwitchWithLabel } from '@/components/inputs/SwitchWithLabel'
 import { VariableSearchInput } from '@/components/inputs/VariableSearchInput'
+import { useScopedI18n } from '@/locales'
 
 type Props = {
   options: FileInputOptions
@@ -36,21 +37,23 @@ export const FileInputSettings = ({ options, onOptionsChange }: Props) => {
   const updateSkipButtonLabel = (skip: string) =>
     onOptionsChange({ ...options, labels: { ...options.labels, skip } })
 
+    const scopedT = useScopedI18n('build')
+
   return (
     <Stack spacing={4}>
       <SwitchWithLabel
-        label="Required?"
+        label={scopedT("Required?")}
         initialValue={options.isRequired ?? true}
         onCheckChange={handleRequiredChange}
       />
       <SwitchWithLabel
-        label="Allow multiple files?"
+        label={scopedT("Allow multiple files?")}
         initialValue={options.isMultipleAllowed}
         onCheckChange={handleMultipleFilesChange}
       />
       <HStack>
         <NumberInput
-          label={'Size limit:'}
+          label={scopedT('Size limit:')}
           defaultValue={options.sizeLimit ?? 10}
           onValueChange={handleSizeLimitChange}
           withVariableButton={false}
@@ -59,7 +62,7 @@ export const FileInputSettings = ({ options, onOptionsChange }: Props) => {
       </HStack>
 
       <Stack>
-        <FormLabel mb="0">Placeholder:</FormLabel>
+        <FormLabel mb="0">{scopedT('Placeholder')}</FormLabel>
         <CodeEditor
           lang="html"
           onChange={handlePlaceholderLabelChange}
@@ -69,26 +72,26 @@ export const FileInputSettings = ({ options, onOptionsChange }: Props) => {
         />
       </Stack>
       <TextInput
-        label="Button label:"
+        label={scopedT("Button label:")}
         defaultValue={options.labels.button}
         onChange={handleButtonLabelChange}
         withVariableButton={false}
       />
       <TextInput
-        label="Clear button label:"
+        label={scopedT("Clear button label:")}
         defaultValue={options.labels.clear ?? ''}
         onChange={updateClearButtonLabel}
         withVariableButton={false}
       />
       <TextInput
-        label="Skip button label:"
+        label={scopedT("Skip button label:")}
         defaultValue={options.labels.skip ?? ''}
         onChange={updateSkipButtonLabel}
         withVariableButton={false}
       />
       <Stack>
         <FormLabel mb="0" htmlFor="variable">
-          Save upload URL{options.isMultipleAllowed ? 's' : ''} in a variable:
+          {scopedT("Save upload URL")}{options.isMultipleAllowed ? 's' : ''} {scopedT("in a variable")}
         </FormLabel>
         <VariableSearchInput
           initialVariableId={options.variableId}

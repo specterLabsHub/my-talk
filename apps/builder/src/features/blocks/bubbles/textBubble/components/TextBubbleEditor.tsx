@@ -17,6 +17,7 @@ import { VariableSearchInput } from '@/components/inputs/VariableSearchInput'
 import { useOutsideClick } from '@/hooks/useOutsideClick'
 import { selectEditor, TElement } from '@udecode/plate-common'
 import { TextEditorToolBar } from './TextEditorToolBar'
+import { useScopedI18n } from '@/locales'
 
 type TextBubbleEditorContentProps = {
   id: string
@@ -81,6 +82,8 @@ const TextBubbleEditorContent = ({
       '{{' + variable.name + '}}'
     )
   }
+
+  const scopedT = useScopedI18n('build')
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.shiftKey) return
@@ -152,7 +155,7 @@ const TextBubbleEditorContent = ({
             <VariableSearchInput
               initialVariableId={undefined}
               onSelectVariable={handleVariableSelected}
-              placeholder="Search for a variable"
+              placeholder={scopedT("Search for a variable")}
               autoFocus
             />
           </PopoverContent>
