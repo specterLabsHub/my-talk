@@ -74,7 +74,7 @@ export const executeChatwootBlock = (
   block: ChatwootBlock
 ): ExecuteIntegrationResponse => {
   const chatwootCode =
-    block.options.task === 'Close widget'
+    block.options.task === 'Fechar widget'
       ? chatwootCloseCode
       : isDefined(result.id)
       ? parseChatwootOpenCode({

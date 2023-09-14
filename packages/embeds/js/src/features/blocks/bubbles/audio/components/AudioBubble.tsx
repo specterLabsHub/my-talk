@@ -2,10 +2,11 @@ import { TypingBubble } from '@/components'
 import { isMobile } from '@/utils/isMobileSignal'
 import type { AudioBubbleContent } from '@typebot.io/schemas'
 import { createSignal, onCleanup, onMount } from 'solid-js'
-import WaveSurfer from 'wavesurfer.js'
+// import  {WaveSurfer}  from 'wavesurfer-react';
+// import { Waveform } from './Waveform';
 
 type Props = {
-  url: AudioBubbleContent['url']
+  url: AudioBubbleContent['url'] 
   onTransitionEnd: (offsetTop?: number) => void
 }
 
@@ -20,9 +21,20 @@ export const AudioBubble = (props: Props) => {
   let audioElement: HTMLAudioElement | undefined
   const [isTyping, setIsTyping] = createSignal(true)
 
-  let wavesurfer: WaveSurfer | undefined
-
   onMount(() => {
+    // if (audioElement) {
+    //   audioElement.style.display = 'none'
+  
+    //   wavesurfer = WaveSurfer.({
+    //     container: "waveForm", 
+    //     waveColor: 'rgba(0, 0, 0, 0.3)',
+    //     progressColor: 'rgba(255, 0, 0, 0.4)',
+    //     cursorWidth: 1,
+    //     height: 100,
+    //     normalize: true,
+    //     url: props.url
+    //   })
+    // }
     typingTimeout = setTimeout(() => {
       if (isPlayed) return
       isPlayed = true
@@ -34,45 +46,32 @@ export const AudioBubble = (props: Props) => {
     }, typingDuration)
   })
 
-  onMount(() => {
-    if (audioElement) {
-      audioElement.style.display = 'none'
+  // onMount(() => {
 
-      wavesurfer = WaveSurfer.create({
-        container: "waveForm", 
-        waveColor: 'rgba(0, 0, 0, 0.3)',
-        progressColor: 'rgba(255, 0, 0, 0.4)',
-        cursorWidth: 1,
-        height: 100,
-        normalize: true,
-      })
-
-      wavesurfer.load(props.url || '')
-
-      wavesurfer.on('ready', () => {
-        if (!isPlayed) {
-          typingTimeout = setTimeout(() => {
-            if (isPlayed) return
-            isPlayed = true
-            setIsTyping(false)
-            setTimeout(() => props.onTransitionEnd(ref?.offsetTop), showAnimationDuration)
-          }, typingDuration)
-        }
-      })
+  //     // wavesurfer.on('ready', () => {
+  //     //   if (!isPlayed) {
+  //     //     typingTimeout = setTimeout(() => {
+  //     //       if (isPlayed) return
+  //     //       isPlayed = true
+  //     //       setIsTyping(false)
+  //     //       setTimeout(() => props.onTransitionEnd(ref?.offsetTop), showAnimationDuration)
+  //     //     }, typingDuration)
+  //     //   }
+  //     // })
     
-        wavesurfer.play()
-    }
-  })
+  //     //   wavesurfer.play()
+  //   }
+  // })
 
   onCleanup(() => {
     if (typingTimeout) clearTimeout(typingTimeout)
   })
 
-  onCleanup(() => {
-    if (wavesurfer) {
-      wavesurfer.destroy()
-    }
-  })
+  // onCleanup(() => {
+  //   if (wavesurfer) {
+  //     wavesurfer.destroy()
+  //   }
+  // })
 
   return (
     <div class="flex flex-col animate-fade-in" ref={ref}>
@@ -87,6 +86,7 @@ export const AudioBubble = (props: Props) => {
           >
             {isTyping() && <TypingBubble />}
           </div>
+          {/* <Waveform url={props.url as string} /> */}
           {/* A tag de áudio não será renderizada */}
           <audio
             ref={audioElement}
@@ -101,7 +101,6 @@ export const AudioBubble = (props: Props) => {
             }}
             controls
           />
-          <div id="waveForm" style="height: 100px;"></div>
         </div>
       </div>
     </div>
