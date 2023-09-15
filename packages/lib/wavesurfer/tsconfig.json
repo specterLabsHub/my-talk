@@ -1,0 +1,28 @@
+{
+  "include": ["src/**/*"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "ES6",
+    "lib": [
+      "ESNext",
+      "DOM"
+    ],
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "module": "ESNext",
+    "moduleResolution": "nodenext",
+    "allowUmdGlobalAccess": false,
+    "declaration": true,
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+  },
+  "exclude": [
+    "node_modules",
+    "cypress",
+    "dist"
+  ]
+}

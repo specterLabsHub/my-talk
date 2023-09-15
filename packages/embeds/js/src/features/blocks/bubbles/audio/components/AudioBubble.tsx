@@ -4,6 +4,7 @@ import type { AudioBubbleContent } from '@typebot.io/schemas'
 import { createSignal, onCleanup, onMount } from 'solid-js'
 // import  {WaveSurfer}  from 'wavesurfer-react';
 // import { Waveform } from './Waveform';
+import WaveSurfer from '@typebot.io/lib/wavesurfer'
 
 type Props = {
   url: AudioBubbleContent['url'] 
@@ -35,6 +36,25 @@ export const AudioBubble = (props: Props) => {
     //     url: props.url
     //   })
     // }
+    const wavesurfer = WaveSurfer.create({
+      container: ref,
+      waveColor: '#ced0d1',
+      progressColor: '#858a8d',
+      url: props.url,
+      barWidth: 2,
+      barGap: 2,
+      barRadius: 2,
+      height: 25,
+      cursorWidth: 15,
+      cursorColor: '#30b0e8',
+
+    })
+
+    wavesurfer.once('interaction', () => {
+      wavesurfer.play()
+    })
+    
+
     typingTimeout = setTimeout(() => {
       if (isPlayed) return
       isPlayed = true
@@ -76,7 +96,7 @@ export const AudioBubble = (props: Props) => {
   return (
     <div class="flex flex-col animate-fade-in" ref={ref}>
       <div class="flex w-full items-center">
-        <div class={'flex relative z-10 items-start typebot-host-bubble'}>
+        <div class={'flex relative z-10 items-start typebot-host-bubble'} style={{width: '100%'}}>
           <div
             class="flex items-center absolute px-4 py-2 bubble-typing z-10 "
             style={{
@@ -88,7 +108,15 @@ export const AudioBubble = (props: Props) => {
           </div>
           {/* <Waveform url={props.url as string} /> */}
           {/* A tag de áudio não será renderizada */}
-          <audio
+          <div ref={ref} class={
+              'z-10 text-fade-in' +
+              (isTyping() ? 'opacity-0' : 'opacity-100 m-2')
+            }
+            style={{
+              height: isTyping() ? (isMobile() ? '32px' : '36px') : 'revert',
+              width: '100%'
+            }}/>
+          {/* <audio
             ref={audioElement}
             src={props.url}
             autoplay
@@ -100,7 +128,7 @@ export const AudioBubble = (props: Props) => {
               height: isTyping() ? (isMobile() ? '32px' : '36px') : 'revert'
             }}
             controls
-          />
+          /> */}
         </div>
       </div>
     </div>

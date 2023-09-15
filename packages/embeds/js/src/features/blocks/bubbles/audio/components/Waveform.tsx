@@ -22,7 +22,7 @@ interface WaveFormProps {
     url: string
 }
 
-export const Waveform = ({url}: WaveFormProps) =>  {
+export const Waveform = (props: WaveFormProps) =>  {
   let waveformRef: any
   let wavesurfer: any
   const [playing, setPlay] = createSignal(false);
@@ -36,7 +36,7 @@ export const Waveform = ({url}: WaveFormProps) =>  {
     const options = formWaveSurferOptions(waveformRef);
     wavesurfer = WaveSurfer.create(options);
 
-    wavesurfer.load(url);
+    wavesurfer.load(props.url);
 
     wavesurfer.on("ready", function() {
       // https://wavesurfer-js.org/docs/methods.html

@@ -37,7 +37,8 @@
     "react-dom": "18.2.0",
     "stripe": "12.13.0",
     "trpc-openapi": "1.2.0",
-    "wavesurfer-react": "^2.2.3"
+    "wavesurfer-react": "^2.2.3",
+    "wavesurfer.js": "^7.2.2"
   },
   "devDependencies": {
     "@faire/mjml-react": "3.3.0",
