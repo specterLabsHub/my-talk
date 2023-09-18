@@ -60,13 +60,15 @@ export const blocksAction = (
   updateBlock: (
     { groupIndex, blockIndex }: BlockIndices,
     updates: Partial<Omit<Block, 'id' | 'type'>>
-  ) =>
-    setTypebot((typebot) =>
+  ) => {
+    console.log({ updates })
+    return setTypebot((typebot) =>
       produce(typebot, (typebot) => {
         const block = typebot.groups[groupIndex].blocks[blockIndex]
         typebot.groups[groupIndex].blocks[blockIndex] = { ...block, ...updates }
       })
-    ),
+    )
+  },
   duplicateBlock: ({ groupIndex, blockIndex }: BlockIndices) =>
     setTypebot((typebot) =>
       produce(typebot, (typebot) => {

@@ -84,7 +84,7 @@ const scopedT = useScopedI18n('share')
                     typebot?.customDomain
                   )}/api/v1/sendMessage`}
                 />
-                <Text>{scopedT("With the following JSON body:")}</Text>
+                <Text>{scopedT('With the following JSON body:')}</Text>
                 <CodeEditor isReadOnly lang={'json'} value={replyBody} />
                 <Text>
                 {scopedT('Replace')} <Code>{'<ID_FROM_FIRST_RESPONSE>'}</Code>  {scopedT('with')}
