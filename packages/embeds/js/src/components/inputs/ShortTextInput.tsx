@@ -12,7 +12,7 @@ export const ShortTextInput = (props: ShortTextInputProps) => {
   return (
     <input
       ref={props.ref}
-      class="focus:outline-none bg-transparent px-4 py-4 flex-1 w-full text-input"
+      class="focus:outline-none bg-transparent px-3.5 py-3.5 flex-1 w-full text-input"
       type="text"
       style={{ 'font-size': '16px' }}
       onInput={(e) => local.onInput(e.currentTarget.value)}

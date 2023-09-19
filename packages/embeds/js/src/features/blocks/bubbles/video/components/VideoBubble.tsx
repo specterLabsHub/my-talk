@@ -20,9 +20,9 @@ export const VideoBubble = (props: Props) => {
   onMount(() => {
     const typingDuration =
       props.content?.type &&
-      [VideoBubbleContentType.VIMEO, VideoBubbleContentType.YOUTUBE].includes(
-        props.content?.type
-      )
+        [VideoBubbleContentType.VIMEO, VideoBubbleContentType.YOUTUBE].includes(
+          props.content?.type
+        )
         ? 2000
         : 100
     typingTimeout = setTimeout(() => {
@@ -41,7 +41,7 @@ export const VideoBubble = (props: Props) => {
   return (
     <div class="flex flex-col animate-fade-in" ref={ref}>
       <div class="flex w-full items-center">
-        <div class="flex relative z-10 items-start typebot-host-bubble overflow-hidden">
+        <div class="flex relative z-10 items-start typebot-host-bubble overflow-hidden" style={{ "padding-bottom": "12px" }}>
           <div
             class="flex items-center absolute px-4 py-2 bubble-typing z-10 "
             style={{
@@ -90,11 +90,10 @@ export const VideoBubble = (props: Props) => {
                 }}
               >
                 <iframe
-                  src={`${
-                    props.content.type === VideoBubbleContentType.VIMEO
-                      ? 'https://player.vimeo.com/video'
-                      : 'https://www.youtube.com/embed'
-                  }/${props.content.id}`}
+                  src={`${props.content.type === VideoBubbleContentType.VIMEO
+                    ? 'https://player.vimeo.com/video'
+                    : 'https://www.youtube.com/embed'
+                    }/${props.content.id}`}
                   class={'w-full h-full'}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowfullscreen

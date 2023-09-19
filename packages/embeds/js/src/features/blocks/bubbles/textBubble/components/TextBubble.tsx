@@ -42,9 +42,9 @@ export const TextBubble = (props: Props) => {
       props.typingEmulation?.enabled === false
         ? 0
         : computeTypingDuration(
-            plainText,
-            props.typingEmulation ?? defaultTypingEmulation
-          )
+          plainText,
+          props.typingEmulation ?? defaultTypingEmulation
+        )
     typingTimeout = setTimeout(onTypingEnd, typingDuration)
   })
 
@@ -55,7 +55,7 @@ export const TextBubble = (props: Props) => {
   return (
     <div class="flex flex-col animate-fade-in" ref={ref}>
       <div class="flex w-full items-center">
-        <div class="flex relative items-start typebot-host-bubble">
+        <div class="flex relative items-start typebot-host-bubble" style={{ "padding-right": "32px" }}>
           <div
             class="flex items-center absolute px-4 py-2 bubble-typing "
             style={{

@@ -21,6 +21,7 @@ import { executeClientSideAction } from '@/utils/executeClientSideActions'
 import { LoadingChunk } from './LoadingChunk'
 import { PopupBlockedToast } from './PopupBlockedToast'
 import { setStreamingMessage } from '@/utils/streamingMessageSignal'
+import { AvatarSideContainer } from './AvatarSideContainer'
 
 const parseDynamicTheme = (
   initialTheme: Theme,
@@ -32,16 +33,16 @@ const parseDynamicTheme = (
     hostAvatar:
       initialTheme.chat.hostAvatar && dynamicTheme?.hostAvatarUrl
         ? {
-            ...initialTheme.chat.hostAvatar,
-            url: dynamicTheme.hostAvatarUrl,
-          }
+          ...initialTheme.chat.hostAvatar,
+          url: dynamicTheme.hostAvatarUrl,
+        }
         : initialTheme.chat.hostAvatar,
     guestAvatar:
       initialTheme.chat.guestAvatar && dynamicTheme?.guestAvatarUrl
         ? {
-            ...initialTheme.chat.guestAvatar,
-            url: dynamicTheme?.guestAvatarUrl,
-          }
+          ...initialTheme.chat.guestAvatar,
+          url: dynamicTheme?.guestAvatarUrl,
+        }
         : initialTheme.chat.guestAvatar,
   },
 })
@@ -73,7 +74,7 @@ export const ConversationContainer = (props: Props) => {
   const [hasError, setHasError] = createSignal(false)
 
   onMount(() => {
-    ;(async () => {
+    ; (async () => {
       const initialChunk = chatChunks()[0]
       if (initialChunk.clientSideActions) {
         const actionsBeforeFirstBubble = initialChunk.clientSideActions.filter(
@@ -153,6 +154,7 @@ export const ConversationContainer = (props: Props) => {
       clientLogs,
     })
     clearTimeout(longRequest)
+    console.log(isSending())
     setIsSending(false)
     if (error) {
       setHasError(true)
@@ -261,8 +263,44 @@ export const ConversationContainer = (props: Props) => {
   return (
     <div
       ref={chatContainer}
-      class="flex flex-col overflow-y-scroll w-full min-h-full px-3 pt-10 relative scrollable-container typebot-chat-view scroll-smooth gap-2"
+      class="flex flex-col overflow-y-scroll w-full min-h-full relative scrollable-container typebot-chat-view scroll-smooth gap-2"
+      style={{ "background-image": "url(https://s3.fr-par.scw.cloud/typebot/public/typebots/clk5r5x2r002wky0fx0jr8cjx/background?v=1689807864320)" }}
     >
+      <div style={{ "width": '100%', "height": '55px', "background-color": '#005e54', "margin-bottom": "16px", "padding": "8px" }} class="flex items-center">
+        <div style={{ "padding-right": "10px", "padding-left": "16px" }}>
+          <button style={{ cursor: 'pointer' }}>
+            <svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8.125 14L2 7.83782L8.125 2" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M4.625 8L16 8" stroke="white" stroke-width="2.5" stroke-linecap="round" />
+            </svg>
+
+          </button>
+
+
+        </div>
+        <div class="flex items-center" style={{ "padding-bottom": "4px", "padding-right": "10px" }}>
+          <Show
+            when={
+              true
+            }
+          >
+            <AvatarSideContainer
+              hostAvatarSrc={theme().chat.hostAvatar?.url}
+              hideAvatar={false}
+              isNotAbsolute
+            />
+          </Show>
+        </div>
+        <div class="flex flex-col" style={{ "justify-content": "center" }}>
+          <div class="flex gap-1 items-center" style={{ "font-size": "17px", "font-weight": "600", "color": "white" }}>
+            Vanessa
+            <svg viewBox="0 0 18 18" height="16" width="16" preserveAspectRatio="xMidYMid meet" class="" version="1.1" x="0px" y="0px" enable-background="new 0 0 18 18"><polygon id="Star-2" fill="#00DA60" points="9,16 7.1,16.9 5.8,15.2 3.7,15.1 3.4,13 1.5,12 2.2,9.9 1.1,8.2 2.6,6.7 2.4,4.6 4.5,4 5.3,2 7.4,2.4 9,1.1 10.7,2.4 12.7,2 13.6,4 15.6,4.6 15.5,6.7 17,8.2 15.9,9.9 16.5,12 14.7,13 14.3,15.1 12.2,15.2 10.9,16.9 "></polygon><polygon id="Check-Icon" fill="#FFFFFF" points="13.1,7.3 12.2,6.5 8.1,10.6 5.9,8.5 5,9.4 8,12.4 "></polygon></svg>
+          </div>
+          <div style={{ "font-size": "13px", "font-weight": "400", "color": "white", "margin-top": "-4px" }}>
+            online
+          </div>
+        </div>
+      </div>
       <For each={chatChunks()}>
         {(chatChunk, index) => (
           <ChatChunk
@@ -284,6 +322,7 @@ export const ConversationContainer = (props: Props) => {
             onSubmit={sendMessage}
             onScrollToBottom={autoScrollToBottom}
             onSkip={handleSkip}
+            isLoading={isSending()}
           />
         )}
       </For>

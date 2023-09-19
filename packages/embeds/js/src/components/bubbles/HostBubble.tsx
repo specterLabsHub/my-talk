@@ -19,6 +19,7 @@ type Props = {
   message: ChatMessage
   typingEmulation: TypingEmulation
   onTransitionEnd: (offsetTop?: number) => void
+  children?: any
 }
 
 export const HostBubble = (props: Props) => {
@@ -57,8 +58,10 @@ export const HostBubble = (props: Props) => {
         <AudioBubble
           url={(props.message.content as AudioBubbleContent).url}
           onTransitionEnd={onTransitionEnd}
+          children={props.children}
         />
       </Match>
+
     </Switch>
   )
 }

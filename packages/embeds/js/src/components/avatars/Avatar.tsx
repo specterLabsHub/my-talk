@@ -3,7 +3,7 @@ import { createEffect, createSignal, Show } from 'solid-js'
 import { isNotEmpty } from '@typebot.io/lib'
 import { DefaultAvatar } from './DefaultAvatar'
 
-export const Avatar = (props: { initialAvatarSrc?: string }) => {
+export const Avatar = (props: { initialAvatarSrc?: string, seccondary?: boolean }) => {
   const [avatarSrc, setAvatarSrc] = createSignal(props.initialAvatarSrc)
 
   createEffect(() => {
@@ -19,7 +19,7 @@ export const Avatar = (props: { initialAvatarSrc?: string }) => {
       <figure
         class={
           'flex justify-center items-center rounded-full text-white relative animate-fade-in flex-shrink-0 ' +
-          (isMobile() ? 'w-6 h-6 text-sm' : 'w-10 h-10 text-xl')
+          (isMobile() ? 'w-6 h-6 text-sm' : `${props.seccondary ? 'w-7 h-7' : 'w-10 h-10'} text-xl`)
         }
       >
         <img

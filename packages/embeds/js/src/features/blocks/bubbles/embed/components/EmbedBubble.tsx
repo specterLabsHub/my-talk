@@ -35,6 +35,7 @@ export const EmbedBubble = (props: Props) => {
       <div class="flex w-full items-center">
         <div
           class={'flex relative z-10 items-start typebot-host-bubble w-full'}
+          style={{ "padding-bottom": "12px" }}
         >
           <div
             class="flex items-center absolute px-4 py-2 bubble-typing z-10 "

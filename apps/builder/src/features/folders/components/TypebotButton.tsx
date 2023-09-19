@@ -147,6 +147,7 @@ export const TypebotButton = ({
             variant="ghost"
             colorScheme="blue"
             size="sm"
+            _hover={{background: '#f4f4f5 !important'}}
           />
           <MoreButton
             pos="absolute"

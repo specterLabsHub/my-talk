@@ -239,7 +239,7 @@ textarea {
 }
 
 .typebot-chat-view {
-  max-width: 800px;
+  max-width: 100%;
 }
 
 .ping span {

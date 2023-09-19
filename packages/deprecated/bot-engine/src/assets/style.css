@@ -172,6 +172,10 @@ textarea {
   border: var(--typebot-host-bubble-border);
 }
 
+.typebot-host-bubble > .bubble-typing {
+  border-right-color: var(--typebot-host-bubble-bg-color);
+}
+
 .typebot-guest-bubble {
   color: var(--typebot-guest-bubble-color);
   background-color: var(--typebot-guest-bubble-bg-color);

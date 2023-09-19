@@ -27,7 +27,6 @@ import { RatingForm } from '@/features/blocks/inputs/rating'
 import { FileUploadForm } from '@/features/blocks/inputs/fileUpload'
 import { createSignal, Switch, Match } from 'solid-js'
 import { isNotDefined } from '@typebot.io/lib'
-import { isMobile } from '@/utils/isMobileSignal'
 import { PaymentForm } from '@/features/blocks/inputs/payment'
 import { MultipleChoicesForm } from '@/features/blocks/inputs/buttons/components/MultipleChoicesForm'
 import { Buttons } from '@/features/blocks/inputs/buttons/components/Buttons'
@@ -37,7 +36,6 @@ import { MultiplePictureChoice } from '@/features/blocks/inputs/pictureChoice/Mu
 type Props = {
   ref: HTMLDivElement | undefined
   block: NonNullable<ChatReply['input']>
-  hasHostAvatar: boolean
   guestAvatar?: Theme['chat']['guestAvatar']
   inputIndex: number
   context: BotContext
@@ -71,18 +69,17 @@ export const InputChatBlock = (props: Props) => {
       </Match>
       <Match when={isNotDefined(answer()) || props.hasError}>
         <div
-          class="flex justify-end animate-fade-in gap-2"
+          class="flex justify-end animate-fade-in gap-2 z-10"
           data-blockid={props.block.id}
           ref={props.ref}
+          style="
+          position: fixed;
+          bottom: 0;
+          width: 100%;
+          margin-left: -32px;
+          padding: 0 16px 8px 8px;
+      "
         >
-          {props.hasHostAvatar && (
-            <div
-              class={
-                'flex flex-shrink-0 items-center ' +
-                (isMobile() ? 'w-6 h-6' : 'w-10 h-10')
-              }
-            />
-          )}
           <Input
             context={props.context}
             block={props.block}
