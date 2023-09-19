@@ -69,6 +69,7 @@ export const ConversationContainer = (props: Props) => {
     ChatReply['dynamicTheme']
   >(props.initialChatReply.dynamicTheme)
   const [theme, setTheme] = createSignal(props.initialChatReply.typebot.theme)
+  const [hostStatus, setHostStatus] = createSignal<'online' | 'digitando' | 'gravando audio'>('online')
   const [isSending, setIsSending] = createSignal(false)
   const [blockedPopupUrl, setBlockedPopupUrl] = createSignal<string>()
   const [hasError, setHasError] = createSignal(false)
@@ -220,11 +221,19 @@ export const ConversationContainer = (props: Props) => {
   }
 
   const handleAllBubblesDisplayed = async () => {
+    setHostStatus('online')
+
     const lastChunk = [...chatChunks()].pop()
     if (!lastChunk) return
     if (isNotDefined(lastChunk.input)) {
       props.onEnd?.()
     }
+  }
+
+  const handleBeforeNewBubbleDisplayed = (type: string) => {
+    if (type === 'text' && hostStatus() !== 'digitando') setHostStatus('digitando')
+    else if (type === 'audio' && hostStatus() !== 'gravando audio') setHostStatus('gravando audio')
+    else setHostStatus('online')
   }
 
   const handleNewBubbleDisplayed = async (blockId: string) => {
@@ -317,6 +326,7 @@ export const ConversationContainer = (props: Props) => {
               index() < chatChunks().length - 1
             }
             hasError={hasError() && index() === chatChunks().length - 1}
+            beforeNewBubbleDisplayed={handleBeforeNewBubbleDisplayed}
             onNewBubbleDisplayed={handleNewBubbleDisplayed}
             onAllBubblesDisplayed={handleAllBubblesDisplayed}
             onSubmit={sendMessage}

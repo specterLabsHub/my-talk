@@ -1,9 +1,11 @@
 import { Show } from 'solid-js'
 import { Avatar } from '../avatars/Avatar'
+import { DoubleCheckIcon } from '../icons/DoubleCheckIcon'
 
 type Props = {
   message: string
   showAvatar: boolean
+  time?: string
   avatarSrc?: string
 }
 
@@ -17,6 +19,12 @@ export const GuestBubble = (props: Props) => (
       data-testid="guest-bubble"
     >
       {props.message}
+      <span class='text-xs text-right'>
+        <span style={{ display: 'inline' }}>
+          <DoubleCheckIcon font-size='6px' color='#0000ff'/>
+        </span>
+        {new Date().getHours().toPrecision(2) + ':' + new Date().getMinutes().toPrecision(2)}
+      </span>
     </span>
     <Show when={props.showAvatar}>
       <Avatar initialAvatarSrc={props.avatarSrc} />

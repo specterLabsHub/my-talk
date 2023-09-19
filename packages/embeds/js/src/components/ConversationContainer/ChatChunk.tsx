@@ -16,6 +16,7 @@ type Props = Pick<ChatReply, 'messages' | 'input'> & {
   hasError: boolean
   hideAvatar: boolean
   streamingMessageId: ChatChunkType['streamingMessageId']
+  beforeNewBubbleDisplayed: (type: string) => void
   onNewBubbleDisplayed: (blockId: string) => Promise<void>
   onScrollToBottom: (top?: number) => void
   onSubmit: (input: string) => void
@@ -32,6 +33,8 @@ export const ChatChunk = (props: Props) => {
     if (props.streamingMessageId) return
     if (props.messages.length === 0) {
       props.onAllBubblesDisplayed()
+    } else {
+      props.beforeNewBubbleDisplayed(props.messages[displayedMessageIndex()].type)
     }
     props.onScrollToBottom(
       inputRef?.offsetTop ? inputRef?.offsetTop - 50 : undefined
@@ -39,13 +42,20 @@ export const ChatChunk = (props: Props) => {
   })
 
   const displayNextMessage = async (bubbleOffsetTop?: number) => {
-    const lastBubbleBlockId = props.messages[displayedMessageIndex()].id
-    await props.onNewBubbleDisplayed(lastBubbleBlockId)
+    const lastMessage = props.messages[displayedMessageIndex()]
+    await props.onNewBubbleDisplayed(lastMessage.id)
+    
     setDisplayedMessageIndex(
       displayedMessageIndex() === props.messages.length
-        ? displayedMessageIndex()
-        : displayedMessageIndex() + 1
+      ? displayedMessageIndex()
+      : displayedMessageIndex() + 1
     )
+
+    const nextMessage = props.messages[displayedMessageIndex()]
+    if (nextMessage !== undefined) {
+      props.beforeNewBubbleDisplayed(nextMessage.type)
+    }
+
     props.onScrollToBottom(bubbleOffsetTop)
     if (displayedMessageIndex() === props.messages.length) {
       props.onAllBubblesDisplayed()

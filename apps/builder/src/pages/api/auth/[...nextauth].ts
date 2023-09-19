@@ -12,6 +12,7 @@ import { customAdapter } from '../../../features/auth/api/customAdapter'
 import { User } from '@typebot.io/prisma'
 import { env, getAtPath, isDefined, isNotEmpty } from '@typebot.io/lib'
 import { mockedUser } from '@/features/auth/mockedUser'
+import { canSignup } from '@/helpers/authRules'
 import { getNewUserInvitations } from '@/features/auth/helpers/getNewUserInvitations'
 import { sendVerificationRequest } from '@/features/auth/helpers/sendVerificationRequest'
 import { Ratelimit } from '@upstash/ratelimit'
@@ -174,12 +175,16 @@ export const authOptions: AuthOptions = {
       if (!account) return false
       const isNewUser = !('createdAt' in user && isDefined(user.createdAt))
       if (isNewUser && user.email) {
+        if (!(await canSignup(user.email))) {
+          return false
+        }
         const { body } = await got.get(
           'https://raw.githubusercontent.com/disposable-email-domains/disposable-email-domains/master/disposable_email_blocklist.conf'
         )
         const disposableEmailDomains = body.split('\n')
-        if (disposableEmailDomains.includes(user.email.split('@')[1]))
+        if (disposableEmailDomains.includes(user.email.split('@')[1])) {
           return false
+        }
       }
       if (process.env.DISABLE_SIGNUP === 'true' && isNewUser && user.email) {
         const { invitations, workspaceInvitations } =
