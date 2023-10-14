@@ -161,38 +161,8 @@ export const BlockNode = ({
   const handleBlockUpdate = (updates: Partial<Block>) =>
     updateBlock(indices, { ...block, ...updates })
 
-  const handleContentChange = (content: BubbleBlockContent) => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    console.log({ content })
-
-    // function extractUrls(obj) {
-    //   const urls = [];
-    
-    //   function traverse(node) {
-    //     if (node.type === "a" && node.url) {
-    //       urls.push(node.url);
-    //     }
-    
-    //     if (node.children && Array.isArray(node.children)) {
-    //       for (const child of node.children) {
-    //         traverse(child);
-    //       }
-    //     }
-    //   }
-    
-    //   for (const item of obj.richText) {
-    //     traverse(item);
-    //   }
-    
-    //   return urls;
-    // }
-    
-    // const urls = extractUrls(content);
-    // console.log(urls);    
-
-    return updateBlock(indices, { ...block, content } as Block)
-  }
+  const handleContentChange = (content: BubbleBlockContent) => 
+    updateBlock(indices, { ...block, content } as Block)
 
   useEffect(() => {
     setIsPopoverOpened(openedBlockId === block.id)

@@ -151,7 +151,7 @@ export default {
   "share.To start the chat, send a": "Para iniciar o chat, envie um",
   "share.request to": "pedido para",
   "share.with the following JSON body:": "com o seguinte corpo JSON:",
-  "shareWith the following JSON body:": "Com o seguinte corpo JSON:",
+  "share.With the following JSON body:": "Com o seguinte corpo JSON:",
   "share.The first response will contain a": "A primeira resposta conterá um",
   "share.that you will need for subsequent requests.": "que você precisará para solicitações subsequentes.",
   "share.Replace": "Substitua",

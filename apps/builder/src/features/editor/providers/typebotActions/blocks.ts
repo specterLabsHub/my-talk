@@ -5,6 +5,8 @@ import {
   DraggableBlockType,
   BlockIndices,
   Webhook,
+  BubbleBlockContent,
+  BubbleBlockType,
 } from '@typebot.io/schemas'
 import { SetTypebot } from '../TypebotProvider'
 import { produce, Draft } from 'immer'
@@ -13,6 +15,7 @@ import { createId } from '@paralleldrive/cuid2'
 import { byId, isWebhookBlock, blockHasItems } from '@typebot.io/lib'
 import { duplicateItemDraft } from './items'
 import { parseNewBlock } from '@/features/typebot/helpers/parseNewBlock'
+import { findInvalidUrls } from '@/features/typebot/helpers/typebotBlockRules'
 
 export type BlocksActions = {
   createBlock: (
@@ -39,7 +42,8 @@ export type WebhookCallBacks = {
 
 export const blocksAction = (
   setTypebot: SetTypebot,
-  { onWebhookBlockCreated, onWebhookBlockDuplicated }: WebhookCallBacks
+  { onWebhookBlockCreated, onWebhookBlockDuplicated }: WebhookCallBacks,
+  showError: (message: string) => void
 ): BlocksActions => ({
   createBlock: (
     groupId: string,
@@ -61,7 +65,57 @@ export const blocksAction = (
     { groupIndex, blockIndex }: BlockIndices,
     updates: Partial<Omit<Block, 'id' | 'type'>>
   ) => {
-    console.log({ updates })
+    let urls: string[] = []
+    if ('type' in updates && 'content' in updates) { 
+      const content = updates.content as BubbleBlockContent
+
+      if (updates.type === BubbleBlockType.TEXT) {
+        const extractUrls = (obj: BubbleBlockContent): string[] => {
+          const blockUrls: string[] = []
+          const traverse = (node: { type: string; url: string; children: unknown }) => {
+            if (node.type === "a" && node.url) {
+              blockUrls.push(node.url)
+            }
+            if (node.children && Array.isArray(node.children)) {
+              for (const child of node.children) {
+                traverse(child)
+              }
+            }
+          }
+          if ('richText' in obj) {
+            for (const item of obj.richText) {
+              traverse(item)
+            }
+          }
+          return blockUrls
+        }
+        urls = extractUrls(content)
+      }
+
+      if (
+        updates.type === 'image' &&
+        'clickLink' in content &&
+        content.clickLink !== undefined &&
+        content.clickLink.url !== undefined
+      ) {
+        urls.push(content.clickLink.url)
+      }
+
+      if (
+        updates.type === 'embed' &&
+        'url' in content &&
+        content.url !== undefined
+      ) {
+        urls.push(content.url)
+      }
+    }
+
+    const invalidUrls = findInvalidUrls(urls)
+    if (invalidUrls.length > 0) {
+      showError(`The link(s) ${invalidUrls.join(', ')} are not allowed`)
+      return
+    }
+
     return setTypebot((typebot) =>
       produce(typebot, (typebot) => {
         const block = typebot.groups[groupIndex].blocks[blockIndex]

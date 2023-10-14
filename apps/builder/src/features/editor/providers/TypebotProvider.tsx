@@ -103,6 +103,10 @@ export const TypebotProvider = ({
   const { push } = useRouter()
   const { showToast } = useToast()
 
+  const showError = (message: string) => {
+    showToast({ status: 'error', description: message })
+  }
+
   const {
     typebot,
     publishedTypebot,
@@ -181,6 +185,7 @@ export const TypebotProvider = ({
       if (dequal(omit(typebot, 'updatedAt'), omit(typebotToSave, 'updatedAt')))
         return
       setIsSavingLoading(true)
+      
       const { data, error } = await updateTypebotQuery(
         typebotToSave.id,
         typebotToSave
@@ -410,10 +415,14 @@ export const TypebotProvider = ({
           onWebhookBlockCreated: createWebhook,
           onWebhookBlockDuplicated: duplicateWebhook,
         }),
-        ...blocksAction(setLocalTypebot as SetTypebot, {
-          onWebhookBlockCreated: createWebhook,
-          onWebhookBlockDuplicated: duplicateWebhook,
-        }),
+        ...blocksAction(
+          setLocalTypebot as SetTypebot,
+          {
+            onWebhookBlockCreated: createWebhook,
+            onWebhookBlockDuplicated: duplicateWebhook,
+          },
+          showError
+        ),
         ...variablesAction(setLocalTypebot as SetTypebot),
         ...edgesAction(setLocalTypebot as SetTypebot),
         ...itemsAction(setLocalTypebot as SetTypebot),
