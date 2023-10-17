@@ -9,7 +9,6 @@ import {
   Flex,
 } from '@chakra-ui/react'
 import {
-  CreditCardIcon,
   HardDriveIcon,
   SettingsIcon,
   UsersIcon,
@@ -20,7 +19,6 @@ import { useState } from 'react'
 import { MembersList } from './MembersList'
 import { WorkspaceSettingsForm } from './WorkspaceSettingsForm'
 import { useWorkspace } from '../WorkspaceProvider'
-import packageJson from '../../../../../../package.json'
 import { UserPreferencesForm } from '@/features/account/components/UserPreferencesForm'
 import { MyAccountForm } from '@/features/account/components/MyAccountForm'
 import { BillingSettingsLayout } from '@/features/billing/components/BillingSettingsLayout'
@@ -58,7 +56,7 @@ export const WorkspaceSettingsModal = ({
       <ModalContent minH="600px" flexDir="row">
         <Stack
           spacing={8}
-          w="180px"
+          w="250px"
           py="6"
           borderRightWidth={1}
           justifyContent="space-between"
@@ -129,28 +127,9 @@ export const WorkspaceSettingsModal = ({
               >
                 {scopedT('menu.members.label')}
               </Button>
-              {canEditWorkspace && (
-                <Button
-                  variant={selectedTab === 'billing' ? 'solid' : 'ghost'}
-                  onClick={() => setSelectedTab('billing')}
-                  leftIcon={<CreditCardIcon />}
-                  size="sm"
-                  justifyContent="flex-start"
-                  pl="4"
-                  overflow="scroll"
-                  className="hide-scrollbar"
-                >
-                  {scopedT('menu.billingAndUsage.label')}
-                </Button>
-              )}
+            
             </Stack>
           </Stack>
-
-          <Flex justify="center" pt="10">
-            <Text color="gray.500" fontSize="xs">
-              {scopedT('menu.version.label', { version: packageJson.version })}
-            </Text>
-          </Flex>
         </Stack>
 
         {isOpen && (

@@ -18,7 +18,7 @@ export const getLinkedTypebots = authenticatedProcedure
   .input(
     z.object({
       workspaceId: z.string(),
-      typebotIds: z.string().describe('Comma separated list of typebot ids'),
+      typebotIds: z.string().describe('Comma separated list of Talk ids'),
     })
   )
   .output(

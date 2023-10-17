@@ -18,6 +18,7 @@ import { GuestBubbles } from './GuestBubbles'
 import { HostBubbles } from './HostBubbles'
 import { InputsTheme } from './InputsTheme'
 import { useScopedI18n } from '@/locales'
+import { AvatarName } from './AvatarName'
 
 type Props = {
   typebotId: string
@@ -60,6 +61,13 @@ export const ChatThemeSettings = ({
         avatarProps={chatTheme.guestAvatar}
         onAvatarChange={handleGuestAvatarChange}
       />
+
+      <Stack borderWidth={1} rounded="md" p="4" spacing={4}>
+        <Heading fontSize="lg">Nome do Bot</Heading>
+        <AvatarName
+        />
+      </Stack>
+
       <Stack borderWidth={1} rounded="md" p="4" spacing={4}>
         <Heading fontSize="lg">{scopedT('Bot bubbles')}</Heading>
         <HostBubbles
@@ -67,6 +75,7 @@ export const ChatThemeSettings = ({
           onHostBubblesChange={handleHostBubblesChange}
         />
       </Stack>
+      
 
       <Stack borderWidth={1} rounded="md" p="4" spacing={4}>
         <Heading fontSize="lg">{scopedT('User bubbles')}</Heading>

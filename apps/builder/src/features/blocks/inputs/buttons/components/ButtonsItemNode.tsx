@@ -21,6 +21,7 @@ import React, { useRef, useState } from 'react'
 import { isNotDefined } from '@typebot.io/lib'
 import { useGraph } from '@/features/graph/providers/GraphProvider'
 import { ButtonsItemSettings } from './ButtonsItemSettings'
+import { useScopedI18n } from '@/locales'
 
 type Props = {
   item: ButtonItem
@@ -31,11 +32,11 @@ type Props = {
 export const ButtonsItemNode = ({ item, indices, isMouseOver }: Props) => {
   const { deleteItem, updateItem, createItem } = useTypebot()
   const { openedItemId, setOpenedItemId } = useGraph()
-  const [itemValue, setItemValue] = useState(item.content ?? 'Click to edit')
+  const scopedT = useScopedI18n('build')
+  const [itemValue, setItemValue] = useState(item.content ?? `${scopedT('Click to edit...')}`)
   const editableRef = useRef<HTMLDivElement | null>(null)
   const ref = useRef<HTMLDivElement | null>(null)
   const arrowColor = useColorModeValue('white', 'gray.800')
-
   const handleMouseDown = (e: React.MouseEvent) => e.stopPropagation()
 
   const handleInputSubmit = () => {
@@ -47,8 +48,8 @@ export const ButtonsItemNode = ({ item, indices, isMouseOver }: Props) => {
   }
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    if (e.key === 'Escape' && itemValue === 'Click to edit') deleteItem(indices)
-    if (e.key === 'Enter' && itemValue !== '' && itemValue !== 'Click to edit')
+    if (e.key === 'Escape' && itemValue === `${scopedT('Click to edit...')}`) deleteItem(indices)
+    if (e.key === 'Enter' && itemValue !== '' && itemValue !== `${scopedT('Click to edit...')}`)
       handlePlusClick()
   }
 
@@ -85,7 +86,7 @@ export const ButtonsItemNode = ({ item, indices, isMouseOver }: Props) => {
           >
             <EditablePreview
               w="full"
-              color={item.content !== 'Click to edit' ? 'inherit' : 'gray.500'}
+              color={item.content !== `${scopedT('Click to edit...')}` ? 'inherit' : 'gray.500'}
               cursor="pointer"
             />
             <EditableInput />

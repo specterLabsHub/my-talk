@@ -173,7 +173,7 @@ export const FolderContent = ({ folder }: Props) => {
               />
             )}
           </HStack>
-          <Wrap spacing={4}>
+          <Wrap spacing={4} style={{marginBottom: 32}}>
             {currentRole !== WorkspaceRole.GUEST && (
               <CreateBotButton
                 folderId={folder?.id}

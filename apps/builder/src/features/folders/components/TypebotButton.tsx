@@ -188,7 +188,7 @@ export const TypebotButton = ({
             <Stack spacing="4">
               <Text>
                 {scopedT('deleteConfirmationMessage', {
-                  typebotName: <strong>{typebot.name}</strong>,
+                  MyTalkName: <strong>{typebot.name}</strong>,
                 })}
               </Text>
               <Alert status="warning">

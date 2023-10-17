@@ -30,7 +30,7 @@ export const getTotalAnswersInBlocks = authenticatedProcedure
     if (!typebot?.publishedTypebot)
       throw new TRPCError({
         code: 'NOT_FOUND',
-        message: 'Published typebot not found',
+        message: 'Published Talk not found',
       })
 
     const publishedTypebot = typebot.publishedTypebot as PublicTypebot

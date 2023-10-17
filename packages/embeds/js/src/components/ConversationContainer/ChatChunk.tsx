@@ -44,11 +44,11 @@ export const ChatChunk = (props: Props) => {
   const displayNextMessage = async (bubbleOffsetTop?: number) => {
     const lastMessage = props.messages[displayedMessageIndex()]
     await props.onNewBubbleDisplayed(lastMessage.id)
-    
+
     setDisplayedMessageIndex(
       displayedMessageIndex() === props.messages.length
-      ? displayedMessageIndex()
-      : displayedMessageIndex() + 1
+        ? displayedMessageIndex()
+        : displayedMessageIndex() + 1
     )
 
     const nextMessage = props.messages[displayedMessageIndex()]
@@ -62,18 +62,9 @@ export const ChatChunk = (props: Props) => {
     }
   }
 
-  function formatCurrentTime(): string {
-    const now = new Date();
-    const hours = now.getHours();
-    const minutes = now.getMinutes();
-    const formattedHours = hours < 10 ? `0${hours}` : `${hours}`;
-    const formattedMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
-    return `${formattedHours}:${formattedMinutes}`;
-  }
 
   return (
-    <div class="flex flex-col w-full min-w-0 gap-2" style={{ "max-width": '776px', "width": '100%', "padding-left": "38px" }}>
-      {/* <div  class="flex items-center absolute px-4 py-2 bubble-typing z-10 "> */}
+    <div class="flex flex-col w-full min-w-0 gap-2" style={{ "max-width": '100%', "width": '100%', "padding-left": "38px", "padding-right": "38px" }}>
       <Show when={props.messages.length > 0}>
         <div class={'flex' + (isMobile() ? ' gap-1' : ' gap-2')}>
           <div
@@ -93,9 +84,10 @@ export const ChatChunk = (props: Props) => {
                 return (
                   <div class="relative" style={{ "width": "fit-content" }}>
                     {currentIndex === 0 && (
-                      <div style={{ "position": "absolute", width: 0, height: 0, "border-style": "solid", "border-width": "0px 10px 10px 0", "border-color": "transparent #f7f8ff transparent transparent", "top": "0", "left": "-6px" }} />
+                      <div style={{ "position": "absolute", width: 0, height: 0, "border-style": "solid", "border-width": "0px 10px 10px 0", "border-color": "transparent var(--typebot-host-bubble-bg-color) transparent transparent", "top": "0", "left": "-6px" }} />
                     )}
                     <HostBubble
+                    loading={props.isLoading}
                       children={<Show
                         when={
                           true
@@ -114,11 +106,6 @@ export const ChatChunk = (props: Props) => {
                       typingEmulation={props.settings.typingEmulation}
                       onTransitionEnd={displayNextMessage}
                     />
-                    <Show when={!props.isLoading}>
-                      <div style={{ "font-size": "11px", "color": "#667781", "position": "absolute", "right": `${message.type === BubbleBlockType.AUDIO ? '57px' : '8px'}`, "bottom": "0px" }} class="z-10">
-                        {formatCurrentTime()}
-                      </div>
-                    </Show>
                   </div>
                 );
               }}

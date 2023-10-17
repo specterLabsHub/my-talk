@@ -158,7 +158,7 @@ test.describe.parallel('Theme page', () => {
       await page.click(
         '[data-testid="guest-bubbles-theme"] >> [aria-label="Pick a color"] >> nth=0'
       )
-      await page.fill('input[value="#FF8E21"]', '#d8f3dc')
+      await page.fill('input[value="#F7F8FF"]', '#d8f3dc')
       await page.click(
         '[data-testid="guest-bubbles-theme"] >> [aria-label="Pick a color"] >> nth=1'
       )

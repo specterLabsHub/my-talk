@@ -1,11 +1,9 @@
-import { ChevronDownIcon } from '@/components/icons'
 import {
   Menu,
   MenuButton,
   Button,
   MenuList,
   MenuItem,
-  Tag,
   HStack,
   Text,
 } from '@chakra-ui/react'
@@ -23,16 +21,12 @@ export const RuntimeMenu = ({ selectedRuntime, onSelectRuntime }: Props) => (
     <MenuButton
       as={Button}
       leftIcon={selectedRuntime.icon}
-      rightIcon={<ChevronDownIcon />}
     >
       <HStack justifyContent="space-between">
         <Text>{selectedRuntime.name}</Text>
-        {'status' in selectedRuntime ? (
-          <Tag colorScheme="orange">{selectedRuntime.status}</Tag>
-        ) : null}
       </HStack>
     </MenuButton>
-    <MenuList w="100px">
+    <MenuList w="0" style={{display: 'none'}}>
       {runtimes
         .filter((runtime) => runtime.name !== selectedRuntime.name)
         .map((runtime) => (
@@ -43,9 +37,6 @@ export const RuntimeMenu = ({ selectedRuntime, onSelectRuntime }: Props) => (
           >
             <HStack justifyContent="space-between">
               <Text>{runtime.name}</Text>
-              {'status' in runtime ? (
-                <Tag colorScheme="orange">{runtime.status}</Tag>
-              ) : null}
             </HStack>
           </MenuItem>
         ))}

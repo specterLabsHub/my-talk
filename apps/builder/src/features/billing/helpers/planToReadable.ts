@@ -12,6 +12,6 @@ export const planToReadable = (plan?: Plan) => {
     case Plan.PRO:
       return 'Pro'
     case Plan.UNLIMITED:
-      return 'Unlimited'
+      return ''
   }
 }

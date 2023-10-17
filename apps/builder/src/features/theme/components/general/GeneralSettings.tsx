@@ -1,7 +1,6 @@
 import { Flex, FormLabel, Stack, Switch, useDisclosure } from '@chakra-ui/react'
-import { Background, GeneralTheme } from '@typebot.io/schemas'
+import {  GeneralTheme } from '@typebot.io/schemas'
 import React from 'react'
-import { BackgroundSelector } from './BackgroundSelector'
 import { FontSelector } from './FontSelector'
 import { LockTag } from '@/features/billing/components/LockTag'
 import { Plan } from '@typebot.io/prisma'
@@ -30,9 +29,6 @@ export const GeneralSettings = ({
 
   const handleSelectFont = (font: string) =>
     onGeneralThemeChange({ ...generalTheme, font })
-
-  const handleBackgroundChange = (background: Background) =>
-    onGeneralThemeChange({ ...generalTheme, background })
 
   const updateBranding = () => {
     if (isBrandingEnabled && isWorkspaceFreePlan) return
@@ -65,10 +61,6 @@ export const GeneralSettings = ({
       <FontSelector
         activeFont={generalTheme.font}
         onSelectFont={handleSelectFont}
-      />
-      <BackgroundSelector
-        background={generalTheme.background}
-        onBackgroundChange={handleBackgroundChange}
       />
     </Stack>
   )

@@ -28,12 +28,12 @@ export const defaultFileInputOptions = {
   isMultipleAllowed: false,
   labels: {
     placeholder: `<strong>
-      Click to upload
-    </strong> or drag and drop<br>
-    (size limit: 10MB)`,
+      Clique para enviar um arquivo
+    </strong> ou arraste e solte<br>
+    (tamanho permitido: 10MB)`,
     button: 'Upload',
-    clear: 'Clear',
-    skip: 'Skip',
+    clear: 'Limpar',
+    skip: 'Pular',
   },
 } satisfies FileInputOptions
 

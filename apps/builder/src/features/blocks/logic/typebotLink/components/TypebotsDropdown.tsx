@@ -36,7 +36,7 @@ export const TypebotsDropdown = ({
         selectedItem={typebotId}
         items={[
           {
-            label: 'Current typebot',
+            label: 'Current Talk',
             value: 'current',
           },
           ...(typebots ?? [])
@@ -54,7 +54,7 @@ export const TypebotsDropdown = ({
             })),
         ]}
         onSelect={onSelect}
-        placeholder={'Select a typebot'}
+        placeholder={'Select a Talk'}
       />
       {typebotId && typebotId !== 'current' && (
         <IconButton

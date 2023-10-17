@@ -34,7 +34,7 @@ export function customAdapter(p: PrismaClient): Adapter {
         throw Error('New users are forbidden')
 
       const newWorkspaceData = {
-        name: data.name ? `${data.name}'s workspace` : `My workspace`,
+        name: data.name ? `${data.name}'s espaço de trabalho` : `Meu espaço de trabalho`,
         plan: parseWorkspaceDefaultPlan(data.email),
       }
       const createdUser = await p.user.create({

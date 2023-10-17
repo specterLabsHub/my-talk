@@ -16,7 +16,7 @@ export const BlockLabel = ({ type }: Props): JSX.Element => {
 
   switch (type) {
     case 'start':
-      return <Text color='#F22166' fontSize="sm">{scopedT('Start')}</Text>
+      return <Text color='#1a1a1a !important' fontSize="sm">{scopedT('Start')}</Text>
     case BubbleBlockType.TEXT:
     case InputBlockType.TEXT:
       return <Text color='#1a1a1a' fontSize="sm">{scopedT('Text')}</Text>

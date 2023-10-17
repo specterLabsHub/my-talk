@@ -17,7 +17,7 @@ export const galleryTemplates: Pick<ThemeTemplate, 'id' | 'name' | 'theme'>[] =
             isEnabled: true,
           },
           hostBubbles: { color: '#303235', backgroundColor: '#F7F8FF' },
-          guestBubbles: { color: '#FFFFFF', backgroundColor: '#FF8E21' },
+          guestBubbles: { color: '#FFFFFF', backgroundColor: '#F7F8FF' },
         },
         general: {
           font: 'Open Sans',
@@ -40,7 +40,7 @@ export const galleryTemplates: Pick<ThemeTemplate, 'id' | 'name' | 'theme'>[] =
             isEnabled: true,
           },
           hostBubbles: { color: '#ffffff', backgroundColor: '#1e293b' },
-          guestBubbles: { color: '#FFFFFF', backgroundColor: '#FF8E21' },
+          guestBubbles: { color: '#FFFFFF', backgroundColor: '#F7F8FF' },
         },
         general: {
           font: 'Open Sans',

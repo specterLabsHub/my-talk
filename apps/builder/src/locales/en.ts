@@ -259,6 +259,8 @@ export default {
   "build.To label:": "To label:",
   "build.Button label:": "Button label:",
   "build.Step:": "Step:",
+  "build.Group": "Group",
+  "build.copy": "copy",
   "build.Dynamic items?": "Dynamic items?",
   "build.Images:": "Images:",
   "build.Titles:": "Titles:",
@@ -356,6 +358,8 @@ export default {
   "build.Editor basics": "Editor basics",
   "build.Add OpenAI account": "Add OpenAI account",
   "build.My account": "My account",
+  "build.My workspace": "My workspace",
+  "build.workspace": "workspace",
   "build.API key": "API key",
   "build.You can generate an API key": "You can generate an API key",
   "build.here": "here",
@@ -464,12 +468,12 @@ export default {
   'folders.typebotButton.duplicate': 'Duplicate',
   'folders.typebotButton.delete': 'Delete',
   'folders.typebotButton.deleteConfirmationMessage':
-    'Are you sure you want to delete your typebot {typebotName}?',
+    'Are you sure you want to delete your MyTalk {MyTalkName}?',
   'folders.typebotButton.deleteConfirmationMessageWarning':
     "All its associated data will be deleted and won't be recoverable.",
   'account.apiTokens.heading': 'API tokens',
   'account.apiTokens.description':
-    'These tokens allow other apps to control your whole account and typebots. Be careful!',
+    'These tokens allow other apps to control your whole account and Talks. Be careful!',
   'account.apiTokens.createButton.label': 'Create',
   'account.apiTokens.deleteButton.label': 'Delete',
   'account.apiTokens.table.nameHeader': 'Name',
@@ -594,13 +598,13 @@ export default {
   'billing.usage.heading': 'Usage',
   'billing.usage.chats.heading': 'Chats',
   'billing.usage.chats.alert.soonReach':
-    "Your typebots are popular! You will soon reach your plan's chats limit. 🚀",
+    "Your MyTalks are popular! You will soon reach your plan's chats limit. 🚀",
   'billing.usage.chats.alert.updatePlan':
     'Make sure to update your plan to increase this limit and continue chatting with your users.',
   'billing.usage.chats.resetInfo': '(resets on 1st of every month)',
   'billing.usage.storage.heading': 'Storage',
   'billing.usage.storage.alert.soonReach':
-    "Your typebots are popular! You will soon reach your plan's storage limit. 🚀",
+    "Your MyTalks are popular! You will soon reach your plan's storage limit. 🚀",
   'billing.usage.storage.alert.updatePlan':
     'Make sure to update your plan in order to continue collecting uploaded files. You can also delete files to free up space.',
   'billing.limitMessage.brand': 'remove branding',
@@ -618,10 +622,11 @@ export default {
   'workspace.settings.name.label': 'Name:',
   'workspace.settings.deleteButton.label': 'Delete workspace',
   'workspace.settings.deleteButton.confirmMessage':
-    'Are you sure you want to delete {workspaceName} workspace? All its folders, typebots and results will be deleted forever.',
+    'Are you sure you want to delete {workspaceName} workspace? All its folders, MyTalks and results will be deleted forever.',
   'workspace.settings.modal.menu.myAccount.label': 'My account',
   'workspace.settings.modal.menu.preferences.label': 'Preferences',
   'workspace.settings.modal.menu.workspace.label': 'Workspace',
+  'workspace.settings.modal.menu.workspace.My workspace': 'My workspace',
   'workspace.settings.modal.menu.settings.label': 'Settings',
   'workspace.settings.modal.menu.members.label': 'Members',
   'workspace.settings.modal.menu.billingAndUsage.label': 'Billing & Usage',

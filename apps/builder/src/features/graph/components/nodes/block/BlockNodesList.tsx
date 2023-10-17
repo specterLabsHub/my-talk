@@ -125,6 +125,7 @@ export const BlockNodesList = ({
       spacing={1}
       transition="none"
       pointerEvents={isReadOnly || isStartGroup ? 'none' : 'auto'}
+      color={isReadOnly || isStartGroup ? '#1a1a1a' : ''}
     >
       <PlaceholderNode
         isVisible={showSortPlaceholders}

@@ -7,10 +7,8 @@ import {
   Spinner,
   Text,
   useColorModeValue,
-  useDisclosure,
 } from '@chakra-ui/react'
 import {
-  BuoyIcon,
   ChevronLeftIcon,
   RedoIcon,
   UndoIcon,
@@ -23,13 +21,10 @@ import Link from 'next/link'
 import { EditableEmojiOrImageIcon } from '@/components/EditableEmojiOrImageIcon'
 import { useUndoShortcut } from '@/hooks/useUndoShortcut'
 import { useDebouncedCallback } from 'use-debounce'
-import { CollaborationMenuButton } from '@/features/collaboration/components/CollaborationMenuButton'
 import { PublishButton } from '@/features/publish/components/PublishButton'
 import { headerHeight } from '../constants'
 import { RightPanel, useEditor } from '../providers/EditorProvider'
 import { useTypebot } from '../providers/TypebotProvider'
-import { SupportBubble } from '@/components/SupportBubble'
-import { isCloudProdInstance } from '@/helpers/isCloudProdInstance'
 import { useScopedI18n } from '@/locales'
 
 export const TypebotHeader = () => {
@@ -52,7 +47,6 @@ export const TypebotHeader = () => {
   const hideUndoShortcutTooltipLater = useDebouncedCallback(() => {
     setUndoShortcutTooltipOpen(false)
   }, 1000)
-  const { isOpen, onOpen } = useDisclosure()
 
   const handleNameSubmit = (name: string) => updateTypebot({ name })
 
@@ -72,12 +66,6 @@ export const TypebotHeader = () => {
     undo()
   })
 
-  const handleHelpClick = () => {
-    isCloudProdInstance
-      ? onOpen()
-      : window.open('https://docs.typebot.io', '_blank')
-  }
-
   return (
     <Flex
       w="full"
@@ -90,7 +78,6 @@ export const TypebotHeader = () => {
       bgColor={useColorModeValue('white', 'gray.900')}
       flexShrink={0}
     >
-      {isOpen && <SupportBubble autoShowDelay={0} />}
       <HStack
         display={['none', 'flex']}
         pos={{ base: 'absolute', xl: 'static' }}
@@ -214,9 +201,6 @@ export const TypebotHeader = () => {
               />
             </Tooltip>
           </HStack>
-          <Button leftIcon={<BuoyIcon />} onClick={handleHelpClick} size="sm">
-          {scopedT('Help')}
-          </Button>
         </HStack>
         {isSavingLoading && (
           <HStack>
@@ -229,7 +213,6 @@ export const TypebotHeader = () => {
       </HStack>
 
       <HStack right="40px" pos="absolute" display={['none', 'flex']}>
-        <CollaborationMenuButton isLoading={isNotDefined(typebot)} />
         {router.pathname.includes('/edit') && isNotDefined(rightPanel) && (
           <Button
             colorScheme="gray"

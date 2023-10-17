@@ -355,5 +355,5 @@ export const ConversationContainer = (props: Props) => {
 }
 
 const BottomSpacer = () => {
-  return <div class="w-full h-32 flex-shrink-0" />
+  return <div class="w-full h-2 flex-shrink-0" />
 }

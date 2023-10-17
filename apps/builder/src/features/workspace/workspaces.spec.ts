@@ -16,14 +16,14 @@ test.beforeAll(async () => {
   await createTypebots([
     {
       id: proTypebotId,
-      name: 'Pro typebot',
+      name: 'Pro Talk',
       workspaceId: proWorkspaceId,
     },
   ])
   await createTypebots([
     {
       id: starterTypebotId,
-      name: 'Starter typebot',
+      name: 'Starter Talk',
       workspaceId: starterWorkspaceId,
       ...parseDefaultGroupWithBlock({
         type: InputBlockType.TEXT,
@@ -39,7 +39,7 @@ test.beforeAll(async () => {
   ])
 })
 
-test('can switch between workspaces and access typebot', async ({ page }) => {
+test('can switch between workspaces and access Talk', async ({ page }) => {
   await page.goto('/typebots')
   await expect(page.locator('text="Pro typebot"')).toBeVisible({
     timeout: 20000,

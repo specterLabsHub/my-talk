@@ -56,10 +56,10 @@ export const themeTemplateSchema = z.object({
 export const defaultTheme: Theme = {
   chat: {
     hostBubbles: { backgroundColor: '#F7F8FF', color: '#303235' },
-    guestBubbles: { backgroundColor: '#FF8E21', color: '#FFFFFF' },
-    buttons: { backgroundColor: '#0042DA', color: '#FFFFFF' },
+    guestBubbles: { backgroundColor: '#F7F8FF', color: '#303235' },
+    buttons: { backgroundColor: '#005e54', color: '#F7F8FF' },
     inputs: {
-      backgroundColor: '#FFFFFF',
+      backgroundColor: '#F7F8FF',
       color: '#303235',
       placeholderColor: '#9095A0',
     },

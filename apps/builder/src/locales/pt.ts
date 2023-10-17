@@ -3,7 +3,7 @@ export default {
   'confirmModal.defaultTitle': 'Tem certeza?',
   'dashboard.header.settingsButton.label': 'Configurações & Membros',
   'dashboard.redirectionMessage': 'Você está sendo redirecionado...',
-  'dashboard.title': 'Meus typebots',
+  'dashboard.title': 'Meus Talks',
   delete: 'Apagar',
   errorMessage: 'Ocorreu um erro',
   cancel: 'Cancelar',
@@ -115,7 +115,7 @@ export default {
   "settingsMetaDataAndEmulation.Image": "Imagem",
   "settingsMetaDataAndEmulation.Title": "Título:",
   "settingsMetaDataAndEmulation.Description": "Descrição:",
-  "settingsMetaDataAndEmulation.Custom head code": "Código personalizado na cabeça",
+  "settingsMetaDataAndEmulation.Custom head code": "Código personalizado no Header",
   "settingsMetaDataAndEmulation.Do not include it if you are embedding your typebot in an existing website. GTM should be installed in the parent website instead.": "Não inclua se você estiver incorporando seu Typebot em um site existente. O GTM deve ser instalado no site pai.",
   "settingsMetaDataAndEmulation.Will be pasted at the bottom of the header section, just above the closing head tag. Only `meta` and `script` tags are allowed.": "Será colado na parte inferior da seção do cabeçalho, logo acima da tag de fechamento do cabeçalho. Somente as tags `meta` e `script` são permitidas.",
   "share.Your typebot link": "Seu link do Typebot",
@@ -259,6 +259,8 @@ export default {
   "build.To label:": "Para etiqueta:",
   "build.Button label:": "Etiqueta do botão:",
   "build.Step:": "Passo:",
+  "build.Group": "Grupo",
+  "build.copy": "copiar",
   "build.Dynamic items?": "Itens dinâmicos?",
   "build.Images:": "Imagens:",
   "build.Titles:": "Títulos:",
@@ -356,6 +358,8 @@ export default {
   "build.Editor basics": "Noções básicas do editor",
   "build.Add OpenAI account": "Adicionar conta OpenAI",
   "build.My account": "Minha conta",
+  "build.My workspace": "Meu espaço de trabalho",
+  "build.workspace": "espaço de trabalho",
   "build.API key": "Chave da API",
   "build.You can generate an API key": "Você pode gerar uma chave da API",
   "build.here": "aqui",
@@ -455,7 +459,7 @@ export default {
   "build.Search": "Pesquisar...",
   "build.Advanced picker": "Seleção Avançada",
   'folders.createFolderButton.label': 'Criar uma pasta',
-  'folders.createTypebotButton.label': 'Criar um typebot',
+  'folders.createTypebotButton.label': 'Criar um MyTalk',
   'folders.folderButton.deleteConfirmationMessage':
     'Tem certeza de que deseja excluir a pasta {folderName}? (Tudo o que estiver dentro será movido para o seu painel)',
   'folders.typebotButton.live': 'Live',
@@ -464,12 +468,12 @@ export default {
   'folders.typebotButton.duplicate': 'Duplicar',
   'folders.typebotButton.delete': 'Apagar',
   'folders.typebotButton.deleteConfirmationMessage':
-    'Tem certeza de que deseja excluir seu typebot {typebotName}?',
+    'Tem certeza de que deseja excluir seu MyTalk {MyTalkName}?',
   'folders.typebotButton.deleteConfirmationMessageWarning':
     'Todos os dados associados serão excluídos e não poderão ser recuperados.',
   'account.apiTokens.heading': 'Tokens de API',
   'account.apiTokens.description':
-    'Esses tokens permitem que outros aplicativos controlem toda a sua conta e typebots. Tenha cuidado!',
+    'Esses tokens permitem que outros aplicativos controlem toda a sua conta e MyTalk. Tenha cuidado!',
   'account.apiTokens.createButton.label': 'Criar',
   'account.apiTokens.deleteButton.label': 'Excluir',
   'account.apiTokens.table.nameHeader': 'Nome',
@@ -601,13 +605,13 @@ export default {
   'billing.usage.heading': 'Uso',
   'billing.usage.chats.heading': 'Chats',
   'billing.usage.chats.alert.soonReach':
-    'Seus typebots são populares! Você logo alcançará o limite de chats de seu plano. 🚀',
+    'Seus Talks são populares! Você logo alcançará o limite de chats de seu plano. 🚀',
   'billing.usage.chats.alert.updatePlan':
     'Certifique-se de atualizar seu plano para aumentar esse limite e continuar conversando com seus usuários.',
   'billing.usage.chats.resetInfo': '(reiniciado todo dia 1)',
   'billing.usage.storage.heading': 'Armazenamento',
   'billing.usage.storage.alert.soonReach':
-    'Seus typebots são populares! Você logo alcançará o limite de armazenamento de seu plano. 🚀',
+    'Seus Talks são populares! Você logo alcançará o limite de armazenamento de seu plano. 🚀',
   'billing.usage.storage.alert.updatePlan':
     'Certifique-se de atualizar seu plano para continuar coletando arquivos enviados. Você também pode excluir arquivos para liberar espaço.',
   'billing.limitMessage.brand': 'remover a marca',
@@ -625,10 +629,11 @@ export default {
   'workspace.settings.name.label': 'Nome:',
   'workspace.settings.deleteButton.label': 'Excluir espaço de trabalho',
   'workspace.settings.deleteButton.confirmMessage':
-    'Você tem certeza de que deseja excluir o espaço de trabalho {workspaceName}? Todas as suas pastas, typebots e resultados serão excluídos permanentemente.',
+    'Você tem certeza de que deseja excluir o espaço de trabalho {workspaceName}? Todas as suas pastas, Talks e resultados serão excluídos permanentemente.',
   'workspace.settings.modal.menu.myAccount.label': 'Minha conta',
   'workspace.settings.modal.menu.preferences.label': 'Preferências',
   'workspace.settings.modal.menu.workspace.label': 'Espaço de trabalho',
+  'workspace.settings.modal.menu.workspace.My workspace': 'Meu espaço de trabalho',
   'workspace.settings.modal.menu.settings.label': 'Configurações',
   'workspace.settings.modal.menu.members.label': 'Membros',
   'workspace.settings.modal.menu.billingAndUsage.label': 'Faturamento e uso',

@@ -7,17 +7,15 @@ import {
   Heading,
   HStack,
   Stack,
-  Tag,
 } from '@chakra-ui/react'
-import { ChatIcon, CodeIcon, DropletIcon, TableIcon } from '@/components/icons'
-import { ChatTheme, GeneralTheme, ThemeTemplate } from '@typebot.io/schemas'
+import { ChatIcon, CodeIcon, DropletIcon } from '@/components/icons'
+import { ChatTheme, GeneralTheme } from '@typebot.io/schemas'
 import React from 'react'
 import { CustomCssSettings } from './CustomCssSettings'
 import { useTypebot } from '@/features/editor/providers/TypebotProvider'
 import { headerHeight } from '@/features/editor/constants'
 import { ChatThemeSettings } from './chat/ChatThemeSettings'
 import { GeneralSettings } from './general/GeneralSettings'
-import { ThemeTemplates } from './ThemeTemplates'
 import { useScopedI18n } from '@/locales'
 
 export const ThemeSideMenu = () => {
@@ -31,17 +29,6 @@ export const ThemeSideMenu = () => {
 
   const updateCustomCss = (customCss: string) =>
     typebot && updateTypebot({ theme: { ...typebot.theme, customCss } })
-
-  const selectedTemplate = (
-    selectedTemplate: Partial<Pick<ThemeTemplate, 'id' | 'theme'>>
-  ) => {
-    if (!typebot) return
-    const { theme, id } = selectedTemplate
-    updateTypebot({
-      selectedThemeTemplateId: id,
-      theme: theme ? { ...theme } : typebot.theme,
-    })
-  }
 
   const updateBranding = (isBrandingEnabled: boolean) =>
     typebot &&
@@ -65,7 +52,7 @@ export const ThemeSideMenu = () => {
         {scopedT('Customize the theme')}
       </Heading>
       <Accordion allowMultiple>
-        <AccordionItem>
+        {/* <AccordionItem>
           <AccordionButton py={6}>
             <HStack flex="1" pl={2}>
               <TableIcon />
@@ -89,7 +76,7 @@ export const ThemeSideMenu = () => {
               />
             )}
           </AccordionPanel>
-        </AccordionItem>
+        </AccordionItem> */}
         <AccordionItem>
           <AccordionButton py={6}>
             <HStack flex="1" pl={2}>

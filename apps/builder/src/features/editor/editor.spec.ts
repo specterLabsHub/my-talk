@@ -235,22 +235,22 @@ test('Published typebot menu should work', async ({ page }) => {
   await page.goto(`/typebots/${typebotId}/edit`)
   await expect(page.locator("text='Start'")).toBeVisible()
   await expect(page.locator('button >> text="Published"')).toBeVisible()
-  await page.click('[aria-label="Show published typebot menu"]')
+  await page.click('[aria-label="Show published Talk menu"]')
   await Promise.all([
     waitForSuccessfulPutRequest(page),
-    page.click('text="Close typebot to new responses"'),
+    page.click('text="Close Talk to new responses"'),
   ])
   await expect(page.locator('button >> text="Closed"')).toBeDisabled()
-  await page.click('[aria-label="Show published typebot menu"]')
+  await page.click('[aria-label="Show published Talk menu"]')
   await Promise.all([
     waitForSuccessfulPutRequest(page),
-    page.click('text="Reopen typebot to new responses"'),
+    page.click('text="Reopen Talk to new responses"'),
   ])
   await expect(page.locator('button >> text="Published"')).toBeDisabled()
-  await page.click('[aria-label="Show published typebot menu"]')
+  await page.click('[aria-label="Show published Talk menu"]')
   await Promise.all([
     waitForSuccessfulDeleteRequest(page),
-    page.click('button >> text="Unpublish typebot"'),
+    page.click('button >> text="Unpublish Talk"'),
   ])
   await Promise.all([
     waitForSuccessfulPostRequest(page),

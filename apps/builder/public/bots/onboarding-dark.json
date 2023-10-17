@@ -479,7 +479,7 @@
       },
       "buttons": { "color": "#ffffff", "backgroundColor": "#1a5fff" },
       "hostBubbles": { "color": "#ffffff", "backgroundColor": "#1e293b" },
-      "guestBubbles": { "color": "#FFFFFF", "backgroundColor": "#FF8E21" },
+      "guestBubbles": { "color": "#FFFFFF", "backgroundColor": "#F7F8FF" },
       "hostAvatar": {
         "isEnabled": true,
         "url": "https://s3.eu-west-3.amazonaws.com/typebot/public/typebots/cl0s4zy9m247009l1ybkoojxe/me-square.png"

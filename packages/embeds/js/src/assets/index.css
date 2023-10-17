@@ -17,7 +17,7 @@
   --typebot-host-bubble-bg-color: #f7f8ff;
   --typebot-host-bubble-color: #303235;
 
-  --typebot-guest-bubble-bg-color: #ff8e21;
+  --typebot-guest-bubble-bg-color: #F7F8FF;
   --typebot-guest-bubble-color: #ffffff;
 
   --typebot-input-bg-color: #ffffff;
@@ -100,6 +100,7 @@ textarea {
 
 .slate-html-container > div {
   min-height: 24px;
+  line-break: anywhere;
 }
 
 .slate-bold {

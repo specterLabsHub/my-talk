@@ -16,7 +16,7 @@ The code snippet to paste is easily configurable in the Share tab of your bot af
 
 You can leverage the [prefilled variables](/editor/variables#prefilled-variables) and inject your user information directly into your typebot so that the experience is entirely customized to your user.
 
-Here are the available variables from WordPress, make sure to create them in your typebot's variables dropdown:
+Here are the available variables from WordPress, make sure to create them in your Talk's variables dropdown:
 
 <img src="/img/embeddings/wp-variables.png" alt="WP predefined variables" width="400px"/>
 

@@ -65,6 +65,7 @@ export const InputChatBlock = (props: Props) => {
           message={answer() as string}
           showAvatar={props.guestAvatar?.isEnabled ?? false}
           avatarSrc={props.guestAvatar?.url && props.guestAvatar.url}
+          currentIndex={props.inputIndex}
         />
       </Match>
       <Match when={isNotDefined(answer()) || props.hasError}>
@@ -73,11 +74,8 @@ export const InputChatBlock = (props: Props) => {
           data-blockid={props.block.id}
           ref={props.ref}
           style="
-          position: fixed;
-          bottom: 0;
           width: 100%;
-          margin-left: -32px;
-          padding: 0 16px 8px 8px;
+          margin-top: 32px;
       "
         >
           <Input
