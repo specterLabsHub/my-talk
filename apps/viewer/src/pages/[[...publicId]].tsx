@@ -65,8 +65,13 @@ export const getServerSideProps: GetServerSideProps = async (
     const customDomain = `${forwardedHost ?? host}${
       pathname === '/' ? '' : pathname
     }`
+
+    let publicId = context.query.publicId
+    if (Array.isArray(publicId) && publicId.length > 0) {
+      publicId = publicId[publicId.length - 1]
+    }
     const publishedTypebot = isMatchingViewerUrl
-      ? await getTypebotFromPublicId(context.query.publicId?.toString())
+      ? await getTypebotFromPublicId(publicId?.toString())
       : await getTypebotFromCustomDomain(customDomain)
       
     const headCode = publishedTypebot?.settings.metadata.customHeadCode
