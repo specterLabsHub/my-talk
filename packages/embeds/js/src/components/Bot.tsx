@@ -16,6 +16,7 @@ import immutableCss from '../assets/immutable.css'
 export type BotProps = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   typebot: string | any
+  typebotName?: string
   isPreview?: boolean
   resultId?: string
   startGroupId?: string
@@ -138,6 +139,7 @@ export const Bot = (props: BotProps & { class?: string }) => {
               resultId: initialChatReply.resultId,
               sessionId: initialChatReply.sessionId,
               typebot: initialChatReply.typebot,
+              typebotName: props.typebotName,
             }}
             onNewInputBlock={props.onNewInputBlock}
             onNewLogs={props.onNewLogs}

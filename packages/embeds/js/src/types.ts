@@ -7,6 +7,7 @@ export type InputSubmitContent = {
 
 export type BotContext = {
   typebot: InitialChatReply['typebot']
+  typebotName?: string
   resultId?: string
   isPreview: boolean
   apiHost?: string

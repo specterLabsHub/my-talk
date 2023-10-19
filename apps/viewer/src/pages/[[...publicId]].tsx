@@ -54,7 +54,7 @@ export const getServerSideProps: GetServerSideProps = async (
         ? true
         : viewerUrls.some(
             (url) => {
-              const viewerDomain = new URL(url).hostname
+              const viewerDomain = new URL(url).origin
               return host.split(':')[0].includes(viewerDomain.split('//')[1].split(':')[0]) ||
                 (forwardedHost &&
                   forwardedHost
@@ -68,6 +68,7 @@ export const getServerSideProps: GetServerSideProps = async (
     const publishedTypebot = isMatchingViewerUrl
       ? await getTypebotFromPublicId(context.query.publicId?.toString())
       : await getTypebotFromCustomDomain(customDomain)
+      
     const headCode = publishedTypebot?.settings.metadata.customHeadCode
     return {
       props: {

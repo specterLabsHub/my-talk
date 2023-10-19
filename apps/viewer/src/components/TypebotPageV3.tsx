@@ -43,6 +43,7 @@ export const TypebotPageV3 = ({ url, typebot }: TypebotPageProps) => {
       />
       <Standard
         typebot={typebot.publicId}
+        typebotName={typebot.name}
         onInit={clearQueryParamsIfNecessary}
       />
     </div>
