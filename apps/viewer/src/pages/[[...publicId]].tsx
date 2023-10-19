@@ -53,13 +53,14 @@ export const getServerSideProps: GetServerSideProps = async (
       env('E2E_TEST') === 'true'
         ? true
         : viewerUrls.some(
-            (url) =>
-              host.split(':')[0].includes(url.split('//')[1].split(':')[0]) ||
-              (forwardedHost &&
-                forwardedHost
-                  .split(':')[0]
-                  .includes(url.split('//')[1].split(':')[0]))
-          )
+            (url) => {
+              const viewerDomain = new URL(url).hostname
+              return host.split(':')[0].includes(viewerDomain.split('//')[1].split(':')[0]) ||
+                (forwardedHost &&
+                  forwardedHost
+                    .split(':')[0]
+                    .includes(viewerDomain.split('//')[1].split(':')[0]))
+            })
     log(`isMatchingViewerUrl: ${isMatchingViewerUrl}`)
     const customDomain = `${forwardedHost ?? host}${
       pathname === '/' ? '' : pathname
