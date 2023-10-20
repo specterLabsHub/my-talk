@@ -18,7 +18,6 @@ import { GuestBubbles } from './GuestBubbles'
 import { HostBubbles } from './HostBubbles'
 import { InputsTheme } from './InputsTheme'
 import { useScopedI18n } from '@/locales'
-import { AvatarName } from './AvatarName'
 
 type Props = {
   typebotId: string
