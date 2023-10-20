@@ -15,7 +15,7 @@ export const GuestBubble = (props: Props) => (
     class="flex justify-end items-end animate-fade-in gap-2 guest-container relative"
   >
     {props.currentIndex === 0 && (
-      <div style="position: absolute;width: 0px;height: 0px;border-style: solid;border-width: 0 0 10px 10px;border-color: transparent transparent transparent  var(--typebot-host-bubble-bg-color);top: 0px;right: -6px;" />
+      <div style="position: absolute;width: 0px;height: 0px;border-style: solid;border-width: 0 0 10px 10px;border-color: transparent transparent transparent  var(--typebot-guest-bubble-bg-color);top: 0px;right: -6px;" />
     )}
     <span
       class="px-4 py-2 whitespace-pre-wrap max-w-full typebot-guest-bubble"

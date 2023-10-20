@@ -52,7 +52,7 @@ export const Toast = ({
         <Stack spacing={3} flex="1" justify="center" h="full">
           <Stack spacing={1}>
             {title && <Text fontWeight="semibold">{title}</Text>}
-            {description && <Text>{description}</Text>}
+            {description && <Text style={{lineBreak: 'anywhere'}}>{description}</Text>}
           </Stack>
 
           {details && (

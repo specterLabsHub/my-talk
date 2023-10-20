@@ -3,7 +3,7 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        xs: '400px',
+        xs: '600px',
       },
       brightness: {
         225: '2.25',

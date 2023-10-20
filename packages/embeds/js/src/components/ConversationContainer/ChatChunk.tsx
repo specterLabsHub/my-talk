@@ -62,9 +62,12 @@ export const ChatChunk = (props: Props) => {
     }
   }
 
+  
+  
+
 
   return (
-    <div class="flex flex-col w-full min-w-0 gap-2" style={{ "max-width": '100%', "width": '100%', "padding-left": "38px", "padding-right": "38px" }}>
+    <div class="flex flex-col w-full min-w-0 gap-2 md:pl-9 md:pr-9 min-[320px]:pl-4 min-[320px]:pr-4" style="max-width: 100%; width: 100%;">
       <Show when={props.messages.length > 0}>
         <div class={'flex' + (isMobile() ? ' gap-1' : ' gap-2')}>
           <div
@@ -87,7 +90,6 @@ export const ChatChunk = (props: Props) => {
                       <div style={{ "position": "absolute", width: 0, height: 0, "border-style": "solid", "border-width": "0px 10px 10px 0", "border-color": "transparent var(--typebot-host-bubble-bg-color) transparent transparent", "top": "0", "left": "-6px" }} />
                     )}
                     <HostBubble
-                    loading={props.isLoading}
                       children={<Show
                         when={
                           true

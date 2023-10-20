@@ -75,7 +75,7 @@ export const CreateNewTypebotButtons = () => {
   }
 
   return (
-    <VStack maxW="600px" w="full" flex="1" pt="20" spacing={10}>
+    <VStack maxW="600px" w="full" flex="1" pt="20" spacing={10} ml={['32px', '32px', 0]}>
       <Heading>{scopedT('createNew')}</Heading>
       <Stack w="full" spacing={6}>
         <Button

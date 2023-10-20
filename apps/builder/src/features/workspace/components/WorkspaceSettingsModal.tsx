@@ -53,10 +53,10 @@ export const WorkspaceSettingsModal = ({
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="4xl">
       <ModalOverlay />
-      <ModalContent minH="600px" flexDir="row">
+      <ModalContent minH="600px" flexDir="row" m="32px">
         <Stack
           spacing={8}
-          w="250px"
+          w={[160, 160, 250]}
           py="6"
           borderRightWidth={1}
           justifyContent="space-between"
@@ -133,7 +133,7 @@ export const WorkspaceSettingsModal = ({
         </Stack>
 
         {isOpen && (
-          <Flex flex="1" p="10">
+          <Flex flex="1" p={["4", "4", "10"]} >
             <SettingsContent tab={selectedTab} onClose={onClose} />
           </Flex>
         )}

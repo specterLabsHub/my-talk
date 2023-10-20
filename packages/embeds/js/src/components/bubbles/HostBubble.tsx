@@ -13,14 +13,13 @@ import type {
   VideoBubbleContent,
 } from '@typebot.io/schemas'
 import { BubbleBlockType } from '@typebot.io/schemas/features/blocks/bubbles/enums'
-import { Match, Show, Switch } from 'solid-js'
+import { Match, Switch } from 'solid-js'
 
 type Props = {
   message: ChatMessage
   typingEmulation: TypingEmulation
   onTransitionEnd: (offsetTop?: number) => void
   children?: any
-  loading: boolean | undefined
 }
 
 export const HostBubble = (props: Props) => {
@@ -28,18 +27,8 @@ export const HostBubble = (props: Props) => {
     props.onTransitionEnd(offsetTop)
   }
 
-  
-  function formatCurrentTime(): string {
-    const now = new Date();
-    const hours = now.getHours();
-    const minutes = now.getMinutes();
-    const formattedHours = hours < 10 ? `0${hours}` : `${hours}`;
-    const formattedMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
-    return `${formattedHours}:${formattedMinutes}`;
-  }
 
   return (
-    <Show when={!props.loading}>
     <Switch>
       <Match when={props.message.type === BubbleBlockType.TEXT}>
         <TextBubble
@@ -75,9 +64,5 @@ export const HostBubble = (props: Props) => {
       </Match>
 
     </Switch>
-    <div style={{ "font-size": "11px", "color": "#667781", "position": "absolute", "right": `${props.message.type === BubbleBlockType.AUDIO ? '57px' : '8px'}`, "bottom": "0px" }} class="z-10">
-                        {formatCurrentTime()}
-      </div>
-          </Show>
   )
 }

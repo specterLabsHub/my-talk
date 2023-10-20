@@ -26,6 +26,7 @@ let typingTimeout: NodeJS.Timeout
 export const TextBubble = (props: Props) => {
   let ref: HTMLDivElement | undefined
   const [isTyping, setIsTyping] = createSignal(true)
+  const [isTypingEnd, setIsTypingEnd] = createSignal(true)
 
   const onTypingEnd = () => {
     if (!isTyping()) return
@@ -52,8 +53,27 @@ export const TextBubble = (props: Props) => {
     if (typingTimeout) clearTimeout(typingTimeout)
   })
 
+  function formatCurrentTime(): string {
+    const now = new Date();
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+    const formattedHours = hours < 10 ? `0${hours}` : `${hours}`;
+    const formattedMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
+    return `${formattedHours}:${formattedMinutes}`;
+  }
+
+
+  onMount(() => {
+    if(isTyping()){
+      setTimeout(() => {
+        setIsTypingEnd(false);
+      }, 600)
+    }
+  });
+
+
   return (
-    <div class="flex flex-col animate-fade-in" ref={ref}>
+    <div class="flex flex-col animate-fade-in" ref={ref} style={{position: 'relative'}}>
       <div class="flex w-full items-center">
         <div class="flex relative items-start typebot-host-bubble" style={{ "padding-right": "32px" }}>
           <div
@@ -81,6 +101,11 @@ export const TextBubble = (props: Props) => {
           </div>
         </div>
       </div>
+      {!isTypingEnd() && (
+        <div style={{ "font-size": "11px", "color": "#667781", "position": "absolute", "right": '8px', "bottom": "0px" }} class="z-10">
+           {formatCurrentTime()}
+        </div>
+        )}
     </div>
   )
 }

@@ -20,6 +20,7 @@ export const AudioBubble = (props: Props) => {
   let ref: HTMLDivElement | undefined
   const [isTyping, setIsTyping] = createSignal(true)
   const [isPlaying, setIsPlaying] = createSignal(false)
+  const [isTypingEnd, setIsTypingEnd] = createSignal(true)
   const [audioDuration, setAudioDuration] = createSignal<number | null>(null) // Estado para armazenar a duração do áudio
   let wavesurfer: WaveSurfer | null = null
 
@@ -106,8 +107,26 @@ export const AudioBubble = (props: Props) => {
     }
   }
 
+  
+  function formatCurrentTime(): string {
+    const now = new Date();
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+    const formattedHours = hours < 10 ? `0${hours}` : `${hours}`;
+    const formattedMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
+    return `${formattedHours}:${formattedMinutes}`;
+  }
+  
+  onMount(() => {
+    if(isTyping()){
+      setTimeout(() => {
+        setIsTypingEnd(false);
+      }, 600)
+    }
+  });
+
   return (
-    <div class="flex flex-col animate-fade-in relative" ref={ref} style={{ width: "336px" }}>
+    <div class="flex flex-col animate-fade-in relative sm:w-[21rem] min-[320px]:w-[20rem]" ref={ref} style={{position: 'relative'}}>
       <div class="flex items-center" style={{ width: '100%' }}>
         <div class={'flex relative z-10 items-center typebot-host-bubble'} style={{ width: '100%', height: "60px" }}>
           <div class="flex items-center absolute px-4 py-2 bubble-typing z-10 "
@@ -148,7 +167,11 @@ export const AudioBubble = (props: Props) => {
           </div>
         </div>
       </div>
-
+      {!isTypingEnd() && (
+        <div style={{ "font-size": "11px", "color": "#667781", "position": "absolute", "right": '57px', "bottom": "0px" }} class="z-10">
+           {formatCurrentTime()}
+        </div>
+        )}
     </div>
   )
 }
