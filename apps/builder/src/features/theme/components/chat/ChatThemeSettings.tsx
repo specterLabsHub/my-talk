@@ -63,12 +63,6 @@ export const ChatThemeSettings = ({
       />
 
       <Stack borderWidth={1} rounded="md" p="4" spacing={4}>
-        <Heading fontSize="lg">Nome do Bot</Heading>
-        <AvatarName
-        />
-      </Stack>
-
-      <Stack borderWidth={1} rounded="md" p="4" spacing={4}>
         <Heading fontSize="lg">{scopedT('Bot bubbles')}</Heading>
         <HostBubbles
           hostBubbles={chatTheme.hostBubbles}
