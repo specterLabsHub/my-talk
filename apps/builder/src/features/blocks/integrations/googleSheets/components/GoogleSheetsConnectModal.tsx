@@ -47,7 +47,7 @@ export const GoogleSheetConnectModal = ({
             {scopedT('Make sure to check all the permissions so that the integration works as expected:')}
           </Text>
           <Image
-            src="/images/google-spreadsheets-scopes.jpeg"
+            src="/my-talk-builder/images/google-spreadsheets-scopes.jpeg"
             alt="Google Spreadsheets checkboxes"
             rounded="md"
           />
