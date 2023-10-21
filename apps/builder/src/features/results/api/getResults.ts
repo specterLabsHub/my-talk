@@ -44,7 +44,7 @@ export const getResults = authenticatedProcedure
       typebotId: input.typebotId,
     })
     if (!typebot?.id)
-      throw new TRPCError({ code: 'NOT_FOUND', message: 'Typebot not found' })
+      throw new TRPCError({ code: 'NOT_FOUND', message: 'MyTalk not found' })
     const results = (await prisma.result.findMany({
       take: limit + 1,
       cursor: cursor ? { id: cursor } : undefined,

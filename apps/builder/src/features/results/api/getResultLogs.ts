@@ -27,7 +27,7 @@ export const getResultLogs = authenticatedProcedure
       user,
       typebotId,
     })
-    if (!typebot) throw new Error('Typebot not found')
+    if (!typebot) throw new Error('MyTalk not found')
     const logs = await prisma.log.findMany({
       where: {
         resultId,

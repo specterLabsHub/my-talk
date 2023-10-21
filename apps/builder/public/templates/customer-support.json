@@ -176,7 +176,7 @@
         {
           "id": "cl16lablb00082e6dadk55sxv",
           "groupId": "kyK8JQ77NodUYaz3JLS88A",
-          "type": "Typebot link",
+          "type": "MyTalk link",
           "options": {
             "typebotId": "current",
             "groupId": "vLUAPaxKwPF49iZhg4XZYa"
@@ -300,7 +300,7 @@
         },
         {
           "id": "cl14qlt8600072e69rez236gx",
-          "type": "Typebot link",
+          "type": "MyTalk link",
           "groupId": "1GvxCAAEysxJMxrVngud3X",
           "options": {
             "groupId": "vLUAPaxKwPF49iZhg4XZYa",

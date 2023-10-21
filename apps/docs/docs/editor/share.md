@@ -11,5 +11,5 @@ You can always modify your bot and the new changes won't be published as long as
 />
 
 - "Restore published version": drop your current changes and revert the bot to its published version.
-- "Close typebot to new responses": close your typebot and your users will see the following message: "This bot is now closed."
-- "Unpublish typebot": mark the typebot as unpublished and your users will see the following message: "The bot you're looking for doesn't exist"
+- "Close MyTalk to new responses": close your MyTalk and your users will see the following message: "This bot is now closed."
+- "Unpublish MyTalk": mark the MyTalk as unpublished and your users will see the following message: "The bot you're looking for doesn't exist"

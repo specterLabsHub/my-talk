@@ -113,7 +113,7 @@ export const MetadataForm = ({
         placeholder="GTM-XXXXXX"
         onChange={handleGoogleTagManagerIdChange}
         label="Google Tag Manager ID:"
-        moreInfoTooltip={scopedT('Do not include it if you are embedding your typebot in an existing website. GTM should be installed in the parent website instead.')}
+        moreInfoTooltip={scopedT('Do not include it if you are embedding your MyTalk in an existing website. GTM should be installed in the parent website instead.')}
       />
       <Stack>
         <HStack as={FormLabel} mb="0" htmlFor="head">

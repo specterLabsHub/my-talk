@@ -100,7 +100,7 @@ export const Header = () => {
             colorScheme="orange"
             fontWeight={700}
           >
-            Create a typebot
+            Create a MyTalk
           </Button>
         </HStack>
       </HStack>

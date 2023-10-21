@@ -10,13 +10,17 @@ import { render } from '@faire/mjml-react/utils/render'
 import { HeroImage, Text, Button, Head } from '../components'
 import { SendMailOptions } from 'nodemailer'
 import { sendEmail } from '../sendEmail'
+import { useScopedI18n } from '../../../../apps/builder/src/locales/index'
 
 type Props = {
   url: string
 }
 
-export const MagicLinkEmail = ({ url }: Props) => (
-  <Mjml>
+export const MagicLinkEmail = ({ url }: Props) => {
+  
+  const scopedT = useScopedI18n('magic')
+  return (
+    <Mjml>
     <Head />
     <MjmlBody width={600}>
       <MjmlSection padding="0">
@@ -26,23 +30,23 @@ export const MagicLinkEmail = ({ url }: Props) => (
       </MjmlSection>
       <MjmlSection padding="0 24px" cssClass="smooth">
         <MjmlColumn>
-          <Text>Here is your magic link 👇</Text>
+          <Text>{scopedT('Here is your magic link')} 👇</Text>
           <MjmlSpacer />
           <Button link={url} align="center">
-            Click here to sign in
+            {scopedT('Click here to sign in')}
           </Button>
           <Text>
-            If you didn&apos;t request this, please ignore this email.
+            {scopedT('If you didnt request this, please ignore this email.')}
           </Text>
           <Text>
-            Best,
-            <br />- Typebot Team.
+            {scopedT('Best,')}
+            <br />- {scopedT('MyTalk Team.')}
           </Text>
         </MjmlColumn>
       </MjmlSection>
     </MjmlBody>
   </Mjml>
-)
+)}
 
 export const sendMagicLinkEmail = ({
   to,
@@ -50,6 +54,6 @@ export const sendMagicLinkEmail = ({
 }: Pick<SendMailOptions, 'to'> & ComponentProps<typeof MagicLinkEmail>) =>
   sendEmail({
     to,
-    subject: 'Sign in to Typebot',
+    subject: 'Acesse o MyTalk',
     html: render(<MagicLinkEmail {...props} />).html,
   })

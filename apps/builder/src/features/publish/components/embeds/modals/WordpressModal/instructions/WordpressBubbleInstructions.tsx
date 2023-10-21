@@ -50,7 +50,7 @@ export const WordpressBubbleInstructions = ({ publicId }: Props) => {
           isExternal
           color={useColorModeValue('blue.500', 'blue.300')}
         >
-          the official Typebot WordPress plugin
+          the official MyTalk WordPress plugin
           <ExternalLinkIcon mx="2px" />
         </Link>
       </ListItem>
@@ -65,7 +65,7 @@ export const WordpressBubbleInstructions = ({ publicId }: Props) => {
             onPreviewMessageChange={setPreviewMessage}
             onThemeChange={setTheme}
           />
-          <Text>{scopedT('You can now place the following code snippet in the Typebot panel in your WordPress admin:')}</Text>
+          <Text>{scopedT('You can now place the following code snippet in the MyTalk panel in your WordPress admin:')}</Text>
           <CodeEditor value={initCode} lang="javascript" isReadOnly />
         </Stack>
       </ListItem>

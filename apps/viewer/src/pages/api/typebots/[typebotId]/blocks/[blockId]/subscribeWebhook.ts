@@ -21,7 +21,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         workspace: { members: { some: { userId: user.id } } },
       },
     })) as unknown as Typebot | undefined
-    if (!typebot) return res.status(400).send({ message: 'Typebot not found' })
+    if (!typebot) return res.status(400).send({ message: 'MyTalk not found' })
     try {
       const { webhookId } = typebot.groups
         .flatMap((g) => g.blocks)

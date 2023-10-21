@@ -84,13 +84,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         updatedAt: true,
       },
     })
-    if (!typebot) return res.status(404).send({ message: 'Typebot not found' })
+    if (!typebot) return res.status(404).send({ message: 'MyTalk not found' })
 
     if (
       (typebot.updatedAt as Date).getTime() > new Date(data.updatedAt).getTime()
     )
       return res.send({
-        message: 'Found newer version of the typebot in database',
+        message: 'Found newer version of the MyTalk in database',
       })
 
     const updates = {
@@ -131,7 +131,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       typebotId,
       user,
     })
-    if (!typebot) return res.status(404).send({ message: 'Typebot not found' })
+    if (!typebot) return res.status(404).send({ message: 'MyTalk not found' })
     const data = typeof req.body === 'string' ? JSON.parse(req.body) : req.body
     const updatedTypebot = await prisma.typebot.update({
       where: { id: typebotId },

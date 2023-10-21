@@ -31,7 +31,7 @@ export const Footer = () => {
             <HStack>
               <Logo boxSize="30px" />
               <Heading as="p" fontSize="lg">
-                Typebot
+              MyTalk
               </Heading>
             </HStack>
             <Text>

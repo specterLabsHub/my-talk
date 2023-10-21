@@ -16,7 +16,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       select: { id: true },
     })
 
-    if (!typebot) return res.status(404).send({ message: 'Typebot not found' })
+    if (!typebot) return res.status(404).send({ message: 'MyTalk not found' })
 
     const [totalViews, totalStarts, totalCompleted] = await prisma.$transaction(
       [

@@ -41,7 +41,7 @@ export const Hero = () => {
               data-aos="fade-up"
               data-aos-delay="100"
             >
-              Typebot gives you powerful blocks to create unique chat
+              MyTalk gives you powerful blocks to create unique chat
               experiences. Embed them anywhere on your web/mobile apps and start
               collecting results like magic.
             </Text>
@@ -58,7 +58,7 @@ export const Hero = () => {
                 height="4rem"
                 px="2rem"
               >
-                Create a typebot for free
+                Create a MyTalk for free
               </Button>
             </Stack>
           </VStack>

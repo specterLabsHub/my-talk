@@ -1,6 +1,6 @@
 # Chatwoot
 
-The Chatwoot integration block allows you to open a Chatwoot widget to allow your user to directly talk to a human. It allows you to add a Live Chat layer on your typebot.
+The Chatwoot integration block allows you to open a Chatwoot widget to allow your user to directly talk to a human. It allows you to add a Live Chat layer on your MyTalk.
 
 ## Requirements
 
@@ -34,7 +34,7 @@ For example, if you set the "Email" input to "john@gmail.com" then Chatwoot will
 
 ## Custom attributes
 
-You can add these custom attributes that Typebot will automatically fill in for you:
+You can add these custom attributes that MyTalk will automatically fill in for you:
 
 ### Result URL
 

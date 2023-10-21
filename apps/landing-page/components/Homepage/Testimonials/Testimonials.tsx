@@ -18,7 +18,7 @@ const testimonials: TestimonialData[][] = [
       avatarSrc: 'https://s3.typebot.io/joshua.jpg',
       provider: 'email',
       content:
-        'I upgraded my typeforms to typebots and saw a conversion rate increase from 14% to 43% on my marketing campaigns. I noticed the improvement on day one. That was a game-changer.',
+        'I upgraded my typeforms to MyTalks and saw a conversion rate increase from 14% to 43% on my marketing campaigns. I noticed the improvement on day one. That was a game-changer.',
     },
     {
       name: 'Laszlo Csömör',
@@ -27,7 +27,7 @@ const testimonials: TestimonialData[][] = [
       avatarSrc: 'https://s3.typebot.io/laszlo.jpeg',
       content: (
         <>
-          Typebot is one of the best chatbot builders with its intelligent
+          MyTalk is one of the best chatbot builders with its intelligent
           features and drag-and-drop simplicity. Its UI/UX is an earthly
           paradise...
           <br />
@@ -43,7 +43,7 @@ const testimonials: TestimonialData[][] = [
       avatarSrc: 'https://s3.typebot.io/barretta.jpeg',
       content: (
         <>
-          Thanks to typebot I can finally make site forms much more modern and I
+          Thanks to MyTalk I can finally make site forms much more modern and I
           can collect information that I would have missed before. Also ,thanks
           to Baptiste, the service is always evolving and has excellent
           assistance not only in solving but also in listening to suggestions
@@ -85,7 +85,7 @@ const testimonials: TestimonialData[][] = [
       avatarSrc: 'https://s3.typebot.io/julien.jpeg',
       provider: 'email',
       content:
-        'I run Google ads all year long on our landing page that contains a typebot. I saw a 2x increase on our conversation rate compared to our old WordPress form.',
+        'I run Google ads all year long on our landing page that contains a MyTalk. I saw a 2x increase on our conversation rate compared to our old WordPress form.',
     },
     {
       name: '_Invictuz',
@@ -101,11 +101,11 @@ const testimonials: TestimonialData[][] = [
       role: 'Nocode expert and content creator',
       content: (
         <>
-          Amazing product! I&apos;m using Typebot for everything when it&apos;s
+          Amazing product! I&apos;m using MyTalk for everything when it&apos;s
           about talking with customers.
           <br />
           <br />
-          What&apos;s amazing with Typebot is that it makes a &quot;chat
+          What&apos;s amazing with MyTalk is that it makes a &quot;chat
           interface effect&quot; without the hassle of being behind my computer
           all day responding to customers. Highly recommend !
         </>
@@ -137,7 +137,7 @@ const testimonials: TestimonialData[][] = [
           (CRM).
           <br />
           We are now working on personalizing the email templates based on the
-          answers (user industry and role) given in the typebot. We are big fan!
+          answers (user industry and role) given in the MyTalk. We are big fan!
         </>
       ),
     },
@@ -147,7 +147,7 @@ const testimonials: TestimonialData[][] = [
       provider: 'email',
       content: (
         <>
-          I used Typebot at my company and was impressed with how it cut our
+          I used MyTalk at my company and was impressed with how it cut our
           customer service workload in half. I was able to create a fully
           functional chatbot in minutes. <br /> You can create a bot to answer
           frequently asked questions about your business or create a bot that
@@ -162,7 +162,7 @@ const testimonials: TestimonialData[][] = [
       avatarSrc: 'https://s3.typebot.io/kurnia.jpeg',
       content: (
         <>
-          I have several chatbot builders, but Typebot is the one I use the
+          I have several chatbot builders, but MyTalk is the one I use the
           most. It is simple to construct and very intuitive. <br />
           Integration with third-party applications is simple, and you can
           create the most sophisticated bots with its simplicity.
@@ -175,7 +175,7 @@ const testimonials: TestimonialData[][] = [
       avatarSrc: 'https://s3.typebot.io/nicolai.jpg',
       provider: 'email',
       content:
-        'I am really loving using Typebot! So good. I have used all the top bots and yours is definitely the most user friendly, and yet still so powerful.',
+        'I am really loving using MyTalk! So good. I have used all the top bots and yours is definitely the most user friendly, and yet still so powerful.',
     },
     {
       name: 'Anna Filou',

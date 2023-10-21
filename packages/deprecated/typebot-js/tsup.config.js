@@ -6,6 +6,6 @@ export default defineConfig((options) => ({
   minify: !options.watch,
   dts: true,
   format: ['esm', 'cjs', 'iife'],
-  globalName: 'Typebot',
+  globalName: 'MyTalk',
   injectStyle: true,
 }))

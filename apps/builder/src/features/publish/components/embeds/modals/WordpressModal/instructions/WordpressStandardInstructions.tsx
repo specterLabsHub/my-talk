@@ -40,7 +40,7 @@ export const WordpressStandardInstructions = ({ publicId }: Props) => {
           isExternal
           color={useColorModeValue('blue.500', 'blue.300')}
         >
-          the official Typebot WordPress plugin
+          the official MyTalk WordPress plugin
           <ExternalLinkIcon mx="2px" />
         </Link>
       </ListItem>

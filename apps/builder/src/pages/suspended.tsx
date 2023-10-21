@@ -10,7 +10,7 @@ export default function Page() {
       <VStack w="full" h="calc(100vh - 64px)" justifyContent="center">
         <Heading>Your workspace has been suspended.</Heading>
         <Text>
-          We detected that one of your typebots does not comply with our{' '}
+          We detected that one of your MyTalks does not comply with our{' '}
           <TextLink
             href="https://typebot.io/terms-of-service#scam-typebots"
             isExternal

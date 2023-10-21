@@ -3,7 +3,7 @@ export default {
   'confirmModal.defaultTitle': 'Bist du sicher?',
   'dashboard.header.settingsButton.label': 'Einstellungen & Mitglieder',
   'dashboard.redirectionMessage': 'Du wirst weitergeleitet...',
-  'dashboard.title': 'Meine Typebots',
+  'dashboard.title': 'Meine MyTalks',
   delete: 'Löschen',
   errorMessage: 'Ein Fehler ist aufgetreten',
   cancel: 'Abbrechen',
@@ -14,7 +14,7 @@ export default {
   pending: 'Ausstehend',
   skip: 'Überspringen',
   'folders.createFolderButton.label': 'Ordner erstellen',
-  'folders.createTypebotButton.label': 'Typebot erstellen',
+  'folders.createTypebotButton.label': 'MyTalk erstellen',
   'folders.folderButton.deleteConfirmationMessage':
     'Möchtest du den Ordner {folderName} wirklich löschen? (Alles im Inneren wird in dein Dashboard verschoben)',
   'folders.typebotButton.live': 'Live',
@@ -23,12 +23,12 @@ export default {
   'folders.typebotButton.duplicate': 'Duplizieren',
   'folders.typebotButton.delete': 'Löschen',
   'folders.typebotButton.deleteConfirmationMessage':
-    'Möchtest du deinen Typebot {typebotName} wirklich löschen?',
+    'Möchtest du deinen MyTalk {typebotName} wirklich löschen?',
   'folders.typebotButton.deleteConfirmationMessageWarning':
     'Alle zugehörigen Daten werden gelöscht und können nicht wiederhergestellt werden.',
   'account.apiTokens.heading': 'API-Token',
   'account.apiTokens.description':
-    'Diese Token ermöglichen es anderen Apps, dein gesamtes Konto und Typebots zu steuern. Sei vorsichtig!',
+    'Diese Token ermöglichen es anderen Apps, dein gesamtes Konto und MyTalks zu steuern. Sei vorsichtig!',
   'account.apiTokens.createButton.label': 'Erstellen',
   'account.apiTokens.deleteButton.label': 'Löschen',
   'account.apiTokens.table.nameHeader': 'Name',
@@ -108,7 +108,7 @@ export default {
   'auth.socialLogin.customButton.label': 'Mit {customProviderName} fortfahren',
   'billing.billingPortalButton.label': 'Abrechnungsportal',
   'billing.contribution.preLink':
-    'Typebot trägt 1% deines Abonnements dazu bei, CO₂ aus der Atmosphäre zu entfernen.',
+    'MyTalk trägt 1% deines Abonnements dazu bei, CO₂ aus der Atmosphäre zu entfernen.',
   'billing.contribution.link': 'Erfahre mehr.',
   'billing.updateSuccessToast.description':
     'Workspace {plan} Plan erfolgreich aktualisiert 🎉',
@@ -154,13 +154,13 @@ export default {
   'billing.usage.heading': 'Nutzung',
   'billing.usage.chats.heading': 'Chats',
   'billing.usage.chats.alert.soonReach':
-    'Deine Typebots sind beliebt! Du wirst bald das Chat-Limit deines Tarifs erreichen. 🚀',
+    'Deine MyTalks sind beliebt! Du wirst bald das Chat-Limit deines Tarifs erreichen. 🚀',
   'billing.usage.chats.alert.updatePlan':
     'Vergewissere dich, dass du deinen Tarif aktualisierst, um dieses Limit zu erhöhen und weiterhin mit deinen Benutzern zu chatten.',
   'billing.usage.chats.resetInfo': '(setzt sich am 1. jeden Monats zurück)',
   'billing.usage.storage.heading': 'Speicherplatz',
   'billing.usage.storage.alert.soonReach':
-    'Deine Typebots sind beliebt! Du wirst bald das Speicherlimit deines Tarifs erreichen. 🚀',
+    'Deine MyTalks sind beliebt! Du wirst bald das Speicherlimit deines Tarifs erreichen. 🚀',
   'billing.usage.storage.alert.updatePlan':
     'Stelle sicher, dass du deinen Tarif aktualisierst, um weiterhin hochgeladene Dateien zu sammeln. Du kannst auch Dateien löschen, um Speicherplatz freizugeben.',
   'billing.limitMessage.brand': 'Branding entfernen',
@@ -178,7 +178,7 @@ export default {
   'workspace.settings.name.label': 'Name:',
   'workspace.settings.deleteButton.label': 'Workspace löschen',
   'workspace.settings.deleteButton.confirmMessage':
-    'Sind Sie sicher, dass Sie den Workspace {workspaceName} löschen möchten? Alle seine Ordner, Typebots und Ergebnisse werden dauerhaft gelöscht.',
+    'Sind Sie sicher, dass Sie den Workspace {workspaceName} löschen möchten? Alle seine Ordner, MyTalks und Ergebnisse werden dauerhaft gelöscht.',
   'workspace.settings.modal.menu.myAccount.label': 'Mein Konto',
   'workspace.settings.modal.menu.preferences.label': 'Einstellungen',
   'workspace.settings.modal.menu.workspace.label': 'Workspace',

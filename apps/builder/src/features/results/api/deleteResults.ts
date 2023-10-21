@@ -40,7 +40,7 @@ export const deleteResults = authenticatedProcedure
       },
     })) as Pick<Typebot, 'groups'> | null
     if (!typebot)
-      throw new TRPCError({ code: 'NOT_FOUND', message: 'Typebot not found' })
+      throw new TRPCError({ code: 'NOT_FOUND', message: 'MyTalk not found' })
     const { success } = await archiveResults(prisma)({
       typebot,
       resultsFilter: {
@@ -52,6 +52,6 @@ export const deleteResults = authenticatedProcedure
     if (!success)
       throw new TRPCError({
         code: 'NOT_FOUND',
-        message: 'Typebot not found',
+        message: 'MyTalk not found',
       })
   })

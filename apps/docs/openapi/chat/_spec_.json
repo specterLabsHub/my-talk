@@ -1633,7 +1633,7 @@
                                               "type": {
                                                 "type": "string",
                                                 "enum": [
-                                                  "Typebot link"
+                                                  "MyTalk link"
                                                 ]
                                               },
                                               "options": {
@@ -3546,7 +3546,7 @@
                             "type": "string"
                           }
                         ],
-                        "description": "Either a Typebot ID or a Typebot object. If you provide a Typebot object, it will be executed in preview mode. ([How can I find My talk ID?](https://docs.typebot.io/api#how-to-find-my-typebotid))."
+                        "description": "Either a MyTalk ID or a MyTalk object. If you provide a MyTalk object, it will be executed in preview mode. ([How can I find My talk ID?](https://docs.typebot.io/api#how-to-find-my-typebotid))."
                       },
                       "isPreview": {
                         "type": "boolean",

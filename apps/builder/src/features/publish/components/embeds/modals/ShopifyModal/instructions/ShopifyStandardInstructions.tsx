@@ -54,7 +54,7 @@ export const ShopifyStandardInstructions = ({ publicId }: Props) => {
             }
           />
           <Text>
-            {scopedT('Place an element on which the typebot will go in any file in the')}{' '}
+            {scopedT('Place an element on which the MyTalk will go in any file in the')}{' '}
             <Code>{'<body>'}</Code>:
           </Text>
           <CodeEditor value={elementCode} lang="html" isReadOnly />

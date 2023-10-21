@@ -123,7 +123,7 @@
                             "name": {
                               "type": "string",
                               "enum": [
-                                "Typebot created"
+                                "MyTalk created"
                               ]
                             },
                             "data": {
@@ -166,7 +166,7 @@
                             "name": {
                               "type": "string",
                               "enum": [
-                                "Typebot published"
+                                "MyTalk published"
                               ]
                             },
                             "data": {
@@ -429,7 +429,7 @@
     "/linkedTypebots": {
       "get": {
         "operationId": "getLinkedTypebots",
-        "summary": "Get linked typebots",
+        "summary": "Get linked MyTalk",
         "tags": [
           "Typebot"
         ],
@@ -454,7 +454,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "Comma separated list of typebot ids"
+            "description": "Comma separated list of MyTalk ids"
           }
         ],
         "responses": {
@@ -2039,7 +2039,7 @@
                                           "type": {
                                             "type": "string",
                                             "enum": [
-                                              "Typebot link"
+                                              "MyTalk link"
                                             ]
                                           },
                                           "options": {
@@ -4412,7 +4412,7 @@
     "/typebots": {
       "get": {
         "operationId": "typebot-listTypebots",
-        "summary": "List typebots",
+        "summary": "List MyTalks",
         "tags": [
           "Typebot"
         ],

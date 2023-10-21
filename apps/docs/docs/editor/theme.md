@@ -1,10 +1,10 @@
 # Theme
 
-The theme tab allows you to customize the look of your typebot.
+The theme tab allows you to customize the look of your MyTalk.
 
 ## Global
 
-This section allows you to enable or disable the typebot branding, change the font and the background of your bot.
+This section allows you to enable or disable the MyTalk branding, change the font and the background of your bot.
 
 ## Chat
 

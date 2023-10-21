@@ -6,7 +6,7 @@ sidebar_position: 4
 
 ## Standard
 
-You can get the standard HTML and Javascript code by clicking on the "HTML & Javascript" button in the "Share" tab of your typebot.
+You can get the standard HTML and Javascript code by clicking on the "HTML & Javascript" button in the "Share" tab of your MyTalk.
 
 There, you can change the container dimensions. Here is a code example:
 
@@ -26,7 +26,7 @@ This code is creating a container with a 100% width (will match parent width) an
 
 ## Popup
 
-You can get the popup HTML and Javascript code by clicking on the "HTML & Javascript" button in the "Share" tab of your typebot.
+You can get the popup HTML and Javascript code by clicking on the "HTML & Javascript" button in the "Share" tab of your MyTalk.
 
 Here is an example:
 
@@ -98,7 +98,7 @@ If you have different bots on the same page you will have to make them distinct 
 
 ## Bubble
 
-You can get the bubble HTML and Javascript code by clicking on the "HTML & Javascript" button in the "Share" tab of your typebot.
+You can get the bubble HTML and Javascript code by clicking on the "HTML & Javascript" button in the "Share" tab of your MyTalk.
 
 Here is an example:
 
@@ -222,4 +222,4 @@ Typebot.initStandard({
 
 It will prefill the `Current URL` variable with "https://my-site/account" and the `User name` variable with "John Doe". More info about variables: [here](/editor/variables).
 
-Note that if your site URL contains query params (i.e. https://typebot.io?User%20name=John%20Doe), the variables will automatically be injected to the typebot. So you don't need to manually transfer query params to the bot embed configuration.
+Note that if your site URL contains query params (i.e. https://typebot.io?User%20name=John%20Doe), the variables will automatically be injected to the MyTalk. So you don't need to manually transfer query params to the bot embed configuration.

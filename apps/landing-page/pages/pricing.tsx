@@ -65,7 +65,7 @@ const Pricing = () => {
                 <Text as="span" fontWeight="bold">
                   large company
                 </Text>
-                , Typebot is here to help you build high-performing chat forms
+                , MyTalk is here to help you build high-performing chat forms
                 for the right price. Pay for as little or as much usage as you
                 need.
               </Text>
@@ -80,7 +80,7 @@ const Pricing = () => {
             >
               <StripeClimateLogo />
               <Text fontSize="sm">
-                Typebot is contributing 1% of your subscription to remove CO₂
+                MyTalk is contributing 1% of your subscription to remove CO₂
                 from the atmosphere.{' '}
                 <TextLink href="https://climate.stripe.com/5VCRAq" isExternal>
                   More info

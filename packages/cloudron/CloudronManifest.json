@@ -1,16 +1,16 @@
 {
   "id": "io.typebot",
-  "title": "Typebot",
+  "title": "MyTalk",
   "author": "Baptiste Arnaud <baptiste@typebot.io>",
-  "description": "Typebot is a visual chatbot builder that helps you create chatbots for your website without coding.",
+  "description": "MyTalk is a visual chatbot builder that helps you create chatbots for your website without coding.",
   "tagline": "Build advanced chatbots visually",
   "version": "2.14.0",
   "healthCheckPath": "/",
   "httpPort": 3000,
   "httpPorts": {
     "TYPEBOT_VIEWER_HOST": {
-      "title": "Typebot Viewer",
-      "description": "The Typebot viewer where your users can interact with your bots",
+      "title": "MyTalk Viewer",
+      "description": "The MyTalk viewer where your users can interact with your bots",
       "containerPort": 3001,
       "defaultValue": "bot"
     }

@@ -3,7 +3,7 @@ export default {
   'confirmModal.defaultTitle': 'Es-tu sûr ?',
   'dashboard.header.settingsButton.label': 'Paramètres & Membres',
   'dashboard.redirectionMessage': 'Redirection en cours...',
-  'dashboard.title': 'Mes typebots',
+  'dashboard.title': 'Mes MyTalks',
   delete: 'Supprimer',
   errorMessage: "Une erreur s'est produite",
   cancel: 'Annuler',
@@ -14,7 +14,7 @@ export default {
   pending: 'En attente',
   skip: 'Passer',
   'folders.createFolderButton.label': 'Créer un dossier',
-  'folders.createTypebotButton.label': 'Créer un typebot',
+  'folders.createTypebotButton.label': 'Créer un MyTalk',
   'folders.folderButton.deleteConfirmationMessage':
     "Es-tu sûr de vouloir supprimer le dossier {folderName} ? (Tout ce qui est à l'intérieur sera déplacé dans le dossier parent ou sur votre tableau de bord)",
   'folders.typebotButton.live': 'Live',
@@ -23,12 +23,12 @@ export default {
   'folders.typebotButton.duplicate': 'Dupliquer',
   'folders.typebotButton.delete': 'Supprimer',
   'folders.typebotButton.deleteConfirmationMessage':
-    'Es-tu sûr de vouloir supprimer votre typebot {typebotName} ?',
+    'Es-tu sûr de vouloir supprimer votre MyTalk {typebotName} ?',
   'folders.typebotButton.deleteConfirmationMessageWarning':
     'Toutes les données associées seront supprimées et ne pourront pas être récupérées.',
   'account.apiTokens.heading': 'Tokens API',
   'account.apiTokens.description':
-    "Ces tokens permettent à d'autres applications de contrôler ton compte et tes typebots. Prudence !",
+    "Ces tokens permettent à d'autres applications de contrôler ton compte et tes MyTalks. Prudence !",
   'account.apiTokens.createButton.label': 'Créer',
   'account.apiTokens.deleteButton.label': 'Supprimer',
   'account.apiTokens.table.nameHeader': 'Nom',
@@ -105,7 +105,7 @@ export default {
   'auth.socialLogin.customButton.label': 'Continuer avec {customProviderName}',
   'billing.billingPortalButton.label': 'Portail de facturation',
   'billing.contribution.preLink':
-    "Typebot contribue à hauteur de 1% de votre abonnement pour éliminer le CO₂ de l'atmosphère.",
+    "MyTalk contribue à hauteur de 1% de votre abonnement pour éliminer le CO₂ de l'atmosphère.",
   'billing.contribution.link': 'En savoir plus.',
   'billing.updateSuccessToast.description':
     'Ton abonnement {plan} a été mis à jour avec succès 🎉',
@@ -153,13 +153,13 @@ export default {
   'billing.usage.heading': 'Utilisation',
   'billing.usage.chats.heading': 'Chats',
   'billing.usage.chats.alert.soonReach':
-    'Tes typebots sont populaires ! Tu atteindras bientôt la limite de chats de votre abonnement. 🚀',
+    'Tes MyTalks sont populaires ! Tu atteindras bientôt la limite de chats de votre abonnement. 🚀',
   'billing.usage.chats.alert.updatePlan':
     'Assure-toi de mettre à jour votre abonnement pour augmenter cette limite et continuer à discuter avec vos utilisateurs.',
   'billing.usage.chats.resetInfo': '(réinitialisé le 1er de chaque mois)',
   'billing.usage.storage.heading': 'Stockage',
   'billing.usage.storage.alert.soonReach':
-    'Tes typebots sont populaires ! Tu atteindras bientôt la limite de stockage de ton abonnement. 🚀',
+    'Tes MyTalks sont populaires ! Tu atteindras bientôt la limite de stockage de ton abonnement. 🚀',
   'billing.usage.storage.alert.updatePlan':
     "Assure-toi de mettre à jour votre abonnement pour continuer à collecter des fichiers téléchargés. Tu peux également supprimer des fichiers pour libérer de l'espace.",
   'billing.limitMessage.brand': 'supprimer la marque',
@@ -177,7 +177,7 @@ export default {
   'workspace.settings.name.label': 'Nom:',
   'workspace.settings.deleteButton.label': 'Supprimer le workspace',
   'workspace.settings.deleteButton.confirmMessage':
-    'Es-tu sûr(e) de vouloir supprimer le workspace {workspaceName} ? Tous ses dossiers, typebots et résultats seront supprimés pour toujours.',
+    'Es-tu sûr(e) de vouloir supprimer le workspace {workspaceName} ? Tous ses dossiers, MyTalks et résultats seront supprimés pour toujours.',
   'workspace.settings.modal.menu.myAccount.label': 'Mon compte',
   'workspace.settings.modal.menu.preferences.label': 'Préférences',
   'workspace.settings.modal.menu.workspace.label': 'Workspace',

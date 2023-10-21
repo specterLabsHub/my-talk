@@ -29,7 +29,7 @@ export const TypebotsDropdown = ({
 
   if (isLoading) return <Input value="Loading..." isDisabled />
   if (!typebots || typebots.length === 0)
-    return <Input value="No typebots found" isDisabled />
+    return <Input value="No Talks found" isDisabled />
   return (
     <HStack>
       <Select
