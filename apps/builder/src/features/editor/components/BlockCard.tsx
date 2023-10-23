@@ -43,7 +43,7 @@ export const BlockCard = (
       )
     case InputBlockType.FILE:
       return (
-        <BlockCardLayout {...props} tooltip={scopedT('Upload')}>
+        <BlockCardLayout {...props} tooltip={scopedT('Upload')} >
           <BlockIcon type={props.type} />
           <HStack>
             <BlockLabel type={props.type} />
@@ -105,7 +105,7 @@ const BlockCardLayout = ({ type, onMouseDown, tooltip, children }: Props) => {
 
   return (
     <Tooltip label={tooltip}>
-      <Flex pos="relative">
+      <Flex pos="relative" style={{display: type ===  InputBlockType.PAYMENT ? 'none' : 'flex'}}>
         <HStack
           borderWidth="1px"
           rounded="lg"

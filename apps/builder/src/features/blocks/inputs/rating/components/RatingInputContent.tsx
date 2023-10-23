@@ -13,7 +13,7 @@ export const RatingInputContent = ({ variableId, block }: Props) => {
   return (variableId ? (
     <WithVariableContent variableId={variableId} />
     ) : (
-      <Text noOfLines={1} pr="6">
+      <Text noOfLines={1} pr="6" style={{color: '#1a1a1a'}}>
       {scopedT('Rate from')} {block.options.buttonType === 'Icons' ? 1 : 0} {scopedT('to')}{' '}
       {block.options.length}
     </Text>

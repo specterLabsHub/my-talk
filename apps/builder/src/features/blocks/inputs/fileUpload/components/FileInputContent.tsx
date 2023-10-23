@@ -12,7 +12,7 @@ export const FileInputContent = ({
   variableId ? (
     <WithVariableContent variableId={variableId} />
   ) : (
-    <Text noOfLines={1} pr="6">
-      Collect {isMultipleAllowed ? 'files' : 'file'}
+    <Text noOfLines={1} pr="6" style={{color: '#1a1a1a'}}>
+      Selecionar {isMultipleAllowed ? 'arquivos' : 'arquivo'}
     </Text>
   )
