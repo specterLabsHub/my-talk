@@ -25,7 +25,7 @@ export const MagicLinkEmail = ({ url }: Props) => {
     <MjmlBody width={600}>
       <MjmlSection padding="0">
         <MjmlColumn>
-          <HeroImage src="https://s3.fr-par.scw.cloud/typebot/public/typebots/rxp84mn10va5iqek63enrg99/blocks/yfazs53p6coxe4u3tbbvkl0m" />
+          <HeroImage src="https://cdn.specterlabs.com.br/my-talk-magic-link.png" />
         </MjmlColumn>
       </MjmlSection>
       <MjmlSection padding="0 24px" cssClass="smooth">

@@ -70,6 +70,14 @@ export const ImageBubble = (props: Props) => {
     return `${formattedHours}:${formattedMinutes}`;
   }
 
+  onMount(() => {
+    if(isTyping()){
+      setTimeout(() => {
+        setIsTypingEnd(false);
+      }, 600)
+    }
+  });
+
   return (
     <div class="flex flex-col animate-fade-in" ref={ref} style={{position: 'relative'}}>
       <div class="flex w-full items-center">

@@ -1,6 +1,5 @@
 import { ShortTextInput } from '@/components'
 import { ChevronDownIcon } from '@/components/icons/ChevronDownIcon'
-import { SendButton } from '@/components/SendButton'
 import { InputSubmitContent } from '@/types'
 import { isMobile } from '@/utils/isMobileSignal'
 import type { PhoneNumberInputOptions } from '@typebot.io/schemas'

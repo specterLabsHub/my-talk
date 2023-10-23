@@ -45,7 +45,7 @@ export const EmbedBubble = (props: Props) => {
     if(isTyping()){
       setTimeout(() => {
         setIsTypingEnd(false);
-      }, 600)
+      }, 1000)
     }
   });
 

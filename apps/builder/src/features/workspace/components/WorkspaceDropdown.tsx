@@ -42,7 +42,7 @@ export const WorkspaceDropdown = ({
         <HStack>
           {currentWorkspace && (
             <>
-              <Text noOfLines={1} maxW="200px">
+              <Text noOfLines={1} maxW="220px">
                 {currentWorkspace.name}
               </Text>
             </>
