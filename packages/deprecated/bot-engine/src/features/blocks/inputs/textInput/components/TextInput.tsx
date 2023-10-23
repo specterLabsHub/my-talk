@@ -57,6 +57,7 @@ export const TextInput = ({
           placeholder={
             block.options?.labels?.placeholder ?? 'Type your answer...'
           }
+          style={{lineBreak: 'anywhere'}}
         />
       ) : (
         <ShortTextInput
@@ -66,6 +67,7 @@ export const TextInput = ({
           placeholder={
             block.options?.labels?.placeholder ?? 'Type your answer...'
           }
+          style={{lineBreak: 'anywhere'}}
         />
       )}
       <SendButton

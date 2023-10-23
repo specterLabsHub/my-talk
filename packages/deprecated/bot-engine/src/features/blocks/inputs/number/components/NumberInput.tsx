@@ -53,7 +53,7 @@ export const NumberInput = ({
         }
         onChange={handleChange}
         type="number"
-        style={{ appearance: 'auto' }}
+        style={{ appearance: 'auto', lineBreak: 'anywhere' }}
         min={block.options?.min}
         max={block.options?.max}
         step={block.options?.step ?? 'any'}

@@ -20,6 +20,7 @@ export const GuestBubble = (props: Props) => (
     <span
       class="px-4 py-2 whitespace-pre-wrap max-w-full typebot-guest-bubble"
       data-testid="guest-bubble"
+      style={{"line-break": 'anywhere'}}
     >
       {props.message}
       <span class='flex gap-1 text-xs text-right' style="justify-content: flex-end;margin-right: -5px;font-size: 11px;">

@@ -58,6 +58,7 @@ export const UrlInput = ({
         onChange={handleChange}
         type="url"
         autoComplete="url"
+        style={{lineBreak: 'anywhere'}}
       />
       <SendButton
         type="button"

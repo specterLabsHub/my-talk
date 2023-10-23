@@ -55,6 +55,7 @@ export const PhoneInput = ({
         placeholder={block.options.labels.placeholder ?? 'Your phone number...'}
         defaultCountry={block.options.defaultCountryCode as Country}
         autoFocus={!isMobile}
+        style={{lineBreak: 'anywhere'}}
       />
       <SendButton
         type="button"
@@ -62,6 +63,7 @@ export const PhoneInput = ({
         isDisabled={inputValue === ''}
         className="my-2 ml-2"
         onClick={submit}
+        
       />
     </div>
   )

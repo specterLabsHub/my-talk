@@ -52,7 +52,7 @@ export const VideoBubble = (props: Props) => {
     if(isTyping()){
       setTimeout(() => {
         setIsTypingEnd(false);
-      }, 600)
+      }, 2000)
     }
   });
 

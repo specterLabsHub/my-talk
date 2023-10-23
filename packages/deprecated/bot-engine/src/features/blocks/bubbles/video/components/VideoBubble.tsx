@@ -35,7 +35,7 @@ export const VideoBubble = ({ block, onTransitionEnd }: Props) => {
     const timeout = setTimeout(() => {
       setIsTyping(false)
       onTypingEnd()
-    }, 1000)
+    }, 2000)
 
     return () => {
       clearTimeout(timeout)
