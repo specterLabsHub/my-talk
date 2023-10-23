@@ -9,7 +9,7 @@ import {
 import { ToolIcon, TemplateIcon, DownloadIcon } from '@/components/icons'
 import { Typebot } from '@typebot.io/schemas'
 import { useRouter } from 'next/router'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ImportTypebotFromFileButton } from './ImportTypebotFromFileButton'
 import { TemplatesModal } from './TemplatesModal'
 import { useWorkspace } from '@/features/workspace/WorkspaceProvider'
@@ -74,10 +74,33 @@ export const CreateNewTypebotButtons = () => {
     setIsLoading(false)
   }
 
+  
+  const [windowWidth, setWindowWidth] = useState(0);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      // Função para atualizar a largura da tela quando a janela for redimensionada
+      const handleResize = () => {
+        setWindowWidth(window.innerWidth);
+      };
+
+      // Adiciona um ouvinte de evento para detectar as alterações de tamanho da tela
+      window.addEventListener('resize', handleResize);
+
+      // Remove o ouvinte de evento quando o componente é desmontado
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }
+  }, []);
+
+  // Define o limite da tela onde o ícone deve ser exibido
+  const maxScreenLimit = windowWidth < 600;
+
   return (
-    <VStack maxW="600px" w="full" flex="1" pt="20" spacing={10} ml={['32px', '32px', 0]}>
+    <VStack maxW="600px" w="full" flex="1" pt="20" spacing={10}>
       <Heading>{scopedT('createNew')}</Heading>
-      <Stack w="full" spacing={6}>
+      <Stack w="full" spacing={6} style={{padding: maxScreenLimit ? '0 24px' : ''}}>
         <Button
           variant="outline"
           w="full"

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { HStack, Flex, Button, useDisclosure } from '@chakra-ui/react'
 import { HardDriveIcon, SettingsIcon } from '@/components/icons'
 import { signOut } from 'next-auth/react'
@@ -25,8 +25,29 @@ export const DashboardHeader = () => {
   const handleCreateNewWorkspace = () =>
     createWorkspace(user?.name ?? undefined)
 
+    const [windowWidth, setWindowWidth] = useState(0);
+
+    useEffect(() => {
+      if (typeof window !== 'undefined') {
+        // Função para atualizar a largura da tela quando a janela for redimensionada
+        const handleResize = () => {
+          setWindowWidth(window.innerWidth);
+        };
+  
+        // Adiciona um ouvinte de evento para detectar as alterações de tamanho da tela
+        window.addEventListener('resize', handleResize);
+  
+        // Remove o ouvinte de evento quando o componente é desmontado
+        return () => {
+          window.removeEventListener('resize', handleResize);
+        };
+      }
+    }, []);
+  
+    // Define o limite da tela onde o ícone deve ser exibido
+    const maxScreenLimit = windowWidth < 600;
   return (
-    <Flex w="full" borderBottomWidth="1px" justify="center">
+    <Flex w="full" borderBottomWidth="1px" justify="center" style={{padding: maxScreenLimit ?'0 24px' : ''}}>
       <Flex
         justify="space-between"
         alignItems="center"
@@ -50,12 +71,16 @@ export const DashboardHeader = () => {
               workspace={workspace}
             />
           )}
-          <Button
+            
+            <Button
             leftIcon={<SettingsIcon />}
             onClick={onOpen}
             isLoading={isNotDefined(workspace)}
-          >
-            {scopedT('settingsButton.label')}
+            style={{paddingLeft: maxScreenLimit ? 22 : ''}}
+            >
+            {!maxScreenLimit && (
+            scopedT('settingsButton.label')
+            )}
           </Button>
           <WorkspaceDropdown
             currentWorkspace={workspace}
