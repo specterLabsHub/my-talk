@@ -94,7 +94,7 @@ export const IconPicker = ({ onIconSelected }: Props) => {
       localStorageRecentIconNamesKey,
       JSON.stringify([...new Set([iconName, ...recentIconNames].slice(0, 30))])
     )
-    const svg = await (await fetch(`/icons/${iconName}.svg`)).text()
+    const svg = await (await fetch(`/my-talk-builder/icons/${iconName}.svg`)).text()
     const dataUri = `data:image/svg+xml;utf8,${svg
       .replace('<svg', `<svg fill='${encodeURIComponent(selectedColor)}'`)
       .replace(/"/g, "'")}`
@@ -189,7 +189,7 @@ const Icon = ({ name, color }: { name: string; color: string }) => {
   )
 
   useEffect(() => {
-    fetch(`/icons/${name}.svg`)
+    fetch(`/my-talk-builder/icons/${name}.svg`)
       .then((response) => response.text())
       .then((text) => setSvg(text))
   }, [name])

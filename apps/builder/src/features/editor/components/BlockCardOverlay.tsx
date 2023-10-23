@@ -1,5 +1,5 @@
 import { StackProps, HStack, useColorModeValue } from '@chakra-ui/react'
-import { BlockType } from '@typebot.io/schemas'
+import { BlockType, IntegrationBlockType } from '@typebot.io/schemas'
 import { BlockIcon } from './BlockIcon'
 import { BlockLabel } from './BlockLabel'
 
@@ -22,6 +22,7 @@ export const BlockCardOverlay = ({
       shadow="xl"
       zIndex={2}
       hover={useColorModeValue('gray.200', 'gray.800')}
+      display={ IntegrationBlockType.GOOGLE_SHEETS && IntegrationBlockType.GOOGLE_ANALYTICS ? 'none !important' : 'flex'}
       {...props}
     >
       <BlockIcon type={type} />

@@ -56,7 +56,7 @@ export const WorkspaceSettingsModal = ({
       <ModalContent minH="600px" flexDir="row" m="32px">
         <Stack
           spacing={8}
-          w={[160, 160, 250]}
+          w={[160, 160, 280]}
           py="6"
           borderRightWidth={1}
           justifyContent="space-between"

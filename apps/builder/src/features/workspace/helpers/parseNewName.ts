@@ -5,8 +5,8 @@ export const parseNewName = (
   existingWorkspaces: Pick<Workspace, 'name'>[]
 ) => {
   const workspaceName = userFullName
-    ? `${userFullName}'s workspace`
-    : 'My workspace'
+    ? `Espaço de trabalho ${userFullName}'s`
+    : 'Meu espaço de trabalho'
   let newName = workspaceName
   let i = 1
   while (existingWorkspaces.find((w) => w.name === newName)) {

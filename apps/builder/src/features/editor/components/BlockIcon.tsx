@@ -28,8 +28,6 @@ import { RatingInputIcon } from '@/features/blocks/inputs/rating/components/Rati
 import { TextInputIcon } from '@/features/blocks/inputs/textInput/components/TextInputIcon'
 import { UrlInputIcon } from '@/features/blocks/inputs/url/components/UrlInputIcon'
 import { ChatwootLogo } from '@/features/blocks/integrations/chatwoot/components/ChatwootLogo'
-import { GoogleAnalyticsLogo } from '@/features/blocks/integrations/googleAnalytics/components/GoogleAnalyticsLogo'
-import { GoogleSheetsLogo } from '@/features/blocks/integrations/googleSheets/components/GoogleSheetsLogo'
 import { MakeComLogo } from '@/features/blocks/integrations/makeCom/components/MakeComLogo'
 import { PabblyConnectLogo } from '@/features/blocks/integrations/pabbly/components/PabblyConnectLogo'
 import { ZapierLogo } from '@/features/blocks/integrations/zapier/components/ZapierLogo'
@@ -95,9 +93,9 @@ export const BlockIcon = ({ type, ...props }: BlockIconProps): JSX.Element => {
     case LogicBlockType.AB_TEST:
       return <AbTestIcon color={'#1a1a1a'} {...props} />
     case IntegrationBlockType.GOOGLE_SHEETS:
-      return <GoogleSheetsLogo {...props} />
+      return <></>
     case IntegrationBlockType.GOOGLE_ANALYTICS:
-      return <GoogleAnalyticsLogo {...props} />
+      return <></>
     case IntegrationBlockType.WEBHOOK:
       return <WebhookIcon {...props} color={'#1a1a1a'}/>
     case IntegrationBlockType.ZAPIER:

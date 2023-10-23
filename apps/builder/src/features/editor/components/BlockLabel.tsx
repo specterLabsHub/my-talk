@@ -65,9 +65,9 @@ export const BlockLabel = ({ type }: Props): JSX.Element => {
     case LogicBlockType.AB_TEST:
       return <Text color='#1a1a1a' fontSize="sm">{scopedT('AB Test')}</Text>
     case IntegrationBlockType.GOOGLE_SHEETS:
-      return <Text color='#1a1a1a' fontSize="sm">{scopedT('Sheets')}</Text>
+      return <></>
     case IntegrationBlockType.GOOGLE_ANALYTICS:
-      return <Text color='#1a1a1a' fontSize="sm">{scopedT('Analytics')}</Text>
+      return <></>
     case IntegrationBlockType.WEBHOOK:
       return <Text color='#1a1a1a' fontSize="sm">{scopedT('Webhook')}</Text>
     case IntegrationBlockType.ZAPIER:

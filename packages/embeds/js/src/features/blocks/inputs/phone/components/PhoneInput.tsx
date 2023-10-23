@@ -107,12 +107,13 @@ export const PhoneInput = (props: PhoneInputProps) => {
       data-testid="input"
       style={{
         'max-width': '100%',
-        "border-radius": '50px'
+        "border-radius": '50px',
+        "width": '100%'
       }}
       onKeyDown={submitWhenEnter}
     >
-      <div class="flex">
-        <div class="relative typebot-country-select flex justify-center items-center">
+      <div class="flex" style={{width: '100%'}}>
+        <div class="relative typebot-country-select flex justify-center items-center" style={{"border-radius": '50px'}}>
           <div class="pl-2 pr-1 flex items-center gap-2">
             <span>
               {
