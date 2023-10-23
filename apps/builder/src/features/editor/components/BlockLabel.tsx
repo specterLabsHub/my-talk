@@ -43,7 +43,7 @@ export const BlockLabel = ({ type }: Props): JSX.Element => {
     case InputBlockType.PICTURE_CHOICE:
       return <Text color='#1a1a1a' fontSize="sm">{scopedT('Pic choice')}</Text>
     case InputBlockType.PAYMENT:
-      return <Text color='#1a1a1a' fontSize="sm">{scopedT('Payment')}</Text>
+      return <></>
     case InputBlockType.RATING:
       return <Text color='#1a1a1a' fontSize="sm">{scopedT('Rating')}</Text>
     case InputBlockType.FILE:
