@@ -26,13 +26,21 @@ export const ImageBubble = (props: Props) => {
     setIsTyping(false)
     setTimeout(() => {
       props.onTransitionEnd(ref?.offsetTop)
-      setIsTypingEnd(false)
     }, showAnimationDuration)
   }
 
   onMount(() => {
     if (!image) return
     typingTimeout = setTimeout(onTypingEnd, mediaLoadingFallbackTimeout)
+    if(typingTimeout){
+        setTimeout(() => {
+          setIsTypingEnd(false);
+        }, 5500)
+    } else {
+      setTimeout(() => {
+        setIsTypingEnd(false);
+      }, 400)
+    }
     image.onload = () => {
       clearTimeout(typingTimeout)
       onTypingEnd()
@@ -69,14 +77,6 @@ export const ImageBubble = (props: Props) => {
     const formattedMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
     return `${formattedHours}:${formattedMinutes}`;
   }
-
-  onMount(() => {
-    if(isTyping()){
-      setTimeout(() => {
-        setIsTypingEnd(false);
-      }, 600)
-    }
-  });
 
   return (
     <div class="flex flex-col animate-fade-in" ref={ref} style={{position: 'relative'}}>

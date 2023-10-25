@@ -41,7 +41,7 @@ export const GtmStandardInstructions = ({
       </ListItem>
       <ListItem>
         <Stack spacing={4}>
-          <Text>Paste the code below:</Text>
+          <Text>{scopedT('Paste the code below:')}</Text>
           <CodeEditor value={headCode} isReadOnly lang="html" />
         </Stack>
       </ListItem>

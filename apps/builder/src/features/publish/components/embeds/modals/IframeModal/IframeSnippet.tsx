@@ -1,6 +1,5 @@
 import { FlexProps } from '@chakra-ui/react'
 import { useTypebot } from '@/features/editor/providers/TypebotProvider'
-import { env, getViewerUrl } from '@typebot.io/lib'
 import { CodeEditor } from '@/components/inputs/CodeEditor'
 import prettier from 'prettier/standalone'
 import parserHtml from 'prettier/parser-html'
@@ -13,7 +12,7 @@ type Props = {
 
 export const IframeSnippet = ({ widthLabel, heightLabel }: Props) => {
   const { typebot } = useTypebot()
-  const src = `${env('VIEWER_INTERNAL_URL') ?? getViewerUrl()}/${
+  const src = `${'https://membros.biolax.com.br/my-talk-viewer'}/${
     typebot?.publicId
   }`
   const code = prettier.format(
